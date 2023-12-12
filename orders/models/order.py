@@ -30,5 +30,5 @@ class Order(Base):
     customer = relationship("OrderCustomer", back_populates="orders")
     address = relationship("Address", back_populates="order")
     payment = relationship("OrderPayment", back_populates="order")
-    delivery = relationship("Delivery", back_populates="order")
+    delivery = relationship("OrderDelivery", back_populates="order")
     items = relationship("OrderItem", back_populates="order")

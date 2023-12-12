@@ -7,7 +7,9 @@ from config.database import Base
 
 
 class IFoodProduct(Base):
-    __name__
+    __tablename__ = 'ifood_product'
     id = Column(Integer, autoincrement=True, primary_key=True)
     ifood_order_id = Column(String, primary_key=True)
-    merchant_id = Column(Integer, ForeignKey('products.id'))
+    product_id = Column(Integer, ForeignKey('products.id'))
+    
+    product = relationship("Product", back_populates='ifood_product')

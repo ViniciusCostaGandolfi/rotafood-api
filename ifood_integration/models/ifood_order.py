@@ -7,6 +7,7 @@ from config.database import Base
 
 
 class IFoodOrder(Base):
+    __tablename__ = 'ifood_order'
     id = Column(Integer, autoincrement=True, primary_key=True)
     ifood_order_id = Column(String, primary_key=True)
     

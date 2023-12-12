@@ -16,6 +16,8 @@ class PermissionsType(Enum):
     ORDERS="ORDERS"
 
 class IFoodMerchant(Base):
+    __tablename__ = 'ifood_merchant'
+
     id = Column(Integer, autoincrement=True, primary_key=True)
     ifood_client_id = Column(String, primary_key=True)
     authorization_type = Column(SQLEnum(AuthorizationType))

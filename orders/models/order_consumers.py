@@ -10,6 +10,5 @@ class OrderCustomer(Base):
     name = Column(String)
     phone = Column(String)
     document_number = Column(String)
-    # Outros campos...
 
     orders = relationship("Order", back_populates="customer")
