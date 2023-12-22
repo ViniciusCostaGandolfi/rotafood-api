@@ -14,21 +14,19 @@ class OrderType(Enum):
 class Order(Base):
     __tablename__ = 'orders'
 
-    id = Column(String, primary_key=True)
+    id = Column(Integer, autoincrement=True, primary_key=True)
     order_type = Column(SQLEnum(OrderType))
     order_timing = Column(String)
     created_at = Column(DateTime)
     preparation_start_dateTime  = Column(DateTime)
     
-    restaurant_id = Column(Integer, ForeignKey('restaurants.id'))
-    restaurant_user_id =  Column(Integer, ForeignKey('restaurant_users.id'))
-    address_id = Column(Integer, ForeignKey('address.id'))
+    merchant_id = Column(Integer, ForeignKey('merchants.id'))
+    merchant_user_id =  Column(Integer, ForeignKey('merchant_users.id'))
     customer_id = Column(Integer, ForeignKey('order_customers.id'))
     payment_id = Column(Integer, ForeignKey('order_payments.id'))
-    delivery_id = Column(Integer, ForeignKey('deliveries.id'))
+    delivery_id = Column(Integer, ForeignKey('order_deliveries.id'))
 
     customer = relationship("OrderCustomer", back_populates="orders")
-    address = relationship("Address", back_populates="order")
     payment = relationship("OrderPayment", back_populates="order")
     delivery = relationship("OrderDelivery", back_populates="order")
     items = relationship("OrderItem", back_populates="order")

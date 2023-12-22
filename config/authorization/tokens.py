@@ -3,33 +3,37 @@ from typing import Any, Dict, Optional
 from fastapi import HTTPException, status
 from jose import JWTError, jwt
 from pydantic import BaseModel
-from restaurants.DTOs.restaurant_user_dto import RestaurantUserCreateTokenDTO
+from merchants.DTOs.merchant_user_dto import MerchantUserCreateTokenDTO
+from merchants.models.merchant_user import MerchantUser, MerchantUserRole
+from dotenv import load_dotenv
+import os
 
-from restaurants.models.restaurant_user import RestaurantUser, Role
+load_dotenv()
 
-SECRET_KEY = "sua_chave_secreta"
+
+SECRET_KEY = os.environ.get("SECRET_KEY", "tanana")
 ALGORITHM = "HS256"
 
 
 
 class PayloadDTO(BaseModel):
     restaurant_user_id: int
-    restaurant_id: int
+    merchant_id: int
     email: str
     name: str
     exp: int
     
 
 class EmailPayloadDTO(BaseModel):
-    restaurant_id: int
-    permissions: Role
+    merchant_id: int
+    permissions: MerchantUserRole
     email: str
     exp: int
 
-def create_access_token(user: RestaurantUser, expires_delta: Optional[timedelta] = None):
-    payload: Dict[str, Any] = {
+def create_access_token(user: MerchantUser, expires_delta: Optional[timedelta] = None):
+    payload: Dict[str, str|int] = {
         "restaurant_user_id": user.id,
-        "restaurant_id": user.restaurant_id,
+        "merchant_id": user.merchant_id,
         "email": user.email,
         "name": user.name
     }
@@ -41,9 +45,9 @@ def create_access_token(user: RestaurantUser, expires_delta: Optional[timedelta]
     encoded_jwt = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-def create_new_user_email_token(admin: RestaurantUser, user: RestaurantUserCreateTokenDTO ,expires_delta: Optional[timedelta] = None):
+def create_new_user_email_token(admin: MerchantUser, user: MerchantUserCreateTokenDTO ,expires_delta: Optional[timedelta] = None):
     payload: Dict[str, Any] = {
-        "restaurant_id": admin.restaurant_id,
+        "merchant_id": admin.merchant_id,
         "permissions": user.permissions.value,
         "email": user.email
         
@@ -68,12 +72,18 @@ def verify_email_token(token: str):
         headers={"WWW-Authenticate": "Bearer"},
     )
 
-def verify_token(token: str, credentials_exception):
+def verify_token(token: str):
     try:
         payload_dict = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         payload = PayloadDTO(**payload_dict)
         return payload
     except JWTError:
-        raise credentials_exception
+        raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Não foi possível validar as credenciais",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+
+
 
 

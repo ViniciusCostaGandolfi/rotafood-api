@@ -6,7 +6,7 @@ from config.database import Base
 class OrderCustomer(Base):
     __tablename__ = 'order_customers'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, autoincrement=True, primary_key=True)
     name = Column(String)
     phone = Column(String)
     document_number = Column(String)

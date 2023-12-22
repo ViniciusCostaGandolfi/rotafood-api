@@ -2,15 +2,20 @@ from sqlalchemy import Column, Integer, String, Float
 from config.database import Base
 
 
+
+
+
 class Address(Base):
-    __tablename__ = 'address'
- 
+    __tablename__ = 'addresses'
+    
     id = Column(Integer, primary_key=True)
-    number = Column(String(16), nullable=True)
-    street = Column(String(255))
-    neighborhood = Column(String(255), nullable=True)
-    city = Column(String(100))
-    state = Column(String(100))
-    postal_code = Column(String(20))
-    lat = Column(Float)
-    lon = Column(Float)
+    street_name = Column(String)
+    formatted_address = Column(String)
+    street_number = Column(String)
+    city = Column(String)
+    postal_code = Column(String)
+    neighborhood = Column(String)
+    state = Column(String)
+    complement = Column(String)
+    latitude = Column(Float)
+    longitude = Column(Float)

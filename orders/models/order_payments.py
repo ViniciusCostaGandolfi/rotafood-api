@@ -6,7 +6,7 @@ from config.database import Base
 class OrderPayment(Base):
     __tablename__ = 'order_payments'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, autoincrement=True, primary_key=True)
     method = Column(String)
     currency = Column(String)
     total_amount = Column(Float)

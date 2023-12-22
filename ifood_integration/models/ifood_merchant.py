@@ -16,7 +16,7 @@ class PermissionsType(Enum):
     ORDERS="ORDERS"
 
 class IFoodMerchant(Base):
-    __tablename__ = 'ifood_merchant'
+    __tablename__ = 'ifood_merchants'
 
     id = Column(Integer, autoincrement=True, primary_key=True)
     ifood_client_id = Column(String, primary_key=True)
@@ -24,6 +24,6 @@ class IFoodMerchant(Base):
     ifood_permissions = Column(ARRAY(SQLEnum(PermissionsType)))
     
     
-    restaurant_id = Column(Integer, ForeignKey('restaurants.id'))
+    merchant_id = Column(Integer, ForeignKey('merchants.id'))
     
-    restaurant = relationship("Restaurant", back_populates="ifood_merchant")
+    merchant = relationship("Merchant", back_populates="ifood_merchant")

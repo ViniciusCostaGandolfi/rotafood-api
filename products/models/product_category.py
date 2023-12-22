@@ -5,6 +5,6 @@ from config.database import Base
 
 class ProductCategory(Base):
     __tablename__ = 'product_categories'
-    id = Column(String, primary_key=True)
+    id = Column(Integer, autoincrement=True, primary_key=True)
     name = Column(String, nullable=False)
     description = Column(String)

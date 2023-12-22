@@ -7,7 +7,7 @@ from config.database import Base
 
 class ProductOptionGroup(Base):
     __tablename__ = 'product_option_groups'
-    id = Column(String, primary_key=True)
+    id = Column(Integer, autoincrement=True, primary_key=True)
     name = Column(String)
     external_code = Column(String)
     status = Column(String)
@@ -15,6 +15,6 @@ class ProductOptionGroup(Base):
     min_options = Column(Integer)
     max_options = Column(Integer)
 
-    product_id = Column(String, ForeignKey('products.id'))
+    product_id = Column(Integer, ForeignKey('products.id'))
 
     options = relationship('ProductOption', backref='option_group', cascade='all, delete-orphan')
