@@ -6,6 +6,6 @@ from .controllers.authentication_controller import authenticaion_router
 merchants_routers = APIRouter()
 
 merchants_routers.include_router(authenticaion_router)
+merchants_routers.include_router(merchant_router)
 merchants_routers.include_router(merchant_user_router)
 merchants_routers.include_router(merchant_user_admin_router)
-merchants_routers.include_router(merchant_router)

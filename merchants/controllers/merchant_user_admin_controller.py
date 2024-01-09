@@ -39,14 +39,18 @@ class MerchantUserAdminController:
         merchant_user_data: MerchantUserDTO, 
         admin:MerchantUser = Depends(get_current_admin_user),
         db: Session = Depends(get_db)) -> MerchantUser:
-        merchant_user = db.query(Merchant).filter(Merchant.id == merchant_id, merchant_id=admin.merchant_id).first()
-
         
+        
+        merchant_user = db.query(Merchant).filter(Merchant.id == merchant_id, merchant_id=admin.merchant_id).first()
         if not merchant_user:
             raise HTTPException(status_code=404, detail="Restaurante não encontrado")
 
-        for key, value in merchant_user_data.model_dump().items():
-            setattr(merchant_user, key, value)
+        for key, value in merchant_user_data.model_dump(exclude={"permissions"}).items():
+            if value is not None:
+                setattr(merchant_user, key, value)
+        
+        if merchant_user_data.permissions.value is not None:
+            setattr(merchant_user, "permissions", merchant_user_data.permissions.value)
       
         db.commit()
 

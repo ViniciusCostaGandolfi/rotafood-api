@@ -23,22 +23,26 @@ class RestaurantController:
         return restaurant
 
 
-    @merchant_router.put("/", response_model=MerchantDTO)
+    @merchant_router.patch("/", response_model=MerchantDTO)
     async def update_merchant(
         merchant_dto: MerchantUpdateDTO, 
         db: Session = Depends(get_db), 
         user: MerchantUser = Depends(get_current_admin_user)) -> MerchantDTO:
-        restaurant = db.query(Merchant).filter(Merchant.id == user.merchant_id).first()
-        if not restaurant:
+        merchant = db.query(Merchant).filter(Merchant.id == user.merchant_id).first()
+        if not merchant:
             raise HTTPException(status_code=404, detail="Restaurant not found")
-
-        for key, value in merchant_dto.model_dump(exclude_unset=True, exclude={'address'}).items():
-            setattr(restaurant, key, value)
-
+        
+        for key, value in merchant_dto.model_dump(exclude_unset=True, exclude={'address', 'document_type'}).items():
+            if value is not None:
+                setattr(merchant, key, value)
+            
+        if merchant_dto.document_type is not None:
+            setattr(merchant, 'document_type', merchant_dto.document_type.value)
+            
         if merchant_dto.address:
             address_data = merchant_dto.address.model_dump(exclude_unset=True)
-            db.query(Address).filter(Address.id == restaurant.address_id).update(address_data)
+            db.query(Address).filter(Address.id == merchant.address_id).update(address_data)
 
         db.commit()
 
-        return MerchantDTO.model_validate(restaurant)
+        return MerchantDTO.model_validate(merchant)

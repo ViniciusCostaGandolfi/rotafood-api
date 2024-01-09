@@ -11,6 +11,6 @@ class OrderItemOption(Base):
     product_option_id = Column(Integer, ForeignKey('product_options.id'))
     
     
-    product_option = relationship('ProductOpition')
+    product_option = relationship('ProductOption')
 
 

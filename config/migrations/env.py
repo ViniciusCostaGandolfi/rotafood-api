@@ -10,6 +10,7 @@ from addresses.models import *
 from merchants.models import *
 from products.models import *
 from orders.models import *
+from catalog.models import *
 from ifood_integration.models import *
 
 load_dotenv()

@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship, Mapped
 from addresses.models.address import Address
+from catalog.models.catalog import Catalog
 from config.database import Base 
 
 class Merchant(Base):
@@ -13,3 +14,4 @@ class Merchant(Base):
     address_id = Column(Integer, ForeignKey('addresses.id'))
  
     address: Mapped[Address] = relationship("Address")
+    catalogs: Mapped[Catalog] = relationship('Catalog', back_populates='merchant')

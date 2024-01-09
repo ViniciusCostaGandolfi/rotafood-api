@@ -8,3 +8,4 @@ class ProductCategory(Base):
     id = Column(Integer, autoincrement=True, primary_key=True)
     name = Column(String, nullable=False)
     description = Column(String)
+    merchant_id = Column(Integer, ForeignKey("merchants.id"))

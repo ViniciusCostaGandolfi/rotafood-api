@@ -9,6 +9,7 @@ from config.database import Base
 class ProductType(Enum):
     REGULAR = "REGULAR"
     IFOOD = "IFOOD"
+    # AIQFOME = "AIQFOME"
 
 
 # Defina a tabela de produtos
@@ -19,7 +20,7 @@ class Product(Base):
     description = Column(String)
     additional_information = Column(String)
     serving = Column(String)
-    dietary_restrictions = Column(ARRAY(String))
+    dietary_restrictions = Column(ARRAY(String)) 
     weight_quantity = Column(Float)
     weight_unit = Column(String)
     product_type = Column(SQLEnum(ProductType))

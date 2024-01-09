@@ -43,6 +43,8 @@ class ProductDTO(BaseModel):
     price: float
     product_type: ProductType
     
+    merchant_id: int
+    
     
     image: str
     multiple_images: List[str]

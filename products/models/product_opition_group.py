@@ -18,3 +18,4 @@ class ProductOptionGroup(Base):
     product_id = Column(Integer, ForeignKey('products.id'))
 
     options = relationship('ProductOption', backref='option_group', cascade='all, delete-orphan')
+    

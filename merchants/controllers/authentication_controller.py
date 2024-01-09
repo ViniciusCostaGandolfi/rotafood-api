@@ -14,7 +14,7 @@ authenticaion_router = APIRouter(prefix='/auth')
 
 class MerchantUserAuthController:
     
-    @authenticaion_router.post("/merchant/new/")
+    @authenticaion_router.post("/merchants/new/")
     async def create_merchant(
         merchant_dto: MerchantCreateDTO, 
         db: Session = Depends(get_db)) -> MerchantCreatedOutDTO:
@@ -57,7 +57,7 @@ class MerchantUserAuthController:
         return MerchantCreatedOutDTO(access_token=token, merchant=merchant_dto)
 
     
-    @authenticaion_router.post("/merchant_user/login/")
+    @authenticaion_router.post("/merchant_users/login/")
     async def login_merchant_user(
             login_user:LoginDTO,
             db: Session = Depends(get_db)
@@ -71,12 +71,14 @@ class MerchantUserAuthController:
                 print(f'\n\n{merchant_user_dto.model_dump}\n\n')
                 token_user = create_access_token(user)
                 return ResponseTokenDTO(token=token_user, merchant_user=merchant_user_dto)
-            HTTPException(401, detail="Senha incorreta")
+            
+            return HTTPException(401, detail="Senha incorreta")
+            
         return HTTPException(401, detail="Email não encontrado")
         
     
     
-    @authenticaion_router.post("/merchant_user/new/email/{token}")
+    @authenticaion_router.post("/merchant_users/new/email/{token}")
     async def create_merchant_user_by_email_token( user_dto: MerchantUserCreateFromTokenDTO,
                     payload: EmailPayloadDTO = Depends(verify_email_token), 
                     db: Session = Depends(get_db)):

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from config.database import Base
 
@@ -10,5 +10,6 @@ class OrderCustomer(Base):
     name = Column(String)
     phone = Column(String)
     document_number = Column(String)
-
-    orders = relationship("Order", back_populates="customer")
+    
+    order_id = Column(Integer, ForeignKey('orders.id'))
+    order = relationship("Order")

@@ -12,11 +12,11 @@ merchant_user_router = APIRouter(prefix='/merchant_users')
 class MerchantUserController:
 
     
-    @merchant_user_router.get("/", response_model=MerchantUserDTO)
+    @merchant_user_router.get("/", response_model=MerchantUserOutDTO)
     async def get_MerhantUser(
-            merchant_user_id:int,
-            current_user: MerchantUser = Depends(get_current_user)) -> MerchantUser:
-        return MerchantUserDTO.model_validate(current_user)
+            current_user: MerchantUser = Depends(get_current_user)
+            ) -> MerchantUser:
+        return MerchantUserOutDTO.model_validate(current_user)
     
     @merchant_user_router.get("/{merchant_user_id}", response_model=MerchantUserDTO)
     async def get_merchant_user_by_id(
