@@ -21,12 +21,12 @@ from routes.models.route_order import RouteOrder
 
 
 
-route_router = APIRouter(prefix='/routes')
+routes_controller = APIRouter(prefix='/routes')
 
 class RouteController:
     
-    @route_router.get("/", response_model=List[RouteDTO])
-    async def get_orders(
+    @routes_controller.get("/", response_model=List[RouteDTO])
+    async def get_routes(
             current_user: MerchantUser = Depends(get_current_user),
             db: Session = Depends(get_db)
             ):
@@ -36,7 +36,7 @@ class RouteController:
         routes = [RouteDTO.model_validate(route) for route in routes]
         return routes
     
-    @route_router.get("/{route_id}", response_model=OrderDTO)
+    @routes_controller.get("/{route_id}", response_model=OrderDTO)
     async def get_route_by_id(
             route_id:int,
             current_user: MerchantUser = Depends(get_current_admin_user),
@@ -49,7 +49,7 @@ class RouteController:
         return RouteDTO.model_validate(route)
 
     
-    @route_router.post("/", response_model=List[RouteDTO])
+    @routes_controller.post("/", response_model=List[RouteDTO])
     async def make_routes(
             current_user: MerchantUser = Depends(get_current_admin_user),
             db: Session = Depends(get_db)) -> OrderDTO:
@@ -57,7 +57,6 @@ class RouteController:
             Order.merchant_id == current_user.merchant_id, 
             OrderDelivery.delivered_by == "MERCHANT").all()
         
-        print("O len de orders é", len(orders))
         if len(orders) < 2:
             HTTPException(401, "No Orders to Routine")
     
@@ -73,7 +72,7 @@ class RouteController:
         with httpx.Client() as client:
             cvrp_out = client.post(url, content=cvrp_in.model_dump_json(), timeout=600)
             
-        if cvrp_out.status_code != 201:
+        if cvrp_out.status_code not in [200, 201]:
             HTTPException(401, "Error to request a ms-routes")
           
         cvrp_out = CVRPOut(**cvrp_out.json())
@@ -96,3 +95,4 @@ class RouteController:
         routes = [RouteDTO.model_validate(route) for route in routes]  
         
         return routes
+    

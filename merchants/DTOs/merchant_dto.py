@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Optional
 from pydantic import BaseModel, ConfigDict, EmailStr
 
 from addresses.DTOs.address_dto import AddressCreateDTO, AddressDTO
@@ -12,7 +12,7 @@ class DocumentType(Enum):
     CPF = 'CPF'
 
 class MerchantDTO(BaseModel):
-    id: int
+    id: Optional[int] = None
     name: str
     document_type: DocumentType
     document: str
