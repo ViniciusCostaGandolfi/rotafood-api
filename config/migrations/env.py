@@ -12,11 +12,14 @@ from products.models import *
 from orders.models import *
 from catalog.models import *
 from ifood_integration.models import *
+from routes.models import *
+import alembic_postgresql_enum
+
 
 load_dotenv()
 
 config = context.config
-config.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL"))
+config.set_main_option("sqlalchemy.url", os.getenv("TEST_DATABASE_URL"))
 target_metadata:MetaData = Base.metadata
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

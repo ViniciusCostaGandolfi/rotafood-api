@@ -1,10 +1,9 @@
-from enum import Enum
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List, Optional
-from config.authorization.auth import get_current_admin_user, get_current_user
+from addresses.models.address import Address
+from config.authorization.auth import get_current_user
 from config.database import get_db
-from merchants.models import merchant
 from merchants.models.merchant_user import MerchantUser
 from orders.DTOs.order_dto import OrderDTO
 from orders.models.order import Order, OrderType
@@ -12,7 +11,6 @@ from orders.models.order_consumers import OrderCustomer
 from orders.models.order_delivery import OrderDelivery
 from orders.models.order_items import OrderItem
 from orders.models.order_payments import OrderPayment
-
 
 
 order_router = APIRouter(prefix='/orders')
@@ -71,25 +69,70 @@ class ProductController:
         return OrderDTO.model_validate(order)
     
     @order_router.post("/", response_model=OrderDTO)
-    async def create_product(
+    def create_order(
             order_dto:OrderDTO,
             user: MerchantUser = Depends(get_current_user),
             db: Session = Depends(get_db)) -> OrderDTO:
         
-        order = Order(**order_dto.model_dump(exclude=['items', 'payment', 'customer', 'delivery']), merchant_id=user.merchant_id)
+    
+
+        order = Order(order_type=order_dto.order_type,
+                      order_timing=order_dto.order_timing,
+                      created_at=order_dto.created_at,
+                      preparation_start_datetime=order_dto.preparation_start_datetime,
+                      total_volume=order_dto.total_volume,
+                      total_price=order_dto.total_price,
+                      merchant_id=user.merchant_id)
+        
+        
         db.add(order)
-        
-        items = [OrderItem(**item, order_id=order.id) for item in order_dto.items]
-        db.add_all(items)
-        
-        if order_dto.payment:
-            payment = OrderPayment(order_dto.payment, order_id=order.id)
-            db.add(payment)
-        if order_dto.delivery:
-            delivery = OrderDelivery(order_dto.delivery, order_id=order.id)
-            db.add(delivery)
-        if order_dto.customer:
-            customer = OrderCustomer(order_dto.customer, order_id=order.id)
-            db.add(customer)
         db.commit()
+        db.refresh(order)
+        
+        print(order_dto.items[0].model_dump())
+ 
+        items = [OrderItem(
+            quantity=item.quantity, 
+            total_price=item.total_price, 
+            total_volume=item.total_volume, 
+            product_id=item.product.id,
+            order_id=order.id) for item in order_dto.items]
+        
+        
+        db.add_all(items)
+        db.commit()
+        for item in items:
+            db.refresh(item)
+        
+        
+        # if order_dto.payment is not None:
+        #     print('payment')
+        #     payment = OrderPayment(**order_dto.payment.model_dump(), order_id=order.id)
+        #     db.add(payment)
+        #     db.commit()
+        #     db.refresh(payment)
+        if order_dto.delivery is not None:
+            address = Address(**order_dto.delivery.address.model_dump())
+            db.add(address)
+            db.commit()
+            db.refresh(address)
+            print(f"Address ID: {address.id}")
+            
+            delivery = OrderDelivery(
+                **order_dto.delivery.model_dump(exclude={"address"}), 
+                address_id=address.id, 
+                order_id=order.id)
+            db.add(delivery)
+            db.commit()
+            db.refresh(delivery)
+            
+            print(f"OrderDelivery ID: {delivery.id}")
+
+        # if order_dto.order_customer is not None:
+        #     print('customer')
+        #     customer = OrderCustomer(**order_dto.order_customer.model_dump(), order_id=order.id)
+        #     db.add(customer)
+        #     db.commit()
+        #     db.refresh(customer)
+            
         return OrderDTO.model_validate(order)

@@ -1,5 +1,5 @@
 from sqlalchemy import MetaData, create_engine
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 from dotenv import load_dotenv
@@ -13,7 +13,7 @@ def get_db():
     finally:
         db.close()
 
-DATABASE_URL = f"{os.getenv('DATABASE_URL')}"
+DATABASE_URL = f"{os.getenv('TEST_DATABASE_URL')}"
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

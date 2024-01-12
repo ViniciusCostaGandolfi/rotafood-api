@@ -60,17 +60,19 @@ class ProductController:
             db: Session = Depends(get_db)) -> ProductDTO:
         
         
-        category = db.query(ProductCategory).filter(ProductCategory.id == product_dto.category.id).first()
+        category: ProductCategory = db.query(ProductCategory).filter(ProductCategory.id == product_dto.category.id).first()
         if not category:
             raise HTTPException(status_code=401, detail="Category ID not exist")
         product =  Product(
             **product_dto.model_dump(exclude=['category', 'option_groups']), 
-            merchant_id=current_user.merchant_id, category_id=category
+            merchant_id=current_user.merchant_id, category_id=category.id
             )
         
-        
-      
+        print(f"\n\n  {product} \n\n")
+        db.add(product)
         db.commit()
+        db.refresh(product)
+        
         
         return ProductDTO.model_validate(product)
     

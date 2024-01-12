@@ -12,4 +12,4 @@ class OrderCustomer(Base):
     document_number = Column(String)
     
     order_id = Column(Integer, ForeignKey('orders.id'))
-    order = relationship("Order")
+    order = relationship("Order", back_populates="customer", single_parent=True)

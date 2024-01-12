@@ -8,9 +8,11 @@ class OrderItemOption(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)  
     order_item_id = Column(Integer, ForeignKey('order_items.id'))
+    
     product_option_id = Column(Integer, ForeignKey('product_options.id'))
-    
-    
     product_option = relationship('ProductOption')
+    
+    product_option_group_id = Column(Integer, ForeignKey('product_option_groups.id'))
+    product_option_group = relationship('ProductOptionGroup')
 
 

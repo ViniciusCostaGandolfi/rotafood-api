@@ -12,8 +12,11 @@ class OrderItem(Base):
     total_volume = Column(Float)
     
     order_id = Column(Integer, ForeignKey('orders.id'))
-    order = relationship("Order")
+    order = relationship('Order', back_populates='items')
+
     
+    product_id = Column(Integer, ForeignKey('products.id'))
+    product = relationship("Product")
     order_item_opition = relationship('OrderItemOption')
 
 

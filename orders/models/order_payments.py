@@ -11,4 +11,4 @@ class OrderPayment(Base):
     currency = Column(String)
     total_amount = Column(Float)
     order_id = Column(Integer, ForeignKey('orders.id'))
-    order = relationship("Order")
+    order = relationship("Order", back_populates="payment", single_parent=True)

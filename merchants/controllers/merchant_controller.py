@@ -6,6 +6,8 @@ from config.database import get_db
 from merchants.DTOs.merchant_dto import *
 from merchants.models.merchant import Merchant
 from merchants.models.merchant_user import MerchantUser
+from fastapi import status
+
 
 merchant_router = APIRouter(prefix='/merchants')
 
@@ -46,3 +48,15 @@ class RestaurantController:
         db.commit()
 
         return MerchantDTO.model_validate(merchant)
+    
+    @merchant_router.delete("/final/delete", response_model={})
+    async def delete_merchant(
+        db: Session = Depends(get_db), 
+        user: MerchantUser = Depends(get_current_admin_user)) -> {}:
+        
+        merchant = db.query(Merchant).filter(Merchant.id == user.merchant_id).first()
+        db.query(MerchantUser).filter(MerchantUser.merchant_id == user.merchant_id).delete()
+        db.delete(merchant)
+        db.commit()
+
+        return {}

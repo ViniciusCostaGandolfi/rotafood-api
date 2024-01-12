@@ -1,5 +1,5 @@
 from typing import Literal
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, ConfigDict, EmailStr
 
 from addresses.DTOs.address_dto import AddressCreateDTO, AddressDTO
 
@@ -19,8 +19,7 @@ class MerchantDTO(BaseModel):
     
     address: AddressDTO
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class MerchantUserCreateDTO(BaseModel):
     email: EmailStr
@@ -28,8 +27,7 @@ class MerchantUserCreateDTO(BaseModel):
     phone:str
     password: str 
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class MerchantCreateDTO(BaseModel):
     name: str
@@ -39,8 +37,7 @@ class MerchantCreateDTO(BaseModel):
     address: AddressCreateDTO
     user: MerchantUserCreateDTO
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
     
 
     
@@ -51,13 +48,11 @@ class MerchantUpdateDTO(BaseModel):
     
     address: AddressCreateDTO | None
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
     
         
 class MerchantCreatedOutDTO(BaseModel):
     access_token: str
     merchant: MerchantDTO
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

@@ -13,5 +13,6 @@ class RouteOrder(Base):
     index = Column(Integer)
     route_id = Column(Integer, ForeignKey('routes.id'))
     order_id = Column(Integer, ForeignKey('orders.id'))
-    route = relationship("Route", back_populates='route_order')
+    route = relationship("Route", back_populates='route_orders')
     order = relationship("Order", back_populates="route_order")
+

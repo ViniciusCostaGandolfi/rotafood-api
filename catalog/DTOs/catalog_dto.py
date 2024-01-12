@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, ConfigDict, EmailStr
 from merchants.DTOs.merchant_dto import MerchantDTO
 from typing import List, Optional
 from merchants.models.merchant_user import MerchantUserRole
@@ -11,8 +11,7 @@ class CatalogItemDTO(BaseModel):
     product_id: int
     product: ProductDTO
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class CatalogDTO(BaseModel):
@@ -21,6 +20,5 @@ class CatalogDTO(BaseModel):
     description: str
     items: List[CatalogItemDTO]
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
         

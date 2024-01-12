@@ -1,8 +1,9 @@
-from pydantic import BaseModel, constr, conint, confloat
+from typing import Optional
+from pydantic import BaseModel, ConfigDict, constr, conint, confloat
 
 
 class AddressDTO(BaseModel):
-    id: int
+    id: Optional[int] = None
     street_name: str
     formatted_address: str
     street_number: str
@@ -14,8 +15,7 @@ class AddressDTO(BaseModel):
     latitude: float
     longitude: float
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class AddressCreateDTO(BaseModel):
@@ -30,5 +30,4 @@ class AddressCreateDTO(BaseModel):
     latitude: float
     longitude: float
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

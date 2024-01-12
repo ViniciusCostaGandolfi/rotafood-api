@@ -10,10 +10,11 @@ class Route(Base):
     __tablename__ = 'routes'
 
     id = Column(Integer, autoincrement=True, primary_key=True)
-    total_distance = Column(Float)
-    total_volume = Column(Float)
+    distance = Column(Float)
+    volume = Column(Float)
     link_google_maps = Column(String)
     sequence = Column(ARRAY(Integer))
     merchant_id = Column(Integer, ForeignKey("merchants.id"))
-    route_order = relationship("RouteOrder", back_populates="route")
+    route_orders = relationship("RouteOrder", back_populates="route")
+
     
