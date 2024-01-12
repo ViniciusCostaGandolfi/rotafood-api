@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expõe a porta 80 para o acesso externo
-EXPOSE 80
+EXPOSE 8000
 
 # Comando para executar o aplicativo FastAPI
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD [ "uvicorn", "main:app", "--reload"]
