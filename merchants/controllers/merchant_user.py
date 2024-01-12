@@ -7,18 +7,18 @@ from merchants.DTOs.auth_dto import *
 from merchants.DTOs.merchant_user_dto import *
 from merchants.models.merchant_user import MerchantUser
 
-merchant_user_router = APIRouter(prefix='/merchant_users')
+merchant_user_controller = APIRouter(prefix='/merchant_users')
 
 class MerchantUserController:
 
     
-    @merchant_user_router.get("/", response_model=MerchantUserOutDTO)
+    @merchant_user_controller.get("/", response_model=MerchantUserOutDTO)
     async def get_MerhantUser(
             current_user: MerchantUser = Depends(get_current_user)
             ) -> MerchantUser:
         return MerchantUserOutDTO.model_validate(current_user)
     
-    @merchant_user_router.get("/{merchant_user_id}", response_model=MerchantUserDTO)
+    @merchant_user_controller.get("/{merchant_user_id}", response_model=MerchantUserDTO)
     async def get_merchant_user_by_id(
             merchant_user_id:int,
             db: Session = Depends(get_db), 
@@ -29,7 +29,7 @@ class MerchantUserController:
             raise HTTPException(status_code=404, detail="User not found")
         return MerchantUserDTO.model_validate(user)
     
-    @merchant_user_router.get("/all/", response_model=List[MerchantUserDTO])
+    @merchant_user_controller.get("/all/", response_model=List[MerchantUserDTO])
     async def get_all_merchant_users(
             db: Session = Depends(get_db), 
             user: MerchantUser = Depends(get_current_user)) -> List[MerchantUser]:
@@ -39,7 +39,7 @@ class MerchantUserController:
         return users
 
     
-    @merchant_user_router.put("/", response_model=MerchantUserDTO)
+    @merchant_user_controller.put("/", response_model=MerchantUserDTO)
     async def update_merchant_user(
             merchant_user_data:MerchantUserUpdate,
             current_user: MerchantUser = Depends(get_current_user),

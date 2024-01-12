@@ -13,12 +13,12 @@ from orders.models.order_items import OrderItem
 from orders.models.order_payments import OrderPayment
 
 
-order_router = APIRouter(prefix='/orders')
+order_controller = APIRouter(prefix='/orders')
 
 
 class ProductController:
     
-    @order_router.get("/", response_model=List[OrderDTO])
+    @order_controller.get("/", response_model=List[OrderDTO])
     async def get_orders(
             order_type: Optional[OrderType] = None,
             current_user: MerchantUser = Depends(get_current_user),
@@ -37,7 +37,7 @@ class ProductController:
         orders = [OrderDTO.model_validate(order) for order in orders]
         return orders
     
-    @order_router.get("/{order_id}", response_model=OrderDTO)
+    @order_controller.get("/{order_id}", response_model=OrderDTO)
     async def get_order_by_id(
             order_id:int,
             db: Session = Depends(get_db)):
@@ -49,7 +49,7 @@ class ProductController:
         return OrderDTO.model_validate(order)
 
     
-    @order_router.put("/{order_id}", response_model=OrderDTO)
+    @order_controller.put("/{order_id}", response_model=OrderDTO)
     async def update_product(
             order_id:int,
             order_dto:OrderDTO,
@@ -68,7 +68,7 @@ class ProductController:
         
         return OrderDTO.model_validate(order)
     
-    @order_router.post("/", response_model=OrderDTO)
+    @order_controller.post("/", response_model=OrderDTO)
     def create_order(
             order_dto:OrderDTO,
             user: MerchantUser = Depends(get_current_user),

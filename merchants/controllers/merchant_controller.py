@@ -9,12 +9,12 @@ from merchants.models.merchant_user import MerchantUser
 from fastapi import status
 
 
-merchant_router = APIRouter(prefix='/merchants')
+merchant_controller = APIRouter(prefix='/merchants')
 
 class RestaurantController:
 
 
-    @merchant_router.get("/")
+    @merchant_controller.get("/")
     async def get_merchant(
                        db: Session = Depends(get_db), 
                        user: MerchantUser = Depends(get_current_user)) -> MerchantDTO:
@@ -25,7 +25,7 @@ class RestaurantController:
         return restaurant
 
 
-    @merchant_router.patch("/", response_model=MerchantDTO)
+    @merchant_controller.patch("/", response_model=MerchantDTO)
     async def update_merchant(
         merchant_dto: MerchantUpdateDTO, 
         db: Session = Depends(get_db), 
@@ -49,7 +49,7 @@ class RestaurantController:
 
         return MerchantDTO.model_validate(merchant)
     
-    @merchant_router.delete("/final/delete", response_model={})
+    @merchant_controller.delete("/final/delete", response_model={})
     async def delete_merchant(
         db: Session = Depends(get_db), 
         user: MerchantUser = Depends(get_current_admin_user)) -> {}:

@@ -31,7 +31,7 @@ class RouteController:
     async def test_routes(
         cvrp_in: CVRPIn
     ):
-        url = os.getenv('ROTAFOOD_MS_ROUTES_URL') + '/CVR/'
+        url = os.getenv('ROTAFOOD_MS_ROUTES_URL') + '/CVRP/'
 
         async with httpx.AsyncClient() as client:
             cvrp_out = await client.post(url, content=cvrp_in.model_dump_json(), timeout=600)
@@ -48,14 +48,14 @@ class RouteController:
         number_of_points: int
     ):
         
-        
-        url = os.getenv('ROTAFOOD_MS_ROUTES_URL') + '/CVRP/'
+        url = os.getenv('TEST_ROTAFOOD_MS_ROUTES_URL') + f'/CVRP/test/auto_generate/{number_of_points}/'
         async with httpx.AsyncClient() as client:
-            cvrp_out = await client.post(url, content={"number": number_of_points}, timeout=600)
+            cvrp_out = await client.post(url, timeout=600)
             
         if cvrp_out.status_code not in [200, 201]:
             HTTPException(401, "Error to request a ms-routes")
           
+        print(f'\n\n\n{cvrp_out.json()}')
         cvrp_out = CVRPOut(**cvrp_out.json())
         
         return cvrp_out

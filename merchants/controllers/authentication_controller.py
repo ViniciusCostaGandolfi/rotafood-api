@@ -10,11 +10,11 @@ from merchants.DTOs.merchant_user_dto import *
 from merchants.models.merchant import Merchant
 from merchants.models.merchant_user import MerchantUser
 
-authenticaion_router = APIRouter(prefix='/auth')
+authenticaion_controller = APIRouter(prefix='/auth')
 
 class MerchantUserAuthController:
     
-    @authenticaion_router.post("/merchants/new/")
+    @authenticaion_controller.post("/merchants/new/")
     async def create_merchant(
         merchant_dto: MerchantCreateDTO, 
         db: Session = Depends(get_db)) -> MerchantCreatedOutDTO:
@@ -57,7 +57,7 @@ class MerchantUserAuthController:
         return MerchantCreatedOutDTO(access_token=token, merchant=merchant_dto)
 
     
-    @authenticaion_router.post("/merchant_users/login/")
+    @authenticaion_controller.post("/merchant_users/login/")
     async def login_merchant_user(
             login_user:LoginDTO,
             db: Session = Depends(get_db)
@@ -78,7 +78,7 @@ class MerchantUserAuthController:
         
     
     
-    @authenticaion_router.post("/merchant_users/new/email/{token}")
+    @authenticaion_controller.post("/merchant_users/new/email/{token}")
     async def create_merchant_user_by_email_token( user_dto: MerchantUserCreateFromTokenDTO,
                     payload: EmailPayloadDTO = Depends(verify_email_token), 
                     db: Session = Depends(get_db)):

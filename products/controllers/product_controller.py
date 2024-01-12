@@ -9,11 +9,11 @@ from products.models.product import Product
 from products.models.product_category import ProductCategory
 
 
-product_router = APIRouter(prefix='/products')
+product_controller = APIRouter(prefix='/products')
 
 class ProductController:
     
-    @product_router.get("/", response_model=List[ProductDTO])
+    @product_controller.get("/", response_model=List[ProductDTO])
     async def get_products(
             current_user: MerchantUser = Depends(get_current_user),
             db: Session = Depends(get_db)
@@ -23,7 +23,7 @@ class ProductController:
             raise HTTPException(status_code=401, detail="No products")
         return ProductDTO.model_validate(products)
     
-    @product_router.get("/{product_id}", response_model=ProductDTO)
+    @product_controller.get("/{product_id}", response_model=ProductDTO)
     async def get_product_by_id(
             product_id:int,
             db: Session = Depends(get_db)):
@@ -34,7 +34,7 @@ class ProductController:
         return ProductDTO.model_validate(product)
 
     
-    @product_router.put("/{product_id}", response_model=ProductDTO)
+    @product_controller.put("/{product_id}", response_model=ProductDTO)
     async def update_product(
             product_id:int,
             product_dto:ProductDTO,
@@ -53,7 +53,7 @@ class ProductController:
         
         return ProductDTO.model_validate(product)
     
-    @product_router.post("/", response_model=ProductDTO)
+    @product_controller.post("/", response_model=ProductDTO)
     async def create_product(
             product_dto:ProductDTO,
             current_user: MerchantUser = Depends(get_current_user),
