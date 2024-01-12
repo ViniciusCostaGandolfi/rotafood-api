@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8000
 
 # Comando para executar o aplicativo FastAPI
-CMD [ "uvicorn", "main:app", "--reload", "--port 0.0.0.0:${PORT}"]
+CMD [ "uvicorn", "main:app", "--reload", "--port 0.0.0.0:8000"]
