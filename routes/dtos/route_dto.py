@@ -1,21 +1,22 @@
 from typing import List, Optional
 from pydantic import BaseModel, ConfigDict
-from addresses.DTOs.address_dto import AddressDTO
-from merchants.DTOs.merchant_dto import MerchantDTO
+from addresses.dtos.address_dto import AddressDto
+from merchants.dtos.merchant_dto import MerchantDto
 
-from orders.DTOs.order_dto import OrderDTO
+from orders.dtos.order_dto import OrderDto
 
 
 
 class CVRPOrder(BaseModel):
-    id: int
+    id: Optional[int] = None
     total_volume: float
-    address: AddressDTO
+    address: AddressDto
     
     model_config = ConfigDict(from_attributes=True, use_enum_values=True)
 
 
 class CVRPRoute(BaseModel):
+    id: Optional[int] = None
     sequence: List[int]
     orders: List[CVRPOrder]
     distance: float
@@ -26,34 +27,34 @@ class CVRPRoute(BaseModel):
     
 class CVRPIn(BaseModel):
     orders: List[CVRPOrder]
-    origin: MerchantDTO
+    merchant: MerchantDto
     drivers_volume: float
-    
+     
     model_config = ConfigDict(from_attributes=True, use_enum_values=True)
 
 
 class CVRPOut(BaseModel):
+    merchant: MerchantDto
     routes: List[CVRPRoute]
-    origin: MerchantDTO
     drivers_volume: float  
     
     model_config = ConfigDict(from_attributes=True, use_enum_values=True)
     
 
-class RouteOrderDTO(BaseModel):
+class RouteOrderDto(BaseModel):
     id: Optional[int] = None
     index: int
-    order: OrderDTO
+    order: OrderDto
     
     model_config = ConfigDict(from_attributes=True, use_enum_values=True)
 
 
-class RouteDTO(BaseModel):
+class RouteDto(BaseModel):
     id: Optional[int] = None
     distance: float
     volume: float
     link_google_maps: str
     sequence: List[int]
-    route_orders: List[RouteOrderDTO]
+    route_orders: List[RouteOrderDto]
  
     model_config = ConfigDict(from_attributes=True, use_enum_values=True)

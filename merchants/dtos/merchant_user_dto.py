@@ -1,5 +1,5 @@
 from pydantic import BaseModel, ConfigDict, EmailStr
-from merchants.DTOs.merchant_dto import MerchantDTO
+from merchants.dtos.merchant_dto import MerchantDto
 
 from merchants.models.merchant_user import MerchantUserRole
 
@@ -27,7 +27,7 @@ class MerchantUserDTO(BaseModel):
     name: str
     password: str 
     permissions: MerchantUserRole
-    merchant: MerchantDTO
+    merchant: MerchantDto
     
     model_config = ConfigDict(from_attributes=True)
 class MerchantUserOutDTO(BaseModel):
@@ -35,7 +35,7 @@ class MerchantUserOutDTO(BaseModel):
     email: EmailStr
     name: str
     permissions: MerchantUserRole
-    merchant: MerchantDTO
+    merchant: MerchantDto
     
     model_config = ConfigDict(from_attributes=True)
 

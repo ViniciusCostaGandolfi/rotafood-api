@@ -4,7 +4,7 @@ from typing import List, Optional
 from products.models.product import ProductType
 
 
-class ProductOptionDTO(BaseModel):
+class ProductOptionDto(BaseModel):
     id: Optional[int] = None
     name: str
     description: str
@@ -18,7 +18,7 @@ class ProductOptionDTO(BaseModel):
     
 
 
-class ProductOptionGroupDTO(BaseModel):
+class ProductOptionGroupDto(BaseModel):
     id: Optional[int] = None
     name: str
     external_code: str
@@ -26,19 +26,19 @@ class ProductOptionGroupDTO(BaseModel):
     min_options: int
     max_options: int
     index: int
-    product_opitions: List[ProductOptionDTO]
+    product_opitions: List[ProductOptionDto]
     
     model_config = ConfigDict(from_attributes=True)
 
 
-class CategoryDTO(BaseModel):
+class CategoryDto(BaseModel):
     id: Optional[int] = None
     name: str
     description: str
     
     model_config = ConfigDict(from_attributes=True)
 
-class ProductDTO(BaseModel):
+class ProductDto(BaseModel):
     id: Optional[int] = None
     name: str
     description: str
@@ -55,8 +55,8 @@ class ProductDTO(BaseModel):
     image: Optional[str] = None
     multiple_images: Optional[List[str]] = None
     
-    category: CategoryDTO
-    option_groups: Optional[List[ProductOptionGroupDTO]] = None
+    category: CategoryDto
+    option_groups: Optional[List[ProductOptionGroupDto]] = None
     
     model_config = ConfigDict(from_attributes=True)
 

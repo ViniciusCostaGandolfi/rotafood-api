@@ -1,7 +1,6 @@
 from pydantic import BaseModel, ConfigDict, EmailStr
-from merchants.DTOs.merchant_dto import MerchantDTO
+from config.to_camel import to_camel
 from typing import List, Optional
-from merchants.models.merchant_user import MerchantUserRole
 from products.dtos.product_dto import ProductDTO
 
 
@@ -11,7 +10,8 @@ class CatalogItemDTO(BaseModel):
     product_id: int
     product: ProductDTO
     
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True, alias_generator=to_camel)
+
 
 
 class CatalogDTO(BaseModel):
@@ -20,5 +20,6 @@ class CatalogDTO(BaseModel):
     description: str
     items: List[CatalogItemDTO]
     
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True, alias_generator=to_camel)
+
         

@@ -1,22 +1,22 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from typing import List
-from config.authorization.auth import get_current_admin_user, get_current_user
-from config.database import get_db
-from merchants.DTOs.merchant_dto import MerchantDTO
-from merchants.models import merchant
-from merchants.models.merchant import Merchant
-from merchants.models.merchant_user import MerchantUser
-from orders.DTOs.order_dto import OrderDTO
-from orders.models.order import Order, OrderType
-from orders.models.order_delivery import OrderDelivery
-from routes.DTOs.route_dto import CVRPIn, CVRPOrder, CVRPOut, RouteDTO
-from routes.models.route import Route
-from sqlalchemy import desc, func, select
+from sqlalchemy import desc
 import os
 import httpx
+from typing import List
 
+from config.authorization.auth import get_current_admin_user, get_current_user
+from config.database import get_db
+from merchants.dtos.merchant_dto import MerchantDto
+from merchants.models.merchant import Merchant
+from merchants.models.merchant_user import MerchantUser
+from orders.dtos.order_dto import OrderDto
+from orders.models.order import Order
+from routes.dtos.route_dto import CVRPIn, CVRPOrder, CVRPOut, RouteDto
+from orders.models.order_delivery import OrderDelivery
+from routes.models.route import Route
 from routes.models.route_order import RouteOrder
+
 
 
 
@@ -25,7 +25,7 @@ routes_controller = APIRouter(prefix='/routes')
 
 class RouteController:
     
-    @routes_controller.get("/", response_model=List[RouteDTO])
+    @routes_controller.get("/", response_model=List[RouteDto])
     async def get_routes(
             current_user: MerchantUser = Depends(get_current_user),
             db: Session = Depends(get_db)
@@ -33,10 +33,10 @@ class RouteController:
         
         
         routes = db.query(Route).filter(Route.merchant_id == current_user.merchant_id).order_by(desc(Route.id)).all()
-        routes = [RouteDTO.model_validate(route) for route in routes]
+        routes = [RouteDto.model_validate(route) for route in routes]
         return routes
     
-    @routes_controller.get("/{route_id}", response_model=OrderDTO)
+    @routes_controller.get("/{route_id}", response_model=OrderDto)
     async def get_route_by_id(
             route_id:int,
             current_user: MerchantUser = Depends(get_current_admin_user),
@@ -46,13 +46,13 @@ class RouteController:
         if not route:
             raise HTTPException(status_code=404, detail="No route with this ID or Not Authorized")
         
-        return RouteDTO.model_validate(route)
+        return RouteDto.model_validate(route)
 
     
-    @routes_controller.post("/", response_model=List[RouteDTO])
+    @routes_controller.post("/", response_model=List[RouteDto])
     async def make_routes(
             current_user: MerchantUser = Depends(get_current_admin_user),
-            db: Session = Depends(get_db)) -> OrderDTO:
+            db: Session = Depends(get_db)):
         orders = db.query(Order).join(OrderDelivery).filter(
             Order.merchant_id == current_user.merchant_id, 
             OrderDelivery.delivered_by == "MERCHANT").all()
@@ -63,11 +63,13 @@ class RouteController:
         
         origin = db.query(Merchant).filter(Merchant.id == current_user.merchant_id).first()
         
-        origin = MerchantDTO.model_validate(origin)
-        orders = [OrderDTO.model_validate(order) for order in orders]
+        origin = MerchantDto.model_validate(origin)
+        orders = [OrderDto.model_validate(order) for order in orders]
         orders = [CVRPOrder(id=order.id, total_volume=order.total_volume, address=order.delivery.address) for order in orders]
         cvrp_in = CVRPIn(orders=orders, origin=origin, drivers_volume=45)
-        url = os.getenv('ROTAFOOD_MS_ROUTES_URL') + '/CVR/'
+        url = os.getenv('TEST_ROTAFOOD_MS_ROUTES_URL') if os.getenv('ENVMODE') == 'DEVELOP' else os.getenv('ROTAFOOD_MS_ROUTES_URL')
+
+        url += '/CVRP/'
 
         with httpx.Client() as client:
             cvrp_out = client.post(url, content=cvrp_in.model_dump_json(), timeout=600)
@@ -92,7 +94,7 @@ class RouteController:
                 db.refresh(route_order)
  
         
-        routes = [RouteDTO.model_validate(route) for route in routes]  
+        routes = [RouteDto.model_validate(route) for route in routes]  
         
         return routes
     

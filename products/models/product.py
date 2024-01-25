@@ -36,5 +36,6 @@ class Product(Base):
     merchant_id = Column(Integer, ForeignKey('merchants.id'))
     
     category = relationship('ProductCategory', backref='products')
-    option_groups = relationship('ProductOptionGroup', backref='product', cascade='all, delete-orphan')
+    option_groups = relationship('ProductOptionGroup', backref='product')
+    ifood_product = relationship('IFoodProduct', back_populates="product", uselist=False)
 

@@ -5,7 +5,7 @@ from addresses.models.address import Address
 from config.authorization.auth import get_current_user
 from config.database import get_db
 from merchants.models.merchant_user import MerchantUser
-from orders.DTOs.order_dto import OrderDTO
+from orders.dtos.order_dto import OrderDto
 from orders.models.order import Order, OrderType
 from orders.models.order_consumers import OrderCustomer
 from orders.models.order_delivery import OrderDelivery
@@ -18,7 +18,7 @@ order_controller = APIRouter(prefix='/orders')
 
 class ProductController:
     
-    @order_controller.get("/", response_model=List[OrderDTO])
+    @order_controller.get("/", response_model=List[OrderDto])
     async def get_orders(
             order_type: Optional[OrderType] = None,
             current_user: MerchantUser = Depends(get_current_user),
@@ -34,10 +34,10 @@ class ProductController:
         if orders is None:
             raise HTTPException(status_code=401, detail="No orders")
         
-        orders = [OrderDTO.model_validate(order) for order in orders]
+        orders = [OrderDto.model_validate(order) for order in orders]
         return orders
     
-    @order_controller.get("/{order_id}", response_model=OrderDTO)
+    @order_controller.get("/{order_id}", response_model=OrderDto)
     async def get_order_by_id(
             order_id:int,
             db: Session = Depends(get_db)):
@@ -46,15 +46,15 @@ class ProductController:
         if not order:
             raise HTTPException(status_code=404, detail="No order with this ID")
         
-        return OrderDTO.model_validate(order)
+        return OrderDto.model_validate(order)
 
     
-    @order_controller.put("/{order_id}", response_model=OrderDTO)
+    @order_controller.put("/{order_id}", response_model=OrderDto)
     async def update_product(
             order_id:int,
-            order_dto:OrderDTO,
+            order_dto:OrderDto,
             current_user: MerchantUser = Depends(get_current_user),
-            db: Session = Depends(get_db)) -> OrderDTO:
+            db: Session = Depends(get_db)) -> OrderDto:
         
         order =  db.query(Order).filter(Order.id == order_id, Order.merchant_id == current_user.merchant_id).first()
         if not order:
@@ -66,13 +66,13 @@ class ProductController:
       
         db.commit()
         
-        return OrderDTO.model_validate(order)
+        return OrderDto.model_validate(order)
     
-    @order_controller.post("/", response_model=OrderDTO)
+    @order_controller.post("/", response_model=OrderDto)
     def create_order(
-            order_dto:OrderDTO,
+            order_dto:OrderDto,
             user: MerchantUser = Depends(get_current_user),
-            db: Session = Depends(get_db)) -> OrderDTO:
+            db: Session = Depends(get_db)) -> OrderDto:
         
     
 
@@ -135,4 +135,4 @@ class ProductController:
         #     db.commit()
         #     db.refresh(customer)
             
-        return OrderDTO.model_validate(order)
+        return OrderDto.model_validate(order)

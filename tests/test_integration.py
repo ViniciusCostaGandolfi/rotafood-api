@@ -1,13 +1,13 @@
 from typing import List
 from fastapi.testclient import TestClient
-from addresses.DTOs.address_dto import AddressDTO
+from addresses.dtos.address_dto import AddressDto
 from main import app 
 import random
 from pytest import fixture
-from orders.DTOs.order_dto import OrderDTO, OrderDeliveryDTO, OrderDeliveredBy, OrderItemDTO
+from orders.dtos.order_dto import OrderDto, OrderDeliveryDto, OrderDeliveredBy, OrderItemDto
 from orders.models import order_delivery
 from orders.models.order import OrderType
-from products.dtos.product_dto import CategoryDTO, ProductDTO
+from products.dtos.product_dto import CategoryDto, ProductDto
 from products.models.product import ProductType
 from datetime import datetime
 
@@ -60,13 +60,13 @@ def category(token_header):
     response = client.post("/category/", headers=token_header, json=category_data)
     assert response.status_code == 200
 
-    return CategoryDTO(**response.json())
+    return CategoryDto(**response.json())
 
 def test_category(category):
     assert category.name == "TestCategory"
 
 @fixture
-def products(token_header, category:CategoryDTO):
+def products(token_header, category:CategoryDto):
     products = []
 
     for i in range(20):
@@ -86,7 +86,7 @@ def products(token_header, category:CategoryDTO):
         response = client.post("/products/", headers=token_header, json=product_data)
         assert response.status_code == 200
 
-        products.append(ProductDTO(**response.json()))
+        products.append(ProductDto(**response.json()))
         
     return products
 
@@ -94,10 +94,10 @@ def test_products(products):
     assert len(products) == 20
 
 @fixture
-def orders(token_header, products: List[ProductDTO]):
+def orders(token_header, products: List[ProductDto]):
     orders = []
     for i in range(50):
-        address = AddressDTO(
+        address = AddressDto(
             street_name="string",
             formatted_address="string",
             street_number="string",
@@ -111,19 +111,19 @@ def orders(token_header, products: List[ProductDTO]):
 
         )
          
-        delivery = OrderDeliveryDTO(
+        delivery = OrderDeliveryDto(
             pickup_code= "string", 
             delivered_by="MERCHANT", 
             address=address
         )
         num_indices = random.randint(1, 4)
         selected_indices = random.sample(range(len(products)), num_indices)
-        selected_products = [OrderItemDTO(
+        selected_products = [OrderItemDto(
             quantity=1, 
             total_price=products[i].price, 
             total_volume=products[i].volume, 
             product=products[i]) for i in selected_indices]
-        order = OrderDTO(
+        order = OrderDto(
             total_volume=10,
             total_price=10,
             order_type=OrderType.DELIVERY.value,
@@ -138,12 +138,11 @@ def orders(token_header, products: List[ProductDTO]):
     return orders
         
 
-def test_create_orders(orders: List[OrderDTO]):
+def test_create_orders(orders: List[OrderDto]):
     assert len(orders) == 50
     
     
 def test_ms_routes(token_header, orders):
     response = client.post("/routes/", headers=token_header)
     print(response.status_code)
-    print(f'\n\n\n{response.json()}\n\n\n')
     assert response.status_code == 200

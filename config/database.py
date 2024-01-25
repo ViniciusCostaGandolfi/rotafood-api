@@ -13,7 +13,8 @@ def get_db():
     finally:
         db.close()
 
-DATABASE_URL = f"{os.getenv('DATABASE_URL')}"
+
+DATABASE_URL = f"{os.getenv('TEST_DATABASE_URL') if os.getenv('ENVMODE') == 'DEVELOP' else os.getenv('DATABASE_URL')}"
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

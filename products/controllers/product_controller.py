@@ -4,7 +4,7 @@ from typing import List
 from config.authorization.auth import get_current_user
 from config.database import get_db
 from merchants.models.merchant_user import MerchantUser
-from products.dtos.product_dto import ProductDTO
+from products.dtos.product_dto import ProductDto
 from products.models.product import Product
 from products.models.product_category import ProductCategory
 
@@ -13,7 +13,7 @@ product_controller = APIRouter(prefix='/products')
 
 class ProductController:
     
-    @product_controller.get("/", response_model=List[ProductDTO])
+    @product_controller.get("/", response_model=List[ProductDto])
     async def get_products(
             current_user: MerchantUser = Depends(get_current_user),
             db: Session = Depends(get_db)
@@ -21,9 +21,9 @@ class ProductController:
         products =  db.query(Product).filter(Product.merchant_id == current_user.merchant_id).all()
         if not products:
             raise HTTPException(status_code=401, detail="No products")
-        return ProductDTO.model_validate(products)
+        return ProductDto.model_validate(products)
     
-    @product_controller.get("/{product_id}", response_model=ProductDTO)
+    @product_controller.get("/{product_id}", response_model=ProductDto)
     async def get_product_by_id(
             product_id:int,
             db: Session = Depends(get_db)):
@@ -31,15 +31,15 @@ class ProductController:
         product =  db.query(Product).filter(Product.id == product_id).first()
         if not product:
             raise HTTPException(status_code=404, detail="No product with this")
-        return ProductDTO.model_validate(product)
+        return ProductDto.model_validate(product)
 
     
-    @product_controller.put("/{product_id}", response_model=ProductDTO)
+    @product_controller.put("/{product_id}", response_model=ProductDto)
     async def update_product(
             product_id:int,
-            product_dto:ProductDTO,
+            product_dto:ProductDto,
             current_user: MerchantUser = Depends(get_current_user),
-            db: Session = Depends(get_db)) -> ProductDTO:
+            db: Session = Depends(get_db)) -> ProductDto:
         
         product =  db.query(Product).filter(Product.id == product_id).first()
         if not product:
@@ -51,13 +51,13 @@ class ProductController:
       
         db.commit()
         
-        return ProductDTO.model_validate(product)
+        return ProductDto.model_validate(product)
     
-    @product_controller.post("/", response_model=ProductDTO)
+    @product_controller.post("/", response_model=ProductDto)
     async def create_product(
-            product_dto:ProductDTO,
+            product_dto:ProductDto,
             current_user: MerchantUser = Depends(get_current_user),
-            db: Session = Depends(get_db)) -> ProductDTO:
+            db: Session = Depends(get_db)) -> ProductDto:
         
         
         category: ProductCategory = db.query(ProductCategory).filter(ProductCategory.id == product_dto.category.id).first()
@@ -74,5 +74,5 @@ class ProductController:
         db.refresh(product)
         
         
-        return ProductDTO.model_validate(product)
+        return ProductDto.model_validate(product)
     

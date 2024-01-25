@@ -9,9 +9,9 @@ from sqlalchemy import MetaData
 from addresses.models import *
 from merchants.models import *
 from products.models import *
+from ifood_integration.models import *
 from orders.models import *
 from catalog.models import *
-from ifood_integration.models import *
 from routes.models import *
 import alembic_postgresql_enum
 
@@ -19,7 +19,8 @@ import alembic_postgresql_enum
 load_dotenv()
 
 config = context.config
-config.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL"))
+DATABASE_URL = f"{os.getenv('TEST_DATABASE_URL') if os.getenv('ENVMODE') == 'DEVELOP' else os.getenv('DATABASE_URL')}"
+config.set_main_option("sqlalchemy.url", DATABASE_URL)
 target_metadata:MetaData = Base.metadata
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

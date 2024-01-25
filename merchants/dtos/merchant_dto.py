@@ -1,7 +1,7 @@
 from typing import Literal, Optional
 from pydantic import BaseModel, ConfigDict, EmailStr
 
-from addresses.DTOs.address_dto import AddressCreateDTO, AddressDTO
+from addresses.dtos.address_dto import AddressDto
 
 from enum import Enum
 
@@ -11,17 +11,17 @@ class DocumentType(Enum):
     CNPJ = 'CNPJ'
     CPF = 'CPF'
 
-class MerchantDTO(BaseModel):
+class MerchantDto(BaseModel):
     id: Optional[int] = None
     name: str
     document_type: DocumentType
     document: str
     
-    address: AddressDTO
+    address: AddressDto
     
     model_config = ConfigDict(from_attributes=True)
 
-class MerchantUserCreateDTO(BaseModel):
+class MerchantUserCreateDto(BaseModel):
     email: EmailStr
     name: str
     phone:str
@@ -34,8 +34,8 @@ class MerchantCreateDTO(BaseModel):
     document_type: DocumentType
     document: str
     
-    address: AddressCreateDTO
-    user: MerchantUserCreateDTO
+    address: AddressDto
+    user: MerchantUserCreateDto
     
     model_config = ConfigDict(from_attributes=True)
     
@@ -46,13 +46,13 @@ class MerchantUpdateDTO(BaseModel):
     document_type: DocumentType | None
     document: str | None
     
-    address: AddressCreateDTO | None
+    address: AddressDto | None
     
     model_config = ConfigDict(from_attributes=True)
     
         
 class MerchantCreatedOutDTO(BaseModel):
     access_token: str
-    merchant: MerchantDTO
+    merchant: MerchantDto
     
     model_config = ConfigDict(from_attributes=True)

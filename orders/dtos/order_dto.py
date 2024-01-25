@@ -1,16 +1,17 @@
 from typing import List, Optional
 from pydantic import BaseModel, ConfigDict
 from datetime import datetime
-from addresses.DTOs.address_dto import AddressDTO
+from addresses.dtos.address_dto import AddressDto
+from ifood_integration.dtos.ifood_order_dto import IFoodOrderDto
 from orders.models.order import OrderTimming, OrderType
 
 from orders.models.order_delivery import OrderDeliveredBy
-from products.dtos.product_dto import ProductDTO, ProductOptionDTO, ProductOptionGroupDTO
+from products.dtos.product_dto import ProductDto, ProductOptionDto, ProductOptionGroupDto
 import pytz
 
 
 
-# class ProductDTO(BaseModel):
+# class ProductDto(BaseModel):
 #     id: Optional[int] = None
 #     name: str
 #     volume: float
@@ -26,7 +27,7 @@ import pytz
     
     
 
-class OrderCustomerDTO(BaseModel):
+class OrderCustomerDto(BaseModel):
 
     id: Optional[int] = None
     name: str
@@ -37,19 +38,19 @@ class OrderCustomerDTO(BaseModel):
     
     
 
-class OrderDeliveryDTO(BaseModel):
+class OrderDeliveryDto(BaseModel):
 
     id: Optional[int] = None
     pickup_code: str
     delivered_by: OrderDeliveredBy
     delivery_datetime: Optional[datetime] = datetime.now(pytz.timezone('America/Sao_Paulo'))
-    address: AddressDTO
+    address: AddressDto
     
     model_config = ConfigDict(from_attributes=True)
     
     
     
-# class ProductOptionDTO(BaseModel):
+# class ProductOptionDto(BaseModel):
 #     id: Optional[int] = None
 #     name: str
 #     description: str
@@ -61,7 +62,7 @@ class OrderDeliveryDTO(BaseModel):
 #     model_config = ConfigDict(from_attributes=True)
     
     
-# class ProductGroupOptionDTO(BaseModel):
+# class ProductGroupOptionDto(BaseModel):
 #     id: Optional[int] = None
 #     name: str
 #     external_code: str
@@ -70,36 +71,36 @@ class OrderDeliveryDTO(BaseModel):
 #     max_options: int
     
     
-class OrderItemOptionDTO(BaseModel):
+class OrderItemOptionDto(BaseModel):
     id: Optional[int] = None
-    product_option_group: Optional[ProductOptionGroupDTO] = None
-    product_option: Optional[ProductOptionDTO] = None
+    product_option_group: Optional[ProductOptionGroupDto] = None
+    product_option: Optional[ProductOptionDto] = None
     
     model_config = ConfigDict(from_attributes=True)
     
 
-class OrderItemDTO(BaseModel):
+class OrderItemDto(BaseModel):
 
     id: Optional[int] = None
     quantity: int
     total_price: float
     total_volume: float
-    product: ProductDTO
-    item_options: Optional[List[OrderItemOptionDTO]] = None
+    product: ProductDto
+    item_options: Optional[List[OrderItemOptionDto]] = None
     
     
     model_config = ConfigDict(from_attributes=True)
     
     
     
-class OrderPaymentDTO(BaseModel):
+class OrderPaymentDto(BaseModel):
     id: Optional[int] = None
     method: str
     currency: str
     total_amount: float
     model_config = ConfigDict(from_attributes=True)
     
-class OrderDTO(BaseModel):
+class OrderDto(BaseModel):
 
     id: Optional[int] = None
     
@@ -110,9 +111,10 @@ class OrderDTO(BaseModel):
     total_volume: float
     total_price: float
     
-    items: List[OrderItemDTO]
-    customer: Optional[OrderCustomerDTO] = None
-    payment: Optional[OrderPaymentDTO] = None
-    delivery: Optional[OrderDeliveryDTO] = None
+    items: List[OrderItemDto]
+    customer: Optional[OrderCustomerDto] = None
+    payment: Optional[OrderPaymentDto] = None
+    delivery: Optional[OrderDeliveryDto] = None
+    ifood_order: Optional[IFoodOrderDto] = None
     
     model_config = ConfigDict(from_attributes=True, use_enum_values=True)
