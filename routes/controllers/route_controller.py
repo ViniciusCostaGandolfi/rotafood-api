@@ -21,7 +21,7 @@ from routes.models.route_order import RouteOrder
 
 
 
-routes_controller = APIRouter(prefix='/routes')
+routes_controller = APIRouter(prefix='/routes', tags=['Routes'])
 
 class RouteController:
     

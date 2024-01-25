@@ -13,7 +13,7 @@ from orders.models.order_items import OrderItem
 from orders.models.order_payments import OrderPayment
 
 
-order_controller = APIRouter(prefix='/orders')
+order_controller = APIRouter(prefix='/orders', tags=['Order'])
 
 
 class ProductController:

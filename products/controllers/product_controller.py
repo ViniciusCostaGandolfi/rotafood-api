@@ -9,7 +9,7 @@ from products.models.product import Product
 from products.models.product_category import ProductCategory
 
 
-product_controller = APIRouter(prefix='/products')
+product_controller = APIRouter(prefix='/products', tags=['Product'])
 
 class ProductController:
     

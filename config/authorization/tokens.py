@@ -3,7 +3,7 @@ from typing import Any, Dict, Optional
 from fastapi import HTTPException, status
 from jose import JWTError, jwt
 from pydantic import BaseModel
-from merchants.DTOs.merchant_user_dto import MerchantUserCreateTokenDTO
+from merchants.dtos.merchant_user_dto import MerchantUserCreateTokenDto
 from merchants.models.merchant_user import MerchantUser, MerchantUserRole
 from dotenv import load_dotenv
 import os
@@ -45,7 +45,7 @@ def create_access_token(user: MerchantUser, expires_delta: Optional[timedelta] =
     encoded_jwt = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-def create_new_user_email_token(admin: MerchantUser, user: MerchantUserCreateTokenDTO ,expires_delta: Optional[timedelta] = None):
+def create_new_user_email_token(admin: MerchantUser, user: MerchantUserCreateTokenDto ,expires_delta: Optional[timedelta] = None):
     payload: Dict[str, Any] = {
         "merchant_id": admin.merchant_id,
         "permissions": user.permissions.value,

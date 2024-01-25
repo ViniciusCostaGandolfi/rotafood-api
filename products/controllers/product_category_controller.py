@@ -8,7 +8,7 @@ from products.dtos.product_dto import CategoryDto
 from products.models.product_category import ProductCategory
 
 
-category_controller = APIRouter(prefix='/category')
+category_controller = APIRouter(prefix='/category', tags=['ProductCategory'])
 
 class CategoryController:
     @category_controller.get("/", response_model=List[CategoryDto])

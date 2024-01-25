@@ -8,7 +8,7 @@ from config.database import get_db
 from merchants.models.merchant_user import MerchantUser
 
 
-catalog_router = APIRouter(prefix='/catalog')
+catalog_router = APIRouter(prefix='/catalog', tags=['Catalog'])
 
 class CatalogController:
     

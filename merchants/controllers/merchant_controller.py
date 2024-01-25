@@ -3,20 +3,20 @@ from sqlalchemy.orm import Session
 from addresses.models.address import Address
 from config.authorization.auth import get_current_admin_user, get_current_user
 from config.database import get_db
-from merchants.DTOs.merchant_dto import *
+from merchants.dtos.merchant_dto import *
 from merchants.models.merchant import Merchant
 from merchants.models.merchant_user import MerchantUser
 from fastapi import status
 
 
-merchant_controller = APIRouter(prefix='/merchants')
+merchant_controller = APIRouter(prefix='/merchants', tags=['Merchant'])
 
 
 
 @merchant_controller.get("/")
 async def get_merchant(
                     db: Session = Depends(get_db), 
-                    user: MerchantUser = Depends(get_current_user)) -> MerchantDTO:
+                    user: MerchantUser = Depends(get_current_user)) -> MerchantDto:
     restaurant = db.query(Merchant).filter(Merchant.id == user.merchant_id).first()
     
     if not restaurant:
@@ -24,11 +24,11 @@ async def get_merchant(
     return restaurant
 
 
-@merchant_controller.patch("/", response_model=MerchantDTO)
+@merchant_controller.patch("/", response_model=MerchantDto)
 async def update_merchant(
     merchant_dto: MerchantUpdateDTO, 
     db: Session = Depends(get_db), 
-    user: MerchantUser = Depends(get_current_admin_user)) -> MerchantDTO:
+    user: MerchantUser = Depends(get_current_admin_user)) -> MerchantDto:
     merchant = db.query(Merchant).filter(Merchant.id == user.merchant_id).first()
     if not merchant:
         raise HTTPException(status_code=404, detail="Restaurant not found")
@@ -46,7 +46,7 @@ async def update_merchant(
 
     db.commit()
 
-    return MerchantDTO.model_validate(merchant)
+    return MerchantDto.model_validate(merchant)
 
 @merchant_controller.delete("/final/delete", response_model={})
 async def delete_merchant(

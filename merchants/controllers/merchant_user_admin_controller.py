@@ -5,18 +5,18 @@ from config.authorization.auth import get_current_admin_user
 from config.authorization.tokens import create_new_user_email_token
 from config.database import get_db
 from config.email import email_sandler
-from merchants.DTOs.auth_dto import *
-from merchants.DTOs.merchant_user_dto import *
+from merchants.dtos.auth_dto import *
+from merchants.dtos.merchant_user_dto import *
 from merchants.models.merchant import Merchant
 from merchants.models.merchant_user import MerchantUser
 
-merchant_user_admin_controller = APIRouter(prefix='/merchant_users')
+merchant_user_admin_controller = APIRouter(prefix='/merchant_users', tags=['MerchantUserAdmin'])
 
     
-@merchant_user_admin_controller.post("/new/email/", response_model=ResponseEmailDTO)
+@merchant_user_admin_controller.post("/new/email/", response_model=ResponseEmailDto)
 async def send_email_create_MerchantUser(
-    user_dto: MerchantUserCreateTokenDTO, 
-    admin: MerchantUser = Depends(get_current_admin_user)) -> ResponseEmailDTO:
+    user_dto: MerchantUserCreateTokenDto, 
+    admin: MerchantUser = Depends(get_current_admin_user)) -> ResponseEmailDto:
     
     
     token = create_new_user_email_token(admin, user_dto)
@@ -30,12 +30,12 @@ async def send_email_create_MerchantUser(
     )
     
     await email_sandler.send_message(message)
-    return ResponseEmailDTO(email=user_dto.email, sended=True)
+    return ResponseEmailDto(email=user_dto.email, sended=True)
 
-@merchant_user_admin_controller.put("/{merchant_user_id}", response_model=MerchantUserDTO)
+@merchant_user_admin_controller.put("/{merchant_user_id}", response_model=MerchantUserDto)
 async def update_merchant_user_by_id(
     merchant_id: int, 
-    merchant_user_data: MerchantUserDTO, 
+    merchant_user_data: MerchantUserDto, 
     admin:MerchantUser = Depends(get_current_admin_user),
     db: Session = Depends(get_db)) -> MerchantUser:
     

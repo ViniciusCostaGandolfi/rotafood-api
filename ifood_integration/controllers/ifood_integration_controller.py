@@ -8,7 +8,7 @@ from ifood_integration.models.ifood_order import IFoodOrder
 from merchants.controllers.authentication_controller import get_token_ifood
 from merchants.models.merchant_user import MerchantUser
 
-ifood_controller = APIRouter(prefix="/ifood_integration")
+ifood_controller = APIRouter(prefix="/ifood_integration", tags=['IFoodIntegration'])
 
 
 @ifood_controller.post('/get_orders/')

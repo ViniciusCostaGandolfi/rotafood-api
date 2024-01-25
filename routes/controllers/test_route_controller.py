@@ -1,29 +1,16 @@
-from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
-from sqlalchemy.orm import Session
-from typing import List
-from addresses.dtos.address_dto import AddressDto
-from config.authorization.auth import get_current_admin_user, get_current_user
-from config.database import get_db
+from fastapi import APIRouter, HTTPException
+
 from merchants.dtos.merchant_dto import MerchantDto
-from merchants.models import merchant
-from merchants.models.merchant import Merchant
-from merchants.models.merchant_user import MerchantUser
-from orders.dtos.order_dto import OrderDTO
-from orders.models.order import Order, OrderType
-from orders.models.order_delivery import OrderDelivery
-from routes.dtos.route_dto import CVRPIn, CVRPOrder, CVRPOut, RouteDto
-from routes.models.route import Route
-from sqlalchemy import desc, func, select
+
+from routes.dtos.route_dto import CVRPIn, CVRPOut
 import os
 import httpx
 
-from routes.models.route_order import RouteOrder
 
 
 
 
-routes_test_controller = APIRouter(prefix='/routes/test')
+routes_test_controller = APIRouter(prefix='/routes/test', tags=['TestRoutes'])
 
 
 

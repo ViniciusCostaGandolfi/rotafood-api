@@ -6,7 +6,7 @@ from merchants.models.merchant_user import MerchantUserRole
 
 
 
-class MerchantUserCreateFromTokenDTO(BaseModel):
+class MerchantUserCreateFromTokenDto(BaseModel):
     name: str
     phone: str
     password: str
@@ -14,14 +14,14 @@ class MerchantUserCreateFromTokenDTO(BaseModel):
     model_config = ConfigDict(from_attributes=True)
         
 
-class MerchantUserCreateTokenDTO(BaseModel):
+class MerchantUserCreateTokenDto(BaseModel):
     email: EmailStr
     permissions: MerchantUserRole
 
     model_config = ConfigDict(from_attributes=True)
 
 
-class MerchantUserDTO(BaseModel):
+class MerchantUserDto(BaseModel):
     id: int
     email: EmailStr
     name: str
@@ -30,7 +30,7 @@ class MerchantUserDTO(BaseModel):
     merchant: MerchantDto
     
     model_config = ConfigDict(from_attributes=True)
-class MerchantUserOutDTO(BaseModel):
+class MerchantUserOutDto(BaseModel):
     id: int
     email: EmailStr
     name: str

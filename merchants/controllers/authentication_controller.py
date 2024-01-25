@@ -4,14 +4,14 @@ from addresses.models.address import Address
 from config.authorization.password_crypt import hash_password, verify_password
 from config.authorization.tokens import EmailPayloadDTO, create_access_token, verify_email_token
 from config.database import get_db
-from merchants.DTOs.auth_dto import *
-from merchants.DTOs.merchant_dto import *
-from merchants.DTOs.merchant_user_dto import *
+from merchants.dtos.auth_dto import *
+from merchants.dtos.merchant_dto import *
+from merchants.dtos.merchant_user_dto import *
 from merchants.models.merchant import Merchant
 from merchants.models.merchant_user import MerchantUser
 from config.ifood import get_rotafood_acess_token
 
-authenticaion_controller = APIRouter(prefix='/auth')
+authenticaion_controller = APIRouter(prefix='/auth', tags=['Auth'])
 
     
 @authenticaion_controller.post("/merchants/new/")
@@ -51,7 +51,7 @@ async def create_merchant(
     db.commit()
     db.refresh(merchant_user)
     
-    merchant_dto = MerchantDTO.model_validate(merchant)
+    merchant_dto = MerchantDto.model_validate(merchant)
     token = create_access_token(merchant_user)
     
     return MerchantCreatedOutDTO(access_token=token, merchant=merchant_dto)
@@ -59,18 +59,18 @@ async def create_merchant(
 
 @authenticaion_controller.post("/merchant_users/login/")
 async def login_merchant_user(
-        login_user:LoginDTO,
+        login_user:LoginDto,
         db: Session = Depends(get_db)
-        ) -> ResponseTokenDTO:
+        ) -> ResponseTokenDto:
     
     user = db.query(MerchantUser).filter(MerchantUser.email==login_user.email).first()
     if user is not None:
         print(login_user.password, user.password)
         if verify_password(login_user.password, user.password):
-            merchant_user_dto = MerchantUserDTO.model_validate(user)
+            merchant_user_dto = MerchantUserDto.model_validate(user)
             print(f'\n\n{merchant_user_dto.model_dump}\n\n')
             token_user = create_access_token(user)
-            return ResponseTokenDTO(token=token_user, merchant_user=merchant_user_dto)
+            return ResponseTokenDto(token=token_user, merchant_user=merchant_user_dto)
         
         return HTTPException(401, detail="Senha incorreta")
         
@@ -79,7 +79,7 @@ async def login_merchant_user(
 
 
 @authenticaion_controller.post("/merchant_users/new/email/{token}")
-async def create_merchant_user_by_email_token( user_dto: MerchantUserCreateFromTokenDTO,
+async def create_merchant_user_by_email_token( user_dto: MerchantUserCreateFromTokenDto,
                 payload: EmailPayloadDTO = Depends(verify_email_token), 
                 db: Session = Depends(get_db)):
     
@@ -93,14 +93,14 @@ async def create_merchant_user_by_email_token( user_dto: MerchantUserCreateFromT
         db.add(user)
         db.commit()
         db.refresh(user)
-        merchant_user_dto = MerchantUserDTO.model_validate(user)
+        merchant_user_dto = MerchantUserDto.model_validate(user)
         token_user = create_access_token(user)
-        return ResponseTokenDTO(token=token_user, merchant_user=merchant_user_dto)
+        return ResponseTokenDto(token=token_user, merchant_user=merchant_user_dto)
     else:
         return HTTPException(401, detail="Email já cadastrado")
     
-@authenticaion_controller.get("/get_token_ifood")
-async def get_token_ifood():
-    token = await get_rotafood_acess_token()
+# @authenticaion_controller.get("/get_token_ifood")
+# async def get_token_ifood():
+#     token = await get_rotafood_acess_token()
 
-    return token
+#     return token
