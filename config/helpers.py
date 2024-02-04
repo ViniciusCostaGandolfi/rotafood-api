@@ -1,3 +1,4 @@
+import os
 from pydantic import BaseModel, ConfigDict
 
 
@@ -10,3 +11,6 @@ class BaseModelCamel(BaseModel):
         from_attributes=True, 
         alias_generator=to_camel, 
         populate_by_name=True)
+    
+
+url = os.getenv('TEST_ROTAFOOD_MS_ROUTES_URL') if os.getenv('ENVMODE') == "DEVELOP" else os.getenv('ROTAFOOD_MS_ROUTES_URL')
