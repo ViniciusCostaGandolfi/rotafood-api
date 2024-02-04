@@ -1,10 +1,11 @@
 from pydantic import BaseModel, ConfigDict
 from typing import List, Optional
+from config.helpers import BaseModelCamel, to_camel
 
 from products.models.product import ProductType
 
 
-class ProductOptionDto(BaseModel):
+class ProductOptionDto(BaseModelCamel):
     id: Optional[int] = None
     name: str
     description: str
@@ -14,11 +15,11 @@ class ProductOptionDto(BaseModel):
     ean: str
     
     
-    model_config = ConfigDict(from_attributes=True)
+    
     
 
 
-class ProductOptionGroupDto(BaseModel):
+class ProductOptionGroupDto(BaseModelCamel):
     id: Optional[int] = None
     name: str
     external_code: str
@@ -28,17 +29,17 @@ class ProductOptionGroupDto(BaseModel):
     index: int
     product_opitions: List[ProductOptionDto]
     
-    model_config = ConfigDict(from_attributes=True)
+    
 
 
-class CategoryDto(BaseModel):
+class CategoryDto(BaseModelCamel):
     id: Optional[int] = None
     name: str
     description: str
     
-    model_config = ConfigDict(from_attributes=True)
+    
 
-class ProductDto(BaseModel):
+class ProductDto(BaseModelCamel):
     id: Optional[int] = None
     name: str
     description: str
@@ -58,5 +59,5 @@ class ProductDto(BaseModel):
     category: CategoryDto
     option_groups: Optional[List[ProductOptionGroupDto]] = None
     
-    model_config = ConfigDict(from_attributes=True)
+    
 

@@ -1,9 +1,10 @@
 from typing import Optional
-from pydantic import BaseModel, ConfigDict
+from config.helpers import BaseModelCamel
 
 
 
-class AddressDto(BaseModel):
+
+class AddressDto(BaseModelCamel):
     id: Optional[int] = None
     street_name: str
     formatted_address: str
@@ -15,7 +16,3 @@ class AddressDto(BaseModel):
     complement: str 
     latitude: float
     longitude: float
-
-    model_config = ConfigDict(from_attributes=True)
-
-

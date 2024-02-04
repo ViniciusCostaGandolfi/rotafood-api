@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from catalog.DTOs.catalog_dto import CatalogDTO, CatalogItemDTO
+from catalog.dtos.catalog_dto import CatalogDTO, CatalogItemDTO
 from catalog.models.catalog import Catalog
 from catalog.models.catalog_item import CatalogItem
 from config.authorization.auth import get_current_user

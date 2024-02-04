@@ -5,54 +5,43 @@ from addresses.dtos.address_dto import AddressDto
 
 from enum import Enum
 
+from config.helpers import BaseModelCamel, to_camel
 
 
 class DocumentType(Enum):
     CNPJ = 'CNPJ'
     CPF = 'CPF'
 
-class MerchantDto(BaseModel):
+class MerchantDto(BaseModelCamel):
     id: Optional[int] = None
     name: str
     document_type: DocumentType
     document: str
-    
     address: AddressDto
     
-    model_config = ConfigDict(from_attributes=True)
 
-class MerchantUserCreateDto(BaseModel):
+class MerchantUserCreateDto(BaseModelCamel):
     email: EmailStr
     name: str
     phone:str
     password: str 
-    
-    model_config = ConfigDict(from_attributes=True)
 
-class MerchantCreateDTO(BaseModel):
+class MerchantCreateDTO(BaseModelCamel):
     name: str
     document_type: DocumentType
     document: str
-    
     address: AddressDto
     user: MerchantUserCreateDto
     
-    model_config = ConfigDict(from_attributes=True)
-    
 
     
-class MerchantUpdateDTO(BaseModel):
+class MerchantUpdateDTO(BaseModelCamel):
     name: str | None
     document_type: DocumentType | None
     document: str | None
-    
     address: AddressDto | None
     
-    model_config = ConfigDict(from_attributes=True)
-    
         
-class MerchantCreatedOutDTO(BaseModel):
+class MerchantCreatedOutDTO(BaseModelCamel):
     access_token: str
     merchant: MerchantDto
-    
-    model_config = ConfigDict(from_attributes=True)

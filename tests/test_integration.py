@@ -17,14 +17,14 @@ client = TestClient(app)
 def token_header():
     test_merchant_data = {
         "name": "Test Merchant",
-        "document_type": "CNPJ",
+        "documentType": "CNPJ",
         "document": "12345678901",
         "address": {
-            "street_name": "Rua Teste",
-            "formatted_address": "Rua Teste, 123",
-            "street_number": "123",
+            "streetName": "Rua Teste",
+            "formattedAddress": "Rua Teste, 123",
+            "streetNumber": "123",
             "city": "Cidade Teste",
-            "postal_code": "12345-678",
+            "postalCode": "12345-678",
             "neighborhood": "Bairro Teste",
             "state": "Estado Teste",
             "complement": "Complemento Teste",
@@ -45,10 +45,10 @@ def token_header():
     assert response.status_code == 200
 
     # Verifique se a resposta tem a estrutura esperada
-    assert "access_token" in response.json()
+    assert "accessToken" in response.json()
     assert "merchant" in response.json()
     
-    return {"Authorization": f"Bearer {response.json()['access_token']}"}
+    return {"Authorization": f"Bearer {response.json()['accessToken']}"}
 
 def test_token_header(token_header):
     assert "Authorization" in token_header
@@ -74,11 +74,11 @@ def products(token_header, category:CategoryDto):
            
             "name": f"TestProduct-{i}",
             "description": "Test Product Description",
-            "weight_quantity": random.uniform(100, 1000),
-            "weight_unit": "g",
+            "weightQuantity": random.uniform(100, 1000),
+            "weightUnit": "g",
             "volume": random.uniform(5, 11),
             "price": random.uniform(10, 30),
-            "product_type": ProductType.REGULAR.value,
+            "productType": ProductType.REGULAR.value,
             "category": category.model_dump(),
         }
         

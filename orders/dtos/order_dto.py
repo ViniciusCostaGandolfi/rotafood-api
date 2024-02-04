@@ -2,6 +2,7 @@ from typing import List, Optional
 from pydantic import BaseModel, ConfigDict
 from datetime import datetime
 from addresses.dtos.address_dto import AddressDto
+from config.helpers import BaseModelCamel, to_camel
 from ifood_integration.dtos.ifood_order_dto import IFoodOrderDto
 from orders.models.order import OrderTimming, OrderType
 
@@ -9,36 +10,21 @@ from orders.models.order_delivery import OrderDeliveredBy
 from products.dtos.product_dto import ProductDto, ProductOptionDto, ProductOptionGroupDto
 import pytz
 
-
-
-# class ProductDto(BaseModel):
-#     id: Optional[int] = None
-#     name: str
-#     volume: float
-#     price: float
-#     description: Optional[str] = None
-#     additional_information: Optional[str] = None
-#     serving: Optional[str] = None
-#     dietary_restrictions: Optional[List[str]] = None
-#     image: Optional[str] = None
-#     multiple_images: Optional[List[str]] = None
-    
-#     model_config = ConfigDict(from_attributes=True)
     
     
 
-class OrderCustomerDto(BaseModel):
+class OrderCustomerDto(BaseModelCamel):
 
     id: Optional[int] = None
     name: str
     phone: str
     document_number: Optional[str] = None
     
-    model_config = ConfigDict(from_attributes=True)
+    
     
     
 
-class OrderDeliveryDto(BaseModel):
+class OrderDeliveryDto(BaseModelCamel):
 
     id: Optional[int] = None
     pickup_code: str
@@ -46,11 +32,11 @@ class OrderDeliveryDto(BaseModel):
     delivery_datetime: Optional[datetime] = datetime.now(pytz.timezone('America/Sao_Paulo'))
     address: AddressDto
     
-    model_config = ConfigDict(from_attributes=True)
     
     
     
-# class ProductOptionDto(BaseModel):
+    
+# class ProductOptionDto(BaseModelCamel):
 #     id: Optional[int] = None
 #     name: str
 #     description: str
@@ -59,10 +45,10 @@ class OrderDeliveryDto(BaseModel):
 #     price: float
 #     ean: str
     
-#     model_config = ConfigDict(from_attributes=True)
+#     
     
     
-# class ProductGroupOptionDto(BaseModel):
+# class ProductGroupOptionDto(BaseModelCamel):
 #     id: Optional[int] = None
 #     name: str
 #     external_code: str
@@ -71,15 +57,15 @@ class OrderDeliveryDto(BaseModel):
 #     max_options: int
     
     
-class OrderItemOptionDto(BaseModel):
+class OrderItemOptionDto(BaseModelCamel):
     id: Optional[int] = None
     product_option_group: Optional[ProductOptionGroupDto] = None
     product_option: Optional[ProductOptionDto] = None
     
-    model_config = ConfigDict(from_attributes=True)
+    
     
 
-class OrderItemDto(BaseModel):
+class OrderItemDto(BaseModelCamel):
 
     id: Optional[int] = None
     quantity: int
@@ -89,18 +75,18 @@ class OrderItemDto(BaseModel):
     item_options: Optional[List[OrderItemOptionDto]] = None
     
     
-    model_config = ConfigDict(from_attributes=True)
     
     
     
-class OrderPaymentDto(BaseModel):
+    
+class OrderPaymentDto(BaseModelCamel):
     id: Optional[int] = None
     method: str
     currency: str
     total_amount: float
-    model_config = ConfigDict(from_attributes=True)
     
-class OrderDto(BaseModel):
+    
+class OrderDto(BaseModelCamel):
 
     id: Optional[int] = None
     
@@ -117,4 +103,4 @@ class OrderDto(BaseModel):
     delivery: Optional[OrderDeliveryDto] = None
     ifood_order: Optional[IFoodOrderDto] = None
     
-    model_config = ConfigDict(from_attributes=True, use_enum_values=True)
+    

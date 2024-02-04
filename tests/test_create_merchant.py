@@ -9,14 +9,14 @@ def test_create_merchant():
 
     test_merchant_data = {
         "name": "Test Merchant",
-        "document_type": "CNPJ",
+        "documentType": "CNPJ",
         "document": "12345678901",
         "address": {
-            "street_name": "Rua Teste",
-            "formatted_address": "Rua Teste, 123",
-            "street_number": "123",
+            "streetName": "Rua Teste",
+            "formattedAddress": "Rua Teste, 123",
+            "streetNumber": "123",
             "city": "Cidade Teste",
-            "postal_code": "12345-678",
+            "postalCode": "12345-678",
             "neighborhood": "Bairro Teste",
             "state": "Estado Teste",
             "complement": "Complemento Teste",
@@ -33,15 +33,17 @@ def test_create_merchant():
 
     # Faça uma chamada para o endpoint de criação de merchant
     response = client.post("/auth/merchants/new/", json=test_merchant_data)
+    
+    print(response)
 
     # Verifique se a resposta é bem-sucedida (código 200)
     assert response.status_code == 200
 
     # Verifique se a resposta tem a estrutura esperada
-    assert "access_token" in response.json()
+    assert "accessToken" in response.json()
     assert "merchant" in response.json()
     
-    headers = {"Authorization": f"Bearer {response.json()['access_token']}"}
+    headers = {"Authorization": f"Bearer {response.json()['accessToken']}"}
 
     
     response = client.delete("/merchants/final/delete", headers=headers)

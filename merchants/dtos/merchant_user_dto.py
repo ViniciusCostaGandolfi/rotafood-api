@@ -1,4 +1,5 @@
 from pydantic import BaseModel, ConfigDict, EmailStr
+from config.helpers import BaseModelCamel, to_camel
 from merchants.dtos.merchant_dto import MerchantDto
 
 from merchants.models.merchant_user import MerchantUserRole
@@ -6,41 +7,36 @@ from merchants.models.merchant_user import MerchantUserRole
 
 
 
-class MerchantUserCreateFromTokenDto(BaseModel):
+class MerchantUserCreateFromTokenDto(BaseModelCamel):
     name: str
     phone: str
     password: str
-    
-    model_config = ConfigDict(from_attributes=True)
+
         
 
-class MerchantUserCreateTokenDto(BaseModel):
+class MerchantUserCreateTokenDto(BaseModelCamel):
     email: EmailStr
     permissions: MerchantUserRole
 
-    model_config = ConfigDict(from_attributes=True)
 
-
-class MerchantUserDto(BaseModel):
+class MerchantUserDto(BaseModelCamel):
     id: int
     email: EmailStr
     name: str
     password: str 
     permissions: MerchantUserRole
     merchant: MerchantDto
-    
-    model_config = ConfigDict(from_attributes=True)
-class MerchantUserOutDto(BaseModel):
+
+class MerchantUserOutDto(BaseModelCamel):
     id: int
     email: EmailStr
     name: str
     permissions: MerchantUserRole
     merchant: MerchantDto
-    
-    model_config = ConfigDict(from_attributes=True)
 
 
-class MerchantUserUpdate(BaseModel):
+
+class MerchantUserUpdate(BaseModelCamel):
     email: EmailStr
     name: str
     password: str

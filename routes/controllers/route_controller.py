@@ -61,12 +61,12 @@ class RouteController:
             HTTPException(401, "No Orders to Routine")
     
         
-        origin = db.query(Merchant).filter(Merchant.id == current_user.merchant_id).first()
+        merchant_db = db.query(Merchant).filter(Merchant.id == current_user.merchant_id).first()
         
-        origin = MerchantDto.model_validate(origin)
+        merchant = MerchantDto.model_validate(merchant_db)
         orders = [OrderDto.model_validate(order) for order in orders]
         orders = [CVRPOrder(id=order.id, total_volume=order.total_volume, address=order.delivery.address) for order in orders]
-        cvrp_in = CVRPIn(orders=orders, origin=origin, drivers_volume=45)
+        cvrp_in = CVRPIn(orders=orders, merchant=merchant, drivers_volume=45)
         url = os.getenv('TEST_ROTAFOOD_MS_ROUTES_URL') if os.getenv('ENVMODE') == 'DEVELOP' else os.getenv('ROTAFOOD_MS_ROUTES_URL')
 
         url += '/CVRP/'

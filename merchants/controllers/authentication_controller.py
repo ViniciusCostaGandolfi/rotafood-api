@@ -9,7 +9,6 @@ from merchants.dtos.merchant_dto import *
 from merchants.dtos.merchant_user_dto import *
 from merchants.models.merchant import Merchant
 from merchants.models.merchant_user import MerchantUser
-from config.ifood import get_rotafood_acess_token
 
 authenticaion_controller = APIRouter(prefix='/auth', tags=['Auth'])
 
@@ -24,7 +23,7 @@ async def create_merchant(
         raise HTTPException(status_code=400, detail="E-mail já registrado.")
 
     
-    address_data = merchant_dto.address.model_dump()
+    address_data: AddressDto = merchant_dto.address.model_dump()
     address = Address(**address_data)
     db.add(address)
     db.commit()

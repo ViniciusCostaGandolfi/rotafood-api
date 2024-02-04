@@ -1,55 +1,47 @@
-from typing import List, Optional
+from typing import List, Optional, Tuple
 from pydantic import BaseModel, ConfigDict
 from addresses.dtos.address_dto import AddressDto
+from config.helpers import BaseModelCamel, to_camel
 from merchants.dtos.merchant_dto import MerchantDto
 
 from orders.dtos.order_dto import OrderDto
 
 
 
-class CVRPOrder(BaseModel):
+class CVRPOrder(BaseModelCamel):
     id: Optional[int] = None
     total_volume: float
     address: AddressDto
     
-    model_config = ConfigDict(from_attributes=True, use_enum_values=True)
 
-
-class CVRPRoute(BaseModel):
+class CVRPRoute(BaseModelCamel):
     id: Optional[int] = None
     sequence: List[int]
     orders: List[CVRPOrder]
     distance: float
+    points: List[Tuple[float, float]]
     volume: float
     link_google_maps: str
-    
-    model_config = ConfigDict(from_attributes=True, use_enum_values=True)
-    
-class CVRPIn(BaseModel):
+        
+class CVRPIn(BaseModelCamel):
     orders: List[CVRPOrder]
-    merchant: MerchantDto
+    merchant: MerchantDto 
     drivers_volume: float
      
-    model_config = ConfigDict(from_attributes=True, use_enum_values=True)
 
-
-class CVRPOut(BaseModel):
+class CVRPOut(BaseModelCamel):
     merchant: MerchantDto
     routes: List[CVRPRoute]
     drivers_volume: float  
-    
-    model_config = ConfigDict(from_attributes=True, use_enum_values=True)
-    
+        
 
-class RouteOrderDto(BaseModel):
+class RouteOrderDto(BaseModelCamel):
     id: Optional[int] = None
     index: int
     order: OrderDto
     
-    model_config = ConfigDict(from_attributes=True, use_enum_values=True)
 
-
-class RouteDto(BaseModel):
+class RouteDto(BaseModelCamel):
     id: Optional[int] = None
     distance: float
     volume: float
@@ -57,4 +49,3 @@ class RouteDto(BaseModel):
     sequence: List[int]
     route_orders: List[RouteOrderDto]
  
-    model_config = ConfigDict(from_attributes=True, use_enum_values=True)
