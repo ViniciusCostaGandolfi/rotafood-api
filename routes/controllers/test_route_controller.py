@@ -49,7 +49,7 @@ async def test_routes_autogenerate(
          
             
            
-    if cvrp_out.status_code not in [200, 201]:
+    if cvrp_out.status_code != 200:
         HTTPException(401, "Error to request a ms-routes")
         
     cvrp_out = CVRPOut(**cvrp_out.json())
