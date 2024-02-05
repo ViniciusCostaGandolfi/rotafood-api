@@ -41,7 +41,8 @@ async def test_routes_autogenerate(
     merchant: MerchantDto      
 ):                                          
       
-    
+    if number_of_orders > 500:
+        return HTTPException(401, "O máximo de pontos por pesquisa é 500")
     url_api = url + f'/CVRP/test/auto_generate/{number_of_orders}/'
     async with httpx.AsyncClient() as client:
         cvrp_out = await client.post(url_api, content=merchant.model_dump_json(), timeout=600)
