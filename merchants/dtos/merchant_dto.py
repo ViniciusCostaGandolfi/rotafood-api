@@ -1,11 +1,11 @@
-from typing import Literal, Optional
-from pydantic import BaseModel, ConfigDict, EmailStr
+from typing import Optional
+from pydantic import EmailStr
 
 from addresses.dtos.address_dto import AddressDto
 
 from enum import Enum
 
-from config.helpers import BaseModelCamel, to_camel
+from config.helpers import BaseModelCamel
 
 
 class DocumentType(Enum):
@@ -25,15 +25,6 @@ class MerchantUserCreateDto(BaseModelCamel):
     name: str
     phone:str
     password: str 
-
-class MerchantCreateDTO(BaseModelCamel):
-    name: str
-    document_type: DocumentType
-    document: str
-    address: AddressDto
-    user: MerchantUserCreateDto
-    
-
     
 class MerchantUpdateDTO(BaseModelCamel):
     name: str | None
@@ -42,6 +33,3 @@ class MerchantUpdateDTO(BaseModelCamel):
     address: AddressDto | None
     
         
-class MerchantCreatedOutDTO(BaseModelCamel):
-    access_token: str
-    merchant: MerchantDto

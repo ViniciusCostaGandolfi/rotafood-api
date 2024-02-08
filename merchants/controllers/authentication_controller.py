@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+from addresses.dtos.address_dto import AddressDto
 from addresses.models.address import Address
 from config.authorization.password_crypt import hash_password, verify_password
 from config.authorization.tokens import EmailPayloadDTO, create_access_token, verify_email_token
 from config.database import get_db
 from merchants.dtos.auth_dto import *
-from merchants.dtos.merchant_dto import *
 from merchants.dtos.merchant_user_dto import *
 from merchants.models.merchant import Merchant
 from merchants.models.merchant_user import MerchantUser
@@ -13,9 +13,9 @@ from merchants.models.merchant_user import MerchantUser
 authenticaion_controller = APIRouter(prefix='/auth', tags=['Auth'])
 
     
-@authenticaion_controller.post("/merchants/new/")
+@authenticaion_controller.post("/merchants/create/")
 async def create_merchant(
-    merchant_dto: MerchantCreateDTO, 
+    merchant_dto: MerchantCreateDto, 
     db: Session = Depends(get_db)) -> MerchantCreatedOutDTO:
     
     email = db.query(MerchantUser).filter(MerchantUser.email == merchant_dto.user.email).first()
@@ -23,16 +23,16 @@ async def create_merchant(
         raise HTTPException(status_code=400, detail="E-mail já registrado.")
 
     
-    address_data: AddressDto = merchant_dto.address.model_dump()
+    address_data: AddressDto = merchant_dto.merchant.address.model_dump()
     address = Address(**address_data)
     db.add(address)
     db.commit()
     db.refresh(address) 
     
     merchant_data = {
-        "name": merchant_dto.name,
-        "document_type": merchant_dto.document_type.value,
-        "document": merchant_dto.document,
+        "name": merchant_dto.merchant.name,
+        "document_type": merchant_dto.merchant.document_type.value,
+        "document": merchant_dto.merchant.document,
         "address_id": address.id  
     }
     merchant = Merchant(**merchant_data)
@@ -50,10 +50,10 @@ async def create_merchant(
     db.commit()
     db.refresh(merchant_user)
     
-    merchant_dto = MerchantDto.model_validate(merchant)
     token = create_access_token(merchant_user)
+    merchant_user_dto = MerchantUserDto.model_validate(merchant_user)
     
-    return MerchantCreatedOutDTO(access_token=token, merchant=merchant_dto)
+    return MerchantCreatedOutDTO(access_token=token, merchant_user=merchant_user_dto)
 
 
 @authenticaion_controller.post("/merchant_users/login/")
@@ -77,7 +77,7 @@ async def login_merchant_user(
     
 
 
-@authenticaion_controller.post("/merchant_users/new/email/{token}")
+@authenticaion_controller.post("/merchant_users/email/{token}/")
 async def create_merchant_user_by_email_token( user_dto: MerchantUserCreateFromTokenDto,
                 payload: EmailPayloadDTO = Depends(verify_email_token), 
                 db: Session = Depends(get_db)):
