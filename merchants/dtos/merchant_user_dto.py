@@ -7,25 +7,17 @@ from merchants.models.merchant_user import MerchantUserRole
 
 
 
-class MerchantUserCreateFromTokenDto(BaseModelCamel):
+class MerchantUserCreateODto(BaseModelCamel):
     name: str
     phone: str
     password: str
 
         
 
-class MerchantUserCreateTokenDto(BaseModelCamel):
+class MerchantUserCreateDto(BaseModelCamel):
     email: EmailStr
     permissions: MerchantUserRole
 
-
-class MerchantUserPasswordDto(BaseModelCamel):
-    id: int
-    email: EmailStr
-    name: str
-    password: str 
-    permissions: MerchantUserRole
-    merchant: MerchantDto
 
 class MerchantUserDto(BaseModelCamel):
     id: int

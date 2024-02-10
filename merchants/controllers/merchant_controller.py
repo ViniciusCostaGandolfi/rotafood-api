@@ -1,12 +1,11 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.orm import Session
 from addresses.models.address import Address
 from config.authorization.auth import get_current_admin_user, get_current_user
 from config.database import get_db
-from merchants.dtos.merchant_dto import *
+from merchants.dtos.merchant_dto import MerchantDto, MerchantUpdateDto
 from merchants.models.merchant import Merchant
 from merchants.models.merchant_user import MerchantUser
-from fastapi import status
 
 
 merchant_controller = APIRouter(prefix='/merchants', tags=['Merchant'])
@@ -26,7 +25,7 @@ async def get_merchant(
 
 @merchant_controller.patch("/", response_model=MerchantDto)
 async def update_merchant(
-    merchant_dto: MerchantUpdateDTO, 
+    merchant_dto: MerchantUpdateDto, 
     db: Session = Depends(get_db), 
     user: MerchantUser = Depends(get_current_admin_user)) -> MerchantDto:
     merchant = db.query(Merchant).filter(Merchant.id == user.merchant_id).first()
@@ -48,14 +47,14 @@ async def update_merchant(
 
     return MerchantDto.model_validate(merchant)
 
-@merchant_controller.delete("/final/delete", response_model={})
+@merchant_controller.delete("/final/delete", status_code=status.HTTP_200_OK)
 async def delete_merchant(
     db: Session = Depends(get_db), 
-    user: MerchantUser = Depends(get_current_admin_user)) -> {}:
+    user: MerchantUser = Depends(get_current_admin_user)):
     
     merchant = db.query(Merchant).filter(Merchant.id == user.merchant_id).first()
     db.query(MerchantUser).filter(MerchantUser.merchant_id == user.merchant_id).delete()
     db.delete(merchant)
     db.commit()
 
-    return {}
+    return Response(status_code=status.HTTP_200_OK)

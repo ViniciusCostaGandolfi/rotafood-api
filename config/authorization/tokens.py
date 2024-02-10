@@ -3,7 +3,8 @@ from typing import Any, Dict, Optional
 from fastapi import HTTPException, status
 from jose import JWTError, jwt
 from pydantic import BaseModel
-from merchants.dtos.merchant_user_dto import MerchantUserCreateTokenDto
+from merchants.dtos.merchant_user_admin_dto import MerchantStaffRegistrationDto
+from merchants.dtos.merchant_user_dto import MerchantUserDto
 from merchants.models.merchant_user import MerchantUser, MerchantUserRole
 from dotenv import load_dotenv
 import os
@@ -31,21 +32,21 @@ class EmailPayloadDTO(BaseModel):
     exp: int
 
 def create_access_token(user: MerchantUser, expires_delta: Optional[timedelta] = None):
-    payload: Dict[str, str|int] = {
-        "restaurant_user_id": user.id,
-        "merchant_id": user.merchant_id,
-        "email": user.email,
-        "name": user.name
-    }
+    print(user.id, user.merchant.id, user.merchant.address.id)
+    payload: Dict[str, str|int] = MerchantUserDto.model_validate(user).model_dump()
     if expires_delta:
-        expire = datetime.utcnow() + expires_delta
+        expire = datetime.utcnow() + expires_delta 
     else:
         expire = datetime.utcnow() + timedelta(days=3)
     payload["exp"] =  expire
     encoded_jwt = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-def create_new_user_email_token(admin: MerchantUser, user: MerchantUserCreateTokenDto ,expires_delta: Optional[timedelta] = None):
+def create_new_user_email_token(
+    admin: MerchantUser, 
+    user:  MerchantStaffRegistrationDto, 
+    expires_delta: Optional[timedelta] = None):
+    
     payload: Dict[str, Any] = {
         "merchant_id": admin.merchant_id,
         "permissions": user.permissions.value,

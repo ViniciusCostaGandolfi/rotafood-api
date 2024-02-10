@@ -19,14 +19,8 @@ class MerchantDto(BaseModelCamel):
     document: str
     address: AddressDto
     
-
-class MerchantUserCreateDto(BaseModelCamel):
-    email: EmailStr
-    name: str
-    phone:str
-    password: str 
     
-class MerchantUpdateDTO(BaseModelCamel):
+class MerchantUpdateDto(BaseModelCamel):
     name: str | None
     document_type: DocumentType | None
     document: str | None

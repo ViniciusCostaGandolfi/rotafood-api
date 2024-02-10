@@ -3,12 +3,11 @@ from sqlalchemy.orm import Session
 from typing import List
 from config.authorization.auth import get_current_user
 from config.database import get_db
-from merchants.dtos.auth_dto import *
-from merchants.dtos.merchant_user_dto import *
+from merchants.dtos.merchant_user_dto import MerchantUserDto, MerchantUserUpdate
+
 from merchants.models.merchant_user import MerchantUser
 
 merchant_user_controller = APIRouter(prefix='/merchant_users', tags=['MerchantUser'])
-
 
 @merchant_user_controller.get("/", response_model=MerchantUserDto)
 async def get_MerhantUser(
