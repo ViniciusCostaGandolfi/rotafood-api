@@ -1,17 +1,22 @@
 from enum import Enum
 from typing import Optional
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Enum as SQLEnum
+from sqlalchemy import ARRAY, Column, Integer, String, Boolean, ForeignKey, Enum as SQLEnum
 from sqlalchemy.orm import relationship, Mapped
 from config.database import Base
 from merchants.models.merchant import Merchant
 
 
-class MerchantUserRole(Enum):
-    OWNER = "OWNER"
-    ADM = "ADM"
-    GARSON = "GARSON"
-    CHEF = "CHEF"
-    DRIVER = "DRIVER"
+class ModulePermissions(Enum):
+    MERCHANT = 'MERCHANT'
+    INTEGRATION = 'INTEGRATION'
+    PRODUCTS = 'PRODUCTS'
+    ORDERS = 'ORDERS'
+    COMMANDS = 'COMMANDS'
+    ROUTES = 'ROUTES'
+    DRIVERS = 'DRIVERS'
+    CATALOGS = 'CATALOGS'
+
+    
 
  
 class MerchantUser(Base):
@@ -22,6 +27,6 @@ class MerchantUser(Base):
     password = Column(String)
     name = Column(String)
     phone = Column(String)
-    permissions = Column(SQLEnum(MerchantUserRole))
+    permissions = Column(ARRAY(String), default=[e.value for e in ModulePermissions])
     merchant_id = Column(Integer, ForeignKey('merchants.id'))
     merchant: Mapped[Merchant] = relationship("Merchant") 

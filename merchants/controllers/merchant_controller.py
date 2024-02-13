@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.orm import Session
 from addresses.models.address import Address
-from config.authorization.auth import get_current_admin_user, get_current_user
+from config.authorization.auth import get_current_user, permission_dependency
 from config.database import get_db
 from merchants.dtos.merchant_dto import MerchantDto, MerchantUpdateDto
 from merchants.models.merchant import Merchant
-from merchants.models.merchant_user import MerchantUser
+from merchants.models.merchant_user import MerchantUser, ModulePermissions
 
 
 merchant_controller = APIRouter(prefix='/merchants', tags=['Merchant'])
@@ -15,8 +15,11 @@ merchant_controller = APIRouter(prefix='/merchants', tags=['Merchant'])
 @merchant_controller.get("/")
 async def get_merchant(
                     db: Session = Depends(get_db), 
-                    user: MerchantUser = Depends(get_current_user)) -> MerchantDto:
-    restaurant = db.query(Merchant).filter(Merchant.id == user.merchant_id).first()
+                    current_user: MerchantUser = Depends(
+                    permission_dependency(ModulePermissions.MERCHANT)
+                    )
+    ) -> MerchantDto:
+    restaurant = db.query(Merchant).filter(Merchant.id == current_user.merchant_id).first()
     
     if not restaurant:
         raise HTTPException(status_code=404, detail="Restaurant not found")
@@ -27,8 +30,12 @@ async def get_merchant(
 async def update_merchant(
     merchant_dto: MerchantUpdateDto, 
     db: Session = Depends(get_db), 
-    user: MerchantUser = Depends(get_current_admin_user)) -> MerchantDto:
-    merchant = db.query(Merchant).filter(Merchant.id == user.merchant_id).first()
+    current_user: MerchantUser = Depends(
+        permission_dependency(ModulePermissions.MERCHANT)
+        )) -> MerchantDto:
+    merchant: Merchant | None = db.query(Merchant).filter(Merchant.id == current_user.merchant_id).first()
+    
+    
     if not merchant:
         raise HTTPException(status_code=404, detail="Restaurant not found")
     
@@ -50,10 +57,13 @@ async def update_merchant(
 @merchant_controller.delete("/final/delete", status_code=status.HTTP_200_OK)
 async def delete_merchant(
     db: Session = Depends(get_db), 
-    user: MerchantUser = Depends(get_current_admin_user)):
+    current_user: MerchantUser = Depends(
+        permission_dependency(ModulePermissions.MERCHANT)
+        )
+    ):
     
-    merchant = db.query(Merchant).filter(Merchant.id == user.merchant_id).first()
-    db.query(MerchantUser).filter(MerchantUser.merchant_id == user.merchant_id).delete()
+    merchant = db.query(Merchant).filter(Merchant.id == current_user.merchant_id).first()
+    db.query(MerchantUser).filter(MerchantUser.merchant_id == current_user.merchant_id).delete()
     db.delete(merchant)
     db.commit()
 

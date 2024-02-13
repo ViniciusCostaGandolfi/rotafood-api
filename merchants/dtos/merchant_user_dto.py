@@ -1,8 +1,9 @@
+from typing import List
 from pydantic import EmailStr
 from config.helpers import BaseModelCamel
 from merchants.dtos.merchant_dto import MerchantDto
 
-from merchants.models.merchant_user import MerchantUserRole
+from merchants.models.merchant_user import ModulePermissions
 
 
 
@@ -16,14 +17,14 @@ class MerchantUserCreateODto(BaseModelCamel):
 
 class MerchantUserCreateDto(BaseModelCamel):
     email: EmailStr
-    permissions: MerchantUserRole
+    permissions: List[ModulePermissions]
 
 
 class MerchantUserDto(BaseModelCamel):
     id: int
     email: EmailStr
     name: str
-    permissions: MerchantUserRole
+    permissions: List[ModulePermissions]
     merchant: MerchantDto
 
 

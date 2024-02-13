@@ -1,11 +1,11 @@
 from datetime import datetime, timedelta
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 from fastapi import HTTPException, status
 from jose import JWTError, jwt
 from pydantic import BaseModel
 from merchants.dtos.merchant_user_admin_dto import MerchantStaffRegistrationDto
 from merchants.dtos.merchant_user_dto import MerchantUserDto
-from merchants.models.merchant_user import MerchantUser, MerchantUserRole
+from merchants.models.merchant_user import MerchantUser, ModulePermissions
 from dotenv import load_dotenv
 import os
 
@@ -27,7 +27,7 @@ class PayloadDTO(BaseModel):
 
 class EmailPayloadDTO(BaseModel):
     merchant_id: int
-    permissions: MerchantUserRole
+    permissions: List[ModulePermissions]
     email: str
     exp: int
 

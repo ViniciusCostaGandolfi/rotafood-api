@@ -8,7 +8,7 @@ from config.database import get_db
 from merchants.dtos.auth_dto import AuthTokenDto, MerchantRegistrationDto, UserLoginDto, UserRegistrationDto
 from merchants.dtos.merchant_user_dto import MerchantUserDto
 from merchants.models.merchant import Merchant
-from merchants.models.merchant_user import MerchantUser, MerchantUserRole
+from merchants.models.merchant_user import MerchantUser, ModulePermissions
 
 authenticaion_controller = APIRouter(prefix='/auth', tags=['Auth'])
 
@@ -42,7 +42,16 @@ async def create_merchant(
     user_data = merchant_dto.user.model_dump()
     user_data["merchant_id"] = merchant.id
     user_data["password"] = hash_password(user_data["password"])
-    user_data["permissions"] = MerchantUserRole.OWNER.value
+    user_data["permissions"] = [
+        ModulePermissions.MERCHANT.value,
+        ModulePermissions.COMMANDS.value,
+        ModulePermissions.DRIVERS.value,
+        ModulePermissions.ORDERS.value,
+        ModulePermissions.ROUTES.value,
+        ModulePermissions.INTEGRATION.value,
+        ModulePermissions.PRODUCTS.value,
+        ModulePermissions.CATALOGS.value
+    ]
     merchant_user = MerchantUser(**user_data)
     db.add(merchant_user)
     db.commit()

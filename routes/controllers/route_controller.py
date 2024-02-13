@@ -5,11 +5,11 @@ import os
 import httpx
 from typing import List
 
-from config.authorization.auth import get_current_admin_user, get_current_user
+from config.authorization.auth import permission_dependency, get_current_user
 from config.database import get_db
 from merchants.dtos.merchant_dto import MerchantDto
 from merchants.models.merchant import Merchant
-from merchants.models.merchant_user import MerchantUser
+from merchants.models.merchant_user import MerchantUser, ModulePermissions
 from orders.dtos.order_dto import OrderDto
 from orders.models.order import Order
 from routes.dtos.route_dto import CVRPIn, CVRPOrder, CVRPOut, RouteDto
@@ -39,7 +39,9 @@ class RouteController:
     @routes_controller.get("/{route_id}", response_model=OrderDto)
     async def get_route_by_id(
             route_id:int,
-            current_user: MerchantUser = Depends(get_current_admin_user),
+            current_user: MerchantUser = Depends(
+                permission_dependency(ModulePermissions.ROUTES)
+                ),
             db: Session = Depends(get_db)):
         
         route = db.query(Route).filter(Route.id == route_id, Route.merchant_id == current_user.merchant_id).first()
@@ -51,7 +53,9 @@ class RouteController:
     
     @routes_controller.post("/", response_model=List[RouteDto])
     async def make_routes(
-            current_user: MerchantUser = Depends(get_current_admin_user),
+            current_user: MerchantUser = Depends(
+                permission_dependency(ModulePermissions.ROUTES)
+                ),
             db: Session = Depends(get_db)):
         orders = db.query(Order).join(OrderDelivery).filter(
             Order.merchant_id == current_user.merchant_id, 
