@@ -2,11 +2,11 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from addresses.dtos.address_dto import AddressDto
 from addresses.models.address import Address
+from config.authorization.auth import get_current_user
 from config.authorization.password_crypt import hash_password, verify_password
 from config.authorization.tokens import EmailPayloadDTO, create_access_token, verify_email_token
 from config.database import get_db
 from merchants.dtos.auth_dto import AuthTokenDto, MerchantRegistrationDto, UserLoginDto, UserRegistrationDto
-from merchants.dtos.merchant_user_dto import MerchantUserDto
 from merchants.models.merchant import Merchant
 from merchants.models.merchant_user import MerchantUser, ModulePermissions
 
@@ -100,4 +100,14 @@ async def create_merchant_user_by_email_token(
         return AuthTokenDto(access_token=token_user)
     else:
         return HTTPException(401, detail="Email já cadastrado")
+    
+@authenticaion_controller.post("/refresh_token/")
+async def refresh_token( 
+                current_user = Depends(get_current_user), 
+                ):
+    
+    
+    token_user = create_access_token(current_user)
+    return AuthTokenDto(access_token=token_user)
+
     

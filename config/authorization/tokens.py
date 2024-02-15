@@ -32,7 +32,6 @@ class EmailPayloadDTO(BaseModel):
     exp: int
 
 def create_access_token(user: MerchantUser, expires_delta: Optional[timedelta] = None):
-    print(user.id, user.merchant.id, user.merchant.address.id)
     payload: Dict[str, str|int] = MerchantUserDto.model_validate(user).model_dump()
     if expires_delta:
         expire = datetime.utcnow() + expires_delta 
