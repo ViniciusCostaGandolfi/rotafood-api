@@ -70,13 +70,14 @@ async def login_merchant_user(
     
     user: MerchantUser | None = db.query(MerchantUser).filter(MerchantUser.email==login_user.email).first()
     if user is not None:
+        print('USER EMAIL', user.email)
         if verify_password(login_user.password, user.password):
             token_user = create_access_token(user)
             return AuthTokenDto(access_token=token_user)
         
-        return HTTPException(401, detail="Senha incorreta")
+        raise HTTPException(401, detail="Senha incorreta")
         
-    return HTTPException(401, detail="Email não encontrado")
+    raise HTTPException(401, detail="Email não encontrado")
     
 
 
