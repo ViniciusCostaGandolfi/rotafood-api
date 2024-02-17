@@ -27,7 +27,7 @@ class ProductOptionGroupDto(BaseModelCamel):
     min_options: int
     max_options: int
     index: int
-    product_opitions: List[ProductOptionDto]
+    opitions: List[ProductOptionDto]
     
     
 
