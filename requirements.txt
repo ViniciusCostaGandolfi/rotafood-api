@@ -40,6 +40,7 @@ pytest==7.4.4
 python-dateutil==2.8.2
 python-dotenv==1.0.0
 python-jose==3.3.0
+python-multipart==0.0.9
 pytz==2023.3.post1
 rsa==4.9
 six==1.16.0
@@ -55,4 +56,3 @@ types-SQLAlchemy==1.4.53.38
 typing_extensions==4.8.0
 urllib3==2.1.0
 uvicorn==0.24.0.post1
-python-multipart
