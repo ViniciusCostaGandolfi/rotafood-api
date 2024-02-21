@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.orm import Session
 from typing import List
-from config.authorization.auth import get_current_user
+from config.authorization.auth import get_current_user, permission_dependency
 from config.database import get_db
-from merchants.models.merchant_user import MerchantUser
+from merchants.models.merchant_user import MerchantUser, ModulePermissions
 from products.dtos.product_dto import CategoryDto
 from products.models.product_category import ProductCategory
 
@@ -12,7 +12,11 @@ category_controller = APIRouter(prefix='/product_category', tags=['ProductCatego
 
 @category_controller.get("/", response_model=List[CategoryDto])
 async def get_product_categories(
-        current_user: MerchantUser = Depends(get_current_user),
+        current_user: MerchantUser = Depends(
+                    permission_dependency(
+                        ModulePermissions.PRODUCTS
+                        )
+                    ),
         db: Session = Depends(get_db)
         ):
     categories_db =  db.query(ProductCategory).filter(ProductCategory.merchant_id == current_user.merchant_id).all()
@@ -23,24 +27,38 @@ async def get_product_categories(
 @category_controller.get("/{product_category_id}", response_model=CategoryDto)
 async def get_product_category_by_id(
         product_category_id:int,
+        current_user: MerchantUser = Depends(
+                    permission_dependency(
+                        ModulePermissions.PRODUCTS
+                        )
+                    ),
         db: Session = Depends(get_db)):
     
-    product =  db.query(ProductCategory).filter(ProductCategory.id == product_category_id).first()
-    if not product:
-        raise HTTPException(status_code=404, detail="No product with this")
-    return CategoryDto.model_validate(product)
+    category =  db.query(ProductCategory).filter(
+        ProductCategory.id == product_category_id, 
+        ProductCategory.merchant_id == current_user.merchant_id
+        ).first()
+    if not category:
+        raise HTTPException(status_code=404, detail="Sem categorias")
+    return CategoryDto.model_validate(category)
 
 
 @category_controller.patch("/{product_category_id}", response_model=CategoryDto)
 async def update_product_category(
         product_category_id:int,
         category_dto:CategoryDto,
-        current_user: MerchantUser = Depends(get_current_user),
+        current_user: MerchantUser = Depends(
+                    permission_dependency(ModulePermissions.PRODUCTS)
+                    ),
         db: Session = Depends(get_db)) -> CategoryDto:
     
-    category =  db.query(ProductCategory).filter(ProductCategory.id == product_category_id).first()
+    category =  db.query(ProductCategory).filter(
+        ProductCategory.id == product_category_id,
+        ProductCategory.merchant_id == current_user.merchant_id
+
+        ).first()
     if not category:
-        raise HTTPException(status_code=404, detail="Product not found")
+        raise HTTPException(status_code=404, detail="Categoria não existe")
     
     
     for key, value in category_dto.model_dump().items():
@@ -52,10 +70,37 @@ async def update_product_category(
     
     return CategoryDto.model_validate(category)
 
+
+
+@category_controller.delete("/{product_category_id}")
+async def delete_product_category(
+        product_category_id:int,
+        current_user: MerchantUser = Depends(
+                    permission_dependency(ModulePermissions.PRODUCTS)
+                    ),
+        db: Session = Depends(get_db)) -> CategoryDto:
+    
+    category =  db.query(ProductCategory).filter(
+        ProductCategory.id == product_category_id,
+        ProductCategory.merchant_id == current_user.merchant_id
+        ).first()
+    if not category:
+        raise HTTPException(status_code=404, detail="Product not found")
+    
+    db.delete(category)
+    db.commit()
+    
+    
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+
 @category_controller.post("/", response_model=CategoryDto)
 async def create_product_category(
         category_dto:CategoryDto,
-        current_user: MerchantUser = Depends(get_current_user),
+        current_user: MerchantUser = Depends(
+                    permission_dependency(ModulePermissions.PRODUCTS)
+                    ),
         db: Session = Depends(get_db)) -> CategoryDto:
     
     
