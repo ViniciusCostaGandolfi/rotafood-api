@@ -23,13 +23,14 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
     return user
 
 def has_permission(user: MerchantUser, permission: ModulePermissions) -> bool:
-    return permission in user.permissions
+    return permission.value in user.permissions
 
 def permission_dependency(permission: ModulePermissions) -> Callable:
     async def verify_permission(
         current_user: MerchantUser = Depends(get_current_user)
     ) -> MerchantUser:
         if not has_permission(current_user, permission):
+            print(current_user.permissions, permission)
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="Acesso Negado"

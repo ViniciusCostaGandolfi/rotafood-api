@@ -75,7 +75,7 @@ def verify_email_token(token: str):
 def verify_token(token: str):
     try:
         payload_dict = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        payload = PayloadDTO(**payload_dict)
+        payload = MerchantUserDto(**payload_dict)
         return payload
     except JWTError:
         raise HTTPException(
