@@ -36,7 +36,12 @@ class CategoryDto(BaseModelCamel):
     id: Optional[int] = None
     name: str
     description: str
-    
+
+
+class SearchCategoryDto(BaseModelCamel):
+    id: Optional[int] = None
+    name: Optional[str] = None
+    description: Optional[str] = None
     
 
 class ProductDto(BaseModelCamel):

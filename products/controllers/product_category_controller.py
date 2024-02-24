@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.orm import Session
-from typing import List
+from typing import List, Optional
 from config.authorization.auth import get_current_user, permission_dependency
 from config.database import get_db
 from merchants.models.merchant_user import MerchantUser, ModulePermissions
-from products.dtos.product_dto import CategoryDto
+from products.dtos.product_dto import CategoryDto, SearchCategoryDto
 from products.models.product_category import ProductCategory
 
 
@@ -17,10 +17,22 @@ async def get_product_categories(
                         ModulePermissions.PRODUCTS
                         )
                     ),
+        id: Optional[int] = None,
+        name: Optional[str] = None,
+        description: Optional[str] = None,
         db: Session = Depends(get_db)
         ):
-    categories_db =  db.query(ProductCategory).filter(ProductCategory.merchant_id == current_user.merchant_id).all()
-    
+
+    query =  db.query(ProductCategory).filter(ProductCategory.merchant_id == current_user.merchant_id)
+    if id is not None:
+        query = query.filter(ProductCategory.id == id)
+    if name is not None:
+        query = query.filter(ProductCategory.name.contains(name))
+    if description is not None:
+        query = query.filter(ProductCategory.description.contains(description))
+
+
+    categories_db = query.all()
         
     return [CategoryDto.model_validate(category) for category in categories_db]
 
