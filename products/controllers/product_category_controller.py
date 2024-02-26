@@ -75,7 +75,7 @@ async def update_product_category(
     
     for key, value in category_dto.model_dump().items():
         if value is not None:
-            setattr(category, current_user, key, value)
+            setattr(category, key, value)
     
     db.commit()
     db.refresh(category)
