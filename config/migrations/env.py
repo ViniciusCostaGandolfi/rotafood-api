@@ -13,7 +13,7 @@ from ifood_integration.models import *
 from orders.models import *
 from catalog.models import *
 from routes.models import *
-import alembic_postgresql_enum
+from commands.models import *
 
 
 load_dotenv()
