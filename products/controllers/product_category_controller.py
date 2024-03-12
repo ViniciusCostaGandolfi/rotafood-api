@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 from config.authorization.auth import get_current_user, permission_dependency
 from config.database import get_db
+from config.helpers import Paginable, paginate
 from merchants.models.merchant_user import MerchantUser, ModulePermissions
 from products.dtos.product_dto import CategoryDto, SearchCategoryDto
 from products.models.product_category import ProductCategory
@@ -10,13 +11,15 @@ from products.models.product_category import ProductCategory
 
 category_controller = APIRouter(prefix='/product_category', tags=['ProductCategory'])
 
-@category_controller.get("/", response_model=List[CategoryDto])
+@category_controller.get("/", response_model=Paginable[CategoryDto])
 async def get_product_categories(
         current_user: MerchantUser = Depends(
                     permission_dependency(
                         ModulePermissions.PRODUCTS
                         )
                     ),
+        page: int = 1,
+        page_size: int = 10,
         id: Optional[int] = None,
         name: Optional[str] = None,
         description: Optional[str] = None,
@@ -31,10 +34,11 @@ async def get_product_categories(
     if description is not None:
         query = query.filter(ProductCategory.description.contains(description))
 
-
     categories_db = query.all()
-        
-    return [CategoryDto.model_validate(category) for category in categories_db]
+
+    data = [CategoryDto.model_validate(category) for category in categories_db]
+            
+    return paginate(data, page, page_size)
 
 @category_controller.get("/{product_category_id}", response_model=CategoryDto)
 async def get_product_category_by_id(
