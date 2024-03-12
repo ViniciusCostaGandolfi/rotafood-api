@@ -8,7 +8,7 @@ from config.database import Base
 class CatalogItem(Base):
     __tablename__ = 'catalog_items'
 
-    id = Column(Integer, autoincrement=True, primary_key=True, )
+    id = Column(Integer, autoincrement=True, primary_key=True)
     catalog_id = Column(Integer, ForeignKey('catalogs.id'))
     product_id = Column(Integer, ForeignKey('products.id'))
     product = relationship("Product")
