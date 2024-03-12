@@ -8,7 +8,7 @@ from ifood_integration.models.ifood_merchant import IFoodMerchant
 class Merchant(Base):
     __tablename__ = 'merchants'
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, autoincrement=True, primary_key=True)
     name = Column(String)
     document_type = Column(String)
     document = Column(String)

@@ -8,7 +8,7 @@ from config.database import Base
 class Address(Base):
     __tablename__ = 'addresses'
     
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, autoincrement=True, primary_key=True)
     street_name = Column(String)
     formatted_address = Column(String)
     street_number = Column(String)

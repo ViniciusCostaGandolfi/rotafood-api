@@ -22,7 +22,7 @@ class ModulePermissions(Enum):
 class MerchantUser(Base):
     __tablename__ = 'merchant_users'
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, autoincrement=True, primary_key=True)
     email = Column(String, unique=True)
     password = Column(String)
     name = Column(String)
