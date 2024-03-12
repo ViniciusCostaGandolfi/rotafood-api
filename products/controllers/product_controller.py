@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 from config.authorization.auth import get_current_user
 from config.database import get_db
+from config.helpers import Paginable
 from merchants.models.merchant_user import MerchantUser
 from products.dtos.product_dto import ProductDto
 from products.models.product import Product
@@ -15,7 +16,7 @@ product_controller = APIRouter(prefix='/products', tags=['Product'])
 
 class ProductController:
     
-    @product_controller.get("/", response_model=List[ProductDto])
+    @product_controller.get("/", response_model=Paginable[ProductDto])
     async def get_products(
             current_user: MerchantUser = Depends(get_current_user),
             db: Session = Depends(get_db)
