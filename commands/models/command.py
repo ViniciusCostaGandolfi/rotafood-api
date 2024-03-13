@@ -1,10 +1,7 @@
 from sqlalchemy import ForeignKey, Column, Integer, String, Float
-from sqlalchemy.dialects.postgresql import ARRAY
-from sqlalchemy.orm import relationship, Mapped
+from sqlalchemy.orm import relationship
 
 from config.database import Base
-from orders.models.order import Order
-from products.models.product import Product
 
 
 class Command(Base):
@@ -14,3 +11,4 @@ class Command(Base):
     table = Column(String)
     price = Column(Float)
     merchant_id = Column(Integer, ForeignKey('merchants.id'))
+    orders = relationship('Order', back_populates='command', uselist=True)
