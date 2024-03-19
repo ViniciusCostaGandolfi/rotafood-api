@@ -13,7 +13,6 @@ class ProductOption(Base):
     image_path = Column(String)
     
     price = Column(Float)
-    
     ean = Column(String)
     product_option_group_id = Column(Integer, ForeignKey('product_option_groups.id'))
     

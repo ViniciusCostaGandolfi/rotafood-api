@@ -1,6 +1,5 @@
-from pydantic import BaseModel, ConfigDict
 from typing import List, Optional
-from config.helpers import BaseModelCamel, to_camel
+from config.helpers import BaseModelCamel
 
 from products.models.product import ProductType
 
@@ -31,7 +30,6 @@ class ProductOptionGroupDto(BaseModelCamel):
     
     
 
-
 class CategoryDto(BaseModelCamel):
     id: Optional[int] = None
     name: str
@@ -61,8 +59,5 @@ class ProductDto(BaseModelCamel):
     image: Optional[str] = None
     multiple_images: Optional[List[str]] = None
     
-    category: CategoryDto
+    category: Optional[CategoryDto] = None
     option_groups: Optional[List[ProductOptionGroupDto]] = None
-    
-    
-

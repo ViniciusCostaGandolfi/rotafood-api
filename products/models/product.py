@@ -36,6 +36,6 @@ class Product(Base):
     merchant_id = Column(Integer, ForeignKey('merchants.id'))
     
     category = relationship('ProductCategory', backref='products')
-    option_groups = relationship('ProductOptionGroup', backref='product')
+    option_groups = relationship('ProductOptionGroup', secondary='product_option_associations', backref='product')
     ifood_product = relationship('IFoodProduct', back_populates="product", uselist=False)
 
