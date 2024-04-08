@@ -1,14 +1,14 @@
 from typing import List
 from fastapi.testclient import TestClient
-from addresses.dtos.address_dto import AddressDto
+from domain.addresses.dtos.address_dto import AddressDto
 from main import app 
 import random
 from pytest import fixture
-from orders.dtos.order_dto import OrderDto, OrderDeliveryDto, OrderDeliveredBy, OrderItemDto
-from orders.models import order_delivery
-from orders.models.order import OrderType
-from products.dtos.product_dto import CategoryDto, ProductDto
-from products.models.product import ProductType
+from domain.orders.dtos.order_dto import OrderDto, OrderDeliveryDto, OrderDeliveredBy, OrderItemDto
+from domain.orders.models import order_delivery
+from domain.orders.models.order import OrderType
+from domain.products.dtos.product_dto import CategoryDto, ProductDto
+from domain.products.models.product import ProductType
 from datetime import datetime
 
 client = TestClient(app)
