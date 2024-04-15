@@ -7,7 +7,6 @@ from api.core.database import Base
 
 class Address(Base):
     __tablename__ = 'addresses'
-    __table_args__ = {'extend_existing': True}
     
     id = Column(Integer, autoincrement=True, primary_key=True)
     street_name = Column(String)
