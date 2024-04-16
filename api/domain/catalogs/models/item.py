@@ -1,14 +1,10 @@
 from typing import List
-import uuid
-
 from sqlalchemy import Column, Enum, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship, Mapped
-from api.core.database import Base
-from api.domain.catalogs.models.item_context_modifier import ItemContextModifier
-from api.domain.catalogs.models.price import Price
-from api.domain.catalogs.models.item_shift import Shift
-from api.domain.catalogs.models.status import Status
 from sqlalchemy.dialects.postgresql import UUID
+from api.core.database import Base
+from api.domain.catalogs.models.status import Status
+import uuid
 
 class Item(Base):
     __tablename__ = 'items'
@@ -19,14 +15,13 @@ class Item(Base):
     index = Column(Integer)
     
     category_id = Column(UUID(as_uuid=True), ForeignKey('categories.id'))
-    category = relationship("Category", back_populates="items", uselist=True)
+    category = relationship("Category", back_populates="items", uselist=False)
     
-    product_id = Column(UUID(as_uuid=True), ForeignKey('categories.id'))
-    product = relationship("Product", back_populates="item", uselist=False)
+    product_id = Column(UUID(as_uuid=True), ForeignKey('products.id'))  # Assuming there's a 'products' table
+    product = relationship("Product", back_populates="items", uselist=False)
     
-    price_id = Column(UUID(as_uuid=True), ForeignKey('categories.id'))
-    price: Mapped[Price] = relationship("Price", back_populates="item", uselist=False)
-        
-    shifts: Mapped[List[Shift]] = relationship("Shift", back_populates="item")
+    price_id = Column(UUID(as_uuid=True), ForeignKey('prices.id'))  # Assuming there's a 'prices' table
+    price = relationship("Price", back_populates="items", uselist=False)
     
-    context_modifiers: Mapped[List[ItemContextModifier]] = relationship("ItemContextModifier", back_populates="item")
+    shifts = relationship("Shift", back_populates="item")
+    context_modifiers = relationship("ItemContextModifier", back_populates="item")

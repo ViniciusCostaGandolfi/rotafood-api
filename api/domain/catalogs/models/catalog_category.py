@@ -1,4 +1,4 @@
-from uuid import UUID
+from sqlalchemy.dialects.postgresql import UUID
 import uuid
 from sqlalchemy import Column, ForeignKey
 from api.core.database import Base
@@ -15,4 +15,4 @@ class CatalogCategory(Base):
     catalog = relationship("Catalog", back_populates="catalog_categories")
     
     category_id = Column(UUID(as_uuid=True), ForeignKey('categories.id'))
-    category: Category = relationship("Category", back_populates="catalog_categories")
+    category = relationship("Category", back_populates="catalog_categories")

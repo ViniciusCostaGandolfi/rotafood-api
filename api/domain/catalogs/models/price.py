@@ -1,8 +1,8 @@
-from uuid import UUID
 import uuid
 
 from sqlalchemy import Column, Enum, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+from sqlalchemy.dialects.postgresql import UUID
 from api.core.database import Base
 
 class Price(Base):
