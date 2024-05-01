@@ -2,7 +2,7 @@ from datetime import UTC, datetime, timedelta
 from typing import Any, Dict, List, Optional
 from fastapi import HTTPException, status
 from jose import JWTError, jwt
-from api.config.config import ProductionSettings
+from api.config.env_settings import settings
 from api.config.security.dtos.email_token_payload_dto import EmailTokenPayloadDto
 from api.config.security.dtos.token_payload_dto import TokenPayloadDto
 from api.domain.merchant.dtos.merchant_user_dto import MerchantUserDto
@@ -10,7 +10,7 @@ from api.domain.merchant.dtos.merchant_user_email_token import MerchantUserEmail
 from api.domain.merchant.models.merchant_user import MerchantUser
 
 
-SECRET_KEY = ProductionSettings.AUTH_SECRET_KEY
+SECRET_KEY = settings.TOKEN_SECRET_KEY
 ALGORITHM = "HS256"
 
 def create_access_token(user: MerchantUser, expires_delta: Optional[timedelta] = None):
@@ -42,7 +42,7 @@ def create_mercahnt_user_email_token(
             exp=expire.timestamp()
             ).model_dump(), SECRET_KEY, algorithm=ALGORITHM)
 
-def verify_mercahnt_user_email_token(token: str):
+def verify_merchant_user_email_token(token: str):
     try:
         payload_dict = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         return EmailTokenPayloadDto(**payload_dict)

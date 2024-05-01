@@ -4,8 +4,8 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 
-from api.config.authorization.tokens import verify_token
 from api.config.database import get_db
+from api.config.security.decode_token import verify_token
 from api.domain.merchant.models.merchant_permission import MerchantPermission
 from api.domain.merchant.models.merchant_user import MerchantUser
 

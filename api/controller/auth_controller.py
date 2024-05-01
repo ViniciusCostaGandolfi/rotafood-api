@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from api.config.database import get_db
 from api.config.security.auth import get_current_user
-from api.config.security.decode_token import verify_mercahnt_user_email_token
+from api.config.security.decode_token import verify_merchant_user_email_token
 from api.config.security.dtos.email_token_payload_dto import EmailTokenPayloadDto
 from api.config.security.decode_token import create_access_token
 from api.config.security.password_crypt import hash_password, verify_password
@@ -78,7 +78,7 @@ async def login_merchant_user(
 @auth_controller.post("/merchant_users/{token}/")
 async def create_merchant_user_by_email_token( 
                 user_create_dto: MerchantUserCreateDto,
-                payload: EmailTokenPayloadDto = Depends(verify_mercahnt_user_email_token), 
+                payload: EmailTokenPayloadDto = Depends(verify_merchant_user_email_token), 
                 db: Session = Depends(get_db)
                 ):
     

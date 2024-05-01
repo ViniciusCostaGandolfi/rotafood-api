@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from api.controller.auth_controller import auth_controller
 from api.controller.logistic_controller import logistic_controller
 
@@ -14,7 +15,7 @@ app = FastAPI(
     Um sistema de roterização para restaurantes com um 
     ERP acoplado.
     ''',
-    version='v1'
+    version='v1',
 )
 
 # Vou tentar vender uma API
@@ -26,7 +27,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon():
+    return FileResponse('favicon.ico')
 
 app.include_router(auth_controller)
 app.include_router(logistic_controller)

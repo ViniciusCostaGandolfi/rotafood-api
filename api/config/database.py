@@ -1,7 +1,7 @@
 from sqlalchemy import MetaData, create_engine
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
-from api.config.config import ProductionSettings
+from api.config.env_settings import settings
 
 def get_db():
     db = SessionLocal()
@@ -10,7 +10,7 @@ def get_db():
     finally:
         db.close()
 
-database_conection = ProductionSettings.DATABASE_DNS
+database_conection = settings.DATABASE_URL
 engine = create_engine(database_conection)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 metadata = MetaData()

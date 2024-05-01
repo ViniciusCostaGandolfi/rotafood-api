@@ -1,32 +1,38 @@
 from datetime import datetime, UTC
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, HTTPException
 import httpx
 from typing import List
 import numpy as np 
-from numpy.typing import NDArray
-from numpy import float64
 from sklearn.datasets import make_blobs
 
-from api.config.config import ProductionSettings
-from api.config.database import get_db
+from api.config.env_settings import settings
 from api.domain.logistic.dtos.address_dto import AddressDto
 from api.domain.logistic.dtos.cvrp_dto import CvrpBaseDto, CvrpInDto, CvrpOrderDto, CvrpOutDto
-from api.domain.logistic.models import cvrp_in
 
 
 
 
-
+mock_address = AddressDto(
+    street_name = "Rua Paraná",
+    street_number = "10",
+    city = "Limeira",
+    neighborhood = "Vila Esteves",
+    state = "São Paulo",
+    postal_code = "13486-503",
+    formatted_address = "R. Paraná, 10 - Vila Esteves, Limeira - SP, 13480-650, Brasil",
+    complement = "",
+    latitude=-22.574036, 
+    longitude=-47.407711
+)
 
 logistic_controller = APIRouter(prefix='/routes', tags=['Routes'])
 
-ms_logistic_url = ProductionSettings.ROTAFOOD_MS_LOGISTIC 
     
 @logistic_controller.post("/", response_model=CvrpOutDto)
 async def test_cvrp(
     cvrp_in: CvrpInDto
     ):
-    url_api = ms_logistic_url + '/CVRP/'
+    url_api = settings.ROTAFOOD_MS_LOGISTIC_URL + '/CVRP/'
 
     async with httpx.AsyncClient() as client:
         response = await client.post(url_api, content=cvrp_in.model_dump_json(), timeout=600)
@@ -44,12 +50,12 @@ async def test_cvrp(
 @logistic_controller.post("/auto_generate/{number_of_orders}/", response_model=CvrpOutDto)
 async def test_cvrp_autogenerate(      
     number_of_orders: int, 
-    address: AddressDto      
+    address: AddressDto  = mock_address    
     ):                                          
       
     if number_of_orders > 500:
-        return HTTPException(401, "O máximo de pontos por pesquisa é 500")
-    
+        raise HTTPException(401, "O máximo de pontos por pesquisa é 500")
+ 
     center = np.array([[address.latitude, address.longitude]]) 
     std = [0.003]
     localities, _ = make_blobs(n_samples=number_of_orders, centers=center, cluster_std=std) # type: ignore
@@ -66,7 +72,7 @@ async def test_cvrp_autogenerate(
                 formatted_address='str',
                 street_number='str',
                 city='str',
-                postal_code='str',
+                postal_code='str', 
                 neighborhood='str',
                 state='str',
                 complement='str',
@@ -76,13 +82,15 @@ async def test_cvrp_autogenerate(
             )
             ) for i in np.arange(number_of_orders)],
     )
-    url_api = ms_logistic_url + f'/CVRP/'
+    
+    url_api = settings.ROTAFOOD_MS_LOGISTIC_URL + '/CVRP/'
     
     async with httpx.AsyncClient() as client:
-        cvrp_out = await client.post(url_api, content=address.model_dump_json(), timeout=600)
+        cvrp_out = await client.post(url_api, content=cvrp_in.model_dump_json(), timeout=600)
          
     if cvrp_out.status_code != 200:
         HTTPException(401, "Error to request a ms-routes")
-            
-    return CvrpOutDto(**cvrp_out.json()) 
+                
+    return CvrpOutDto(**cvrp_out.json())  
 
+   
