@@ -1,15 +1,16 @@
-from sqlalchemy import Column, DateTime, String, Float, ForeignKey, Text
+from sqlalchemy import Column, DateTime, ForeignKey, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
-from api.core.database import Base
-from api.domain.orders.models.order_indoor_mode import OrderIndoorMode
+from api.config.database import Base
 
 
 class OrderIndoor(Base):
     __tablename__ = 'order_indoors'
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    mode: OrderIndoorMode = Column(String)
+    mode = Column(String(32))
     delivery_date_time = Column(DateTime)
-    table = Column(String)
+
+    order_id = Column(UUID(as_uuid=True), ForeignKey('order.id'))
+    order = relationship("Order", back_populates="indoor")

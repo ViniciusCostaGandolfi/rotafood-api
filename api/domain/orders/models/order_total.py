@@ -1,9 +1,7 @@
-from decimal import Decimal
-from typing import Text
 import uuid
-from sqlalchemy import Column, Decimal, ForeignKey, Numeric
+from sqlalchemy import Column, ForeignKey, Numeric
 from sqlalchemy.orm import relationship
-from api.core.database import Base
+from api.config.database import Base
 from sqlalchemy.dialects.postgresql import UUID
 
 

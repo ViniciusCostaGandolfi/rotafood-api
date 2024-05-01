@@ -1,6 +1,6 @@
 from typing import List, Optional
 from datetime import datetime
-from api.core.helpers import BaseModelCamel
+from api.config.pydantic import BaseModelCamel
 from api.domain.addresses.dtos.address_dto import AddressDto
 from api.domain.ifood_integration.dtos.ifood_order_dto import IFoodOrderDto
 from api.domain.orders.models.order import OrderTimming, OrderType

@@ -4,15 +4,13 @@ from sqlalchemy import pool
 import os
 from alembic import context
 from dotenv import load_dotenv
-from api.core.database import Base
+from api.config.database import Base
 from sqlalchemy import MetaData
-from api.domain.addresses.models import *
-from api.domain.merchants.models import *
-from api.domain.products.models import *
-from api.domain.ifood_integration.models import *
+from api.domain.merchant.models import *
+from api.domain.catalog.models import *
+from api.domain.ifood.models import *
 from api.domain.orders.models import *
-from api.domain.catalogs.models import *
-from api.domain.routes.models import *
+from api.domain.logistic.models import *
 from api.domain.commands.models import *
 
 
@@ -22,8 +20,6 @@ config = context.config
 DATABASE_URL = f"{os.getenv('DATABASE_CONECTION_URL')}"
 config.set_main_option("sqlalchemy.url", DATABASE_URL)
 target_metadata:MetaData = Base.metadata
-# Interpret the config file for Python logging.
-# This line sets up loggers basically.
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
@@ -32,7 +28,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+# target_metadata = None
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

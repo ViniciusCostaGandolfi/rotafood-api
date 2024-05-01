@@ -2,7 +2,7 @@ from typing import Text
 import uuid
 from sqlalchemy import Column, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-from api.core.database import Base
+from api.config.database import Base
 from sqlalchemy.dialects.postgresql import UUID
 
 class OrderCustomer(Base):
@@ -13,3 +13,6 @@ class OrderCustomer(Base):
     phone_number = Column(String)
     segmentation = Column(String)
     orders_count_on_merchant = Column(Integer)
+    
+    order_id = Column(UUID(as_uuid=True), ForeignKey('order.id'))
+    order = relationship("Order", back_populates="customer")

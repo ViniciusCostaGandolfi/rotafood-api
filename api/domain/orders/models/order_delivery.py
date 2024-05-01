@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
-from api.core.database import Base
+from api.config.database import Base
 
 
 class OrderDelivery(Base):
@@ -17,3 +17,6 @@ class OrderDelivery(Base):
     delivery_date_time = Column(DateTime)
     address_id = Column(UUID(as_uuid=True), ForeignKey('addresses.id'))
     address = relationship("Address")
+    
+    order_id = Column(UUID(as_uuid=True), ForeignKey('order.id'))
+    order = relationship("Order", back_populates="delivery")
