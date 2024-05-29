@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 from fastapi import status
-from main import app 
+from api.main import app 
 import random
 
 client = TestClient(app)
@@ -8,33 +8,35 @@ client = TestClient(app)
 def test_create_merchant():
 
     test_merchant_data = {
-        "name": "Test Merchant",
+    "merchant": {
+        "name": "string",
         "documentType": "CNPJ",
-        "document": "12345678901",
+        "document": "string",
         "address": {
-            "streetName": "Rua Teste",
-            "formattedAddress": "Rua Teste, 123",
-            "streetNumber": "123",
-            "city": "Cidade Teste",
-            "postalCode": "12345-678",
-            "neighborhood": "Bairro Teste",
-            "state": "Estado Teste",
-            "complement": "Complemento Teste",
-            "latitude": 0.0,
-            "longitude": 0.0,
-        },
-        "user": {
-            "email": f"{random.random()}@example.com",
-            "name": "Test User",
-            "phone": "123456789",
-            "password": "securepassword",
-        },
+        "streetName": "string",
+        "formattedAddress": "string",
+        "streetNumber": "string",
+        "city": "string",
+        "postalCode": "string",
+        "neighborhood": "string",
+        "state": "string",
+        "complement": "string",
+        "latitude": 0,
+        "longitude": 0
+        }
+    },
+    "user": {
+        "name": "string",
+        "email": "user@example.com",
+        "phone": "string",
+        "password": "string"
+    }
     }
 
     # Faça uma chamada para o endpoint de criação de merchant
-    response = client.post("/auth/merchants/new/", json=test_merchant_data)
+    response = client.post("/auth/merchants/create/", json=test_merchant_data)
     
-    print(response)
+    print(response.json())
 
     # Verifique se a resposta é bem-sucedida (código 200)
     assert response.status_code == 200
