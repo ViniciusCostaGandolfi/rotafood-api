@@ -2,7 +2,7 @@ from uuid import uuid4
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import Column, DateTime, ForeignKey, String
 from sqlalchemy.orm import relationship
-from api.config.database import Base
+from api.services.database_service import Base
 from datetime import datetime
 
 
@@ -13,8 +13,9 @@ class Merchant(Base):
     name = Column(String(64), nullable=False)
     corporate_name = Column(String(64), nullable=False)
     description = Column(String(256), nullable=False)
+    document_type = Column(String(4), nullable=False)
     document = Column(String(16), nullable=False)
-    merchant_type = Column(String(255), nullable=False)
+    merchant_type = Column(String(12), nullable=False)
     created_at = Column(DateTime, nullable=False, default=datetime.now())
     
     address_id = Column(UUID(as_uuid=True), ForeignKey('addresses.id'))

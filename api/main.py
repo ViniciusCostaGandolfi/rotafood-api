@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
-from api.controller.auth_controller import auth_controller
-from api.controller.logistic_controller import logistic_controller
+from api.controller.v1.auth_controller import auth_controller
+from api.controller.v1.merchant_controller import merchant_controller
+from api.controller.v1.logistic_controller import logistic_controller
 
 
 
@@ -33,3 +34,4 @@ def favicon():
 
 app.include_router(auth_controller)
 app.include_router(logistic_controller)
+app.include_router(merchant_controller)

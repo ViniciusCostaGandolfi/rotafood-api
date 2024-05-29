@@ -2,7 +2,7 @@ from datetime import datetime
 from uuid import uuid4
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, DECIMAL, Float, null
 from sqlalchemy.dialects.postgresql import UUID
-from api.config.database import Base
+from api.services.database_service import Base
 from sqlalchemy.orm import relationship, Mapped
 from api.domain.logistic.models.address import Address
 

@@ -3,7 +3,7 @@ import uuid
 
 from sqlalchemy import Column, Enum, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-from api.config.database import Base
+from api.services.database_service import Base
 
 class OptionGroup(Base):
     __tablename__ = 'option_groups'
@@ -13,6 +13,6 @@ class OptionGroup(Base):
     external_code = Column(String)
     index = Column(Integer)
     option_group_type = Column(String)
-    item_id = Column(UUID(as_uuid=True), ForeignKey('items.id'))
-    item = relationship("Item", back_populates="option_groups")
+    product_id = Column(UUID(as_uuid=True), ForeignKey('products.id'))
+    product = relationship("Item", back_populates="option_groups")
     options = relationship("Option", back_populates="option_group", cascade="all, delete-orphan")

@@ -1,5 +1,5 @@
-from api.config.pydantic import CustonModel
+from api.config.custom_model import CustomModel
 
 
-class TokenDto(CustonModel):
+class TokenDto(CustomModel):
     token: str

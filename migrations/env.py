@@ -4,14 +4,12 @@ from sqlalchemy import pool
 import os
 from alembic import context
 from dotenv import load_dotenv
-from api.config.database import Base
+from api.services.database_service import Base
 from sqlalchemy import MetaData
 from api.domain.merchant.models import *
 from api.domain.catalog.models import *
 from api.domain.ifood.models import *
-from api.domain.orders.models import *
 from api.domain.logistic.models import *
-from api.domain.commands.models import *
 
 
 load_dotenv()

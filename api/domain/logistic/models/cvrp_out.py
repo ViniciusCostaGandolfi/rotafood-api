@@ -2,7 +2,7 @@ from typing import List
 from uuid import uuid4
 from sqlalchemy import Column, ForeignKey, DECIMAL, Float
 from sqlalchemy.dialects.postgresql import UUID
-from api.config.database import Base
+from api.services.database_service import Base
 from sqlalchemy.orm import relationship, Mapped
 from api.domain.logistic.models.cvrp_in import CvrpIn
 from api.domain.logistic.models.route import Route

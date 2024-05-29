@@ -1,5 +1,5 @@
 from typing import List, Optional
-from api.config.pydantic import BaseModelCamel
+from api.services.custom_model_service import BaseModelCamel
 from api.domain.products.dtos.product_dto import ProductDto
 
 

@@ -1,40 +1,45 @@
 from typing import List, Optional, Tuple
-import uuid
-from api.config.pydantic import CustonModel
+from uuid import uuid4
+from api.config.custom_model import CustomModel
+from pydantic import UUID4, Field
 from api.domain.logistic.dtos.address_dto import AddressDto
 
+class CoordinateDto(CustomModel):
+    lat: float
+    lon: float
 
-class CvrpOrderDto(CustonModel):
-    id: Optional[str] = str(uuid.uuid4()) 
-    total_volume: float
-    create_at: int
+class CvrpOrderDto(CustomModel):
+    id: Optional[UUID4] = Field(default_factory=uuid4) 
+    volume_liters: float
+    created_at: int
     address: AddressDto
     
-class CvrpBaseDto(CustonModel):
-    id: Optional[str] = str(uuid.uuid4()) 
+class CvrpBaseDto(CustomModel):
+    id: Optional[UUID4] = Field(default_factory=uuid4) 
     address: AddressDto
     
-class CvrpRouteDto(CustonModel):
-    id: Optional[str] = str(uuid.uuid4()) 
+class CvrpRouteDto(CustomModel):
+    id: Optional[UUID4] = Field(default_factory=uuid4) 
     sequence: List[int]
     orders: List[CvrpOrderDto]
-    route_line: List[Tuple[float, float]]
-    distance_in_km: float
-    total_volume: float
-    max_route_orders: Optional[int] = None
+    route_line: List[CoordinateDto]
+    distance_km: float
+    volume_liters: float
     link_google_maps: str
-
-class CvrpOutDto(CustonModel):
-    id: Optional[str] = str(uuid.uuid4()) 
+ 
+class CvrpOutDto(CustomModel):
+    id: Optional[UUID4] = Field(default_factory=uuid4) 
     base: CvrpBaseDto
-    routes: List[CvrpRouteDto]
-    max_route_volume: float
+    routes: List[CvrpRouteDto] 
+    max_route_volume: float 
     max_route_orders: Optional[int] = None
 
 
-class CvrpInDto(CustonModel):
-    id: Optional[str] = str(uuid.uuid4()) 
+
+class CvrpInDto(CustomModel):
+    id: Optional[UUID4] = Field(default_factory=uuid4) 
     base: CvrpBaseDto
     orders: List[CvrpOrderDto]
     max_route_volume: float
-    max_route_orders: Optional[int] = None
+    max_route_orders: Optional[int] = None  
+ 

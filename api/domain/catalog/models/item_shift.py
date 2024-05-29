@@ -4,7 +4,7 @@ from uuid import uuid4
 from sqlalchemy.dialects.postgresql import UUID, ARRAY
 from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, Numeric, String
 from sqlalchemy.orm import relationship, Mapped
-from api.config.database import Base
+from api.services.database_service import Base
 
 if TYPE_CHECKING:
     from api.domain.catalog.models.item import Item

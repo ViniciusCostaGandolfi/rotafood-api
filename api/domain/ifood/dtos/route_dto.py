@@ -1,6 +1,6 @@
 from typing import List, Optional, Tuple
 from pydantic import BaseModel, ConfigDict
-from api.config.pydantic import BaseModelCamel, to_camel
+from api.services.custom_model_service import BaseModelCamel, to_camel
 from api.domain.addresses.dtos.address_dto import AddressDto
 from api.domain.merchants.dtos.merchant_dto import MerchantDto
 from api.domain.orders.dtos.order_dto import OrderDto

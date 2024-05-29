@@ -1,10 +1,11 @@
 from typing import Optional
-from api.config.pydantic import CustonModel
+
+from api.config.custom_model import CustomModel
 
 
 
 
-class AddressDto(CustonModel):
+class AddressDto(CustomModel):
     id: Optional[str] = None
     street_name: str
     formatted_address: str

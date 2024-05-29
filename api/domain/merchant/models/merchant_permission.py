@@ -3,7 +3,7 @@ from enum import Enum
 
 class MerchantPermission(Enum):
     CATALOG = 'CATALOG'
-    ORDERS = 'ORDERS'
+    ORDER = 'ORDER'
     COMMAND = 'COMMAND'
     LOGISTIC = 'LOGISTIC'
     MERCHANT = 'MERCHANT'

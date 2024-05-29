@@ -3,7 +3,7 @@ from uuid import uuid4
 from sqlalchemy.dialects.postgresql import UUID, ARRAY
 from sqlalchemy import Column, DateTime, ForeignKey, Numeric, String
 from sqlalchemy.orm import relationship, Mapped
-from api.config.database import Base
+from api.services.database_service import Base
 from datetime import datetime
 
 if TYPE_CHECKING:
@@ -28,6 +28,8 @@ class Product(Base):
     
     created_at = Column(DateTime, nullable=False, default=datetime.now())
     
+    option_groups = relationship('OptionGroups', uselist=True)
+    
     merchant_id = Column(UUID(as_uuid=True), ForeignKey('merchants.id'))
-    merchant = relationship('Merchant', back_populates='products')
+    merchant = relationship('Merchant', back_populates='products', uselist=False)
     

@@ -1,7 +1,7 @@
 from uuid import uuid4
 from sqlalchemy import DECIMAL, Column, ForeignKey, Integer, String, Float
 from sqlalchemy.dialects.postgresql import UUID
-from api.config.database import Base
+from api.services.database_service import Base
 
 
 class Vehicle(Base):

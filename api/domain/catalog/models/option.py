@@ -2,7 +2,7 @@ import uuid
 
 from sqlalchemy import Column, Enum, Float, ForeignKey, Integer, Numeric, String
 from sqlalchemy.orm import relationship
-from api.config.database import Base
+from api.services.database_service import Base
 from sqlalchemy.dialects.postgresql import UUID
 
 class Option(Base):

@@ -1,7 +1,7 @@
 from uuid import uuid4
 from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.dialects.postgresql import UUID
-from api.config.database import Base
+from api.services.database_service import Base
 
 
 class Address(Base):

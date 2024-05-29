@@ -1,17 +1,10 @@
 from typing import TYPE_CHECKING, List
 from uuid import uuid4
 from sqlalchemy.dialects.postgresql import UUID, ARRAY
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, Numeric, String
-from sqlalchemy.orm import relationship, Mapped
-from api.config.database import Base
+from sqlalchemy import Column, ForeignKey, Integer, Numeric, String
+from sqlalchemy.orm import relationship
+from api.services.database_service import Base
 
-if TYPE_CHECKING:
-    from api.domain.catalog.models.item_context_modifier import ItemContextModifier
-    from api.domain.catalog.models.category import Category
-    from api.domain.catalog.models.item_shift import ItemShift
-    from api.domain.catalog.models.price import Price
-    from api.domain.catalog.models.product import Product
-    from api.domain.merchant.models.merchant import Merchant
 
 class Item(Base):
     __tablename__ = 'items'

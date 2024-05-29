@@ -1,7 +1,7 @@
-from api.config.pydantic import CustonModel
+from api.config.custom_model import CustomModel
 
 
-class MerchantUserCreateDto(CustonModel):
+class MerchantUserCreateDto(CustomModel):
     name: str
     phone: str
     password: str
