@@ -25,7 +25,7 @@ address_mock = AddressDto(
     longitude=-47.407711
 )
 
-logistic_controller = APIRouter(prefix='/routes', tags=['Routes'])
+logistic_controller = APIRouter(prefix='/routes', tags=['Logistic'])
 
     
 @logistic_controller.post("/vrp", response_model=CvrpOutDto)
