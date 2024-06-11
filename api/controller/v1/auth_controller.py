@@ -7,7 +7,7 @@ from api.services.security.decode_token_service import create_access_token
 from api.services.security.password_crypt_service import hash_password, verify_password
 from api.domain.logistic.models.address import Address
 from api.domain.merchant.dtos.login_dto import LoginDto
-from api.domain.merchant.dtos.merchant_create_dto import MerchantCreateDto
+from api.domain.merchant.dtos.merchant_create_dto import MerchantAndOwnerCreationDto
 from api.domain.merchant.dtos.merchant_user_create_dto import MerchantUserCreateDto
 from api.domain.merchant.dtos.merchant_user_dto import MerchantUserDto
 from api.domain.merchant.dtos.merchant_user_email_token import MerchantUserEmailTokenDto
@@ -21,7 +21,7 @@ auth_controller = APIRouter(prefix='/auth', tags=['Auth'])
     
 @auth_controller.post("/sigin")
 async def create_merchant(
-    merchant_create_dto: MerchantCreateDto, 
+    merchant_create_dto: MerchantAndOwnerCreationDto, 
     db: Session = Depends(get_db)) -> TokenDto:
     
     email = db.query(MerchantUser).filter(MerchantUser.email == merchant_create_dto.owner.email).first()
