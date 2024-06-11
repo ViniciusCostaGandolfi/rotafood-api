@@ -10,7 +10,7 @@ class OwnerDto(CustomModel):
     phone: str
     password: str
     
-class MerchantDto(CustomModel):
+class MerchantCreateDto(CustomModel):
     name: str
     corporate_name: str
     description: str
@@ -18,8 +18,8 @@ class MerchantDto(CustomModel):
     document: str
     address: AddressDto
 
-class MerchantCreateDto(CustomModel):
-    merchant: MerchantDto
+class MerchantAndOwnerCreationDto(CustomModel):
+    merchant: MerchantCreateDto
     owner: OwnerDto
 
 

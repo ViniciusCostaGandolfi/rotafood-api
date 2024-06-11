@@ -1,7 +1,7 @@
 from typing import List, Optional
 from api.config.custom_model import CustomModel
 from api.domain.catalog.dtos.option_group_dto import OptionGroupDto
-from api.domain.catalog.models.DietaryRestrictions import DietaryRestriction
+from api.domain.catalog.models.dietary_restrictions import DietaryRestriction
 from api.domain.catalog.models.product_type import ProductType
 from api.domain.storage.dtos.image_dto import ImageDto
 

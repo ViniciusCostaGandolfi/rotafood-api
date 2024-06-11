@@ -15,5 +15,5 @@ class CatalogCategory(Base):
     catalog = relationship('Catalog', back_populates='categories')
     
     category_id = Column(UUID(as_uuid=True), ForeignKey('categories.id'))
-    category = relationship('category', back_populates='catalogs')
+    category = relationship('Category', back_populates='catalogs')
    
