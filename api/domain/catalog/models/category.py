@@ -17,7 +17,9 @@ class Category(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     name = Column(String(64), nullable=False)
-    
+    status = Column(String(16), nullable=False)
+    index = Column(Integer, nullable=False)
+    template = Column(String(16), nullable=False)
     merchant_id = Column(UUID(as_uuid=True), ForeignKey('merchants.id'))
     merchant = relationship('Merchant', back_populates='items', uselist=False)
     
