@@ -14,5 +14,5 @@ class OptionGroup(Base):
     index = Column(Integer)
     option_group_type = Column(String)
     product_id = Column(UUID(as_uuid=True), ForeignKey('products.id'))
-    product = relationship("Item", back_populates="option_groups")
+    product = relationship("Product", back_populates="option_groups")
     options = relationship("Option", back_populates="option_group", cascade="all, delete-orphan")

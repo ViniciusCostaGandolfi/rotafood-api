@@ -27,9 +27,7 @@ class Product(Base):
     volume_unit = Column(Numeric(10, 2), nullable=False)
     
     created_at = Column(DateTime, nullable=False, default=datetime.now())
-    
-    option_groups = relationship('OptionGroups', uselist=True)
-    
+        
     merchant_id = Column(UUID(as_uuid=True), ForeignKey('merchants.id'))
     merchant = relationship('Merchant', back_populates='products', uselist=False)
     
