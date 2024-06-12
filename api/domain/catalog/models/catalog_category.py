@@ -7,7 +7,7 @@ from api.services.database_service import Base
 
 
 class CatalogCategory(Base):
-    __tablename__ = 'items'
+    __tablename__ = 'catalog_categories'
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     

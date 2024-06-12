@@ -10,7 +10,7 @@ from api.services.security.auth_service import permission_dependency
 from api.domain.merchant.dtos.merchant_user_dto import MerchantUserDto
 from api.domain.merchant.models.merchant_permission import MerchantPermission
 
-product_controller = APIRouter(prefix='/products', tags=['Product']) 
+product_controller = APIRouter(prefix='/products', tags=['Catalog']) 
 
 @product_controller.get("/", response_model=PaginationResponse[ProductDto])
 async def get_products(
@@ -37,7 +37,7 @@ async def create_product(
     db: Session = Depends(get_db),
 ):
     product = Product(
-        **product_data.dict(),
+        **product_data.model_dump(),
         merchant_id=merchant_user.merchant.id
     )
     db.add(product)
@@ -77,7 +77,7 @@ async def update_product(
     if not product:
         raise HTTPException(status_code=404, detail="Produto não encontrado")
 
-    for attr, value in product_data.dict(exclude_unset=True).items():
+    for attr, value in product_data.model_dump(exclude=set(['id'])).items():
         setattr(product, attr, value)
 
     db.commit()

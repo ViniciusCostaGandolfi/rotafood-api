@@ -26,4 +26,4 @@ app.add_middleware(
 def favicon():
     return FileResponse('favicon.ico')
 
-app.include_router(v1_router)
+app.include_router(v1_router, prefix='/v1')

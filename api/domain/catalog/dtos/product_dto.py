@@ -3,7 +3,6 @@ from typing import List, Optional
 
 from pydantic import UUID4
 from api.config.custom_model import CustomModel
-from api.domain.catalog.dtos.option_group_dto import OptionGroupDto
 from api.domain.storage.dtos.image_dto import ImageDto
     
     
