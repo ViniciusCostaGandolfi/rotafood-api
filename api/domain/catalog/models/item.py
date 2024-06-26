@@ -1,6 +1,8 @@
+from datetime import datetime
 from uuid import uuid4
+from sqlalchemy import DateTime, Integer, String
 from sqlalchemy.dialects.postgresql import UUID, ARRAY
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.schema import Column, ForeignKey
 from sqlalchemy.orm import relationship
 from api.services.database_service import Base
 
@@ -12,10 +14,12 @@ class Item(Base):
     status = Column(String(16), nullable=False)
     index = Column(Integer, nullable=False)
     dietary_restrictions = Column(ARRAY(String(32)))
+    
+    created_at = Column(DateTime, nullable=False, default=datetime.now())
 
     product_id = Column(UUID(as_uuid=True), ForeignKey('products.id'))
     product = relationship('Product', back_populates='items', uselist=False)
-
+    
     price_id = Column(UUID(as_uuid=True), ForeignKey('prices.id'))
     price = relationship('Price', back_populates='items', uselist=False)
 

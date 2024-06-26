@@ -1,15 +1,11 @@
-from typing import TYPE_CHECKING, List
 from uuid import uuid4
-from sqlalchemy.dialects.postgresql import UUID, ARRAY
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, Numeric, String
-from sqlalchemy.orm import relationship, Mapped
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Integer, String
+from sqlalchemy.schema import Column, ForeignKey
+from sqlalchemy.orm import relationship
 from api.services.database_service import Base
 
 
-if TYPE_CHECKING:
-    from api.domain.catalog.models.item import Item
-    from api.domain.merchant.models.merchant import Merchant
-    from api.domain.catalog.models.catalog_category import CatalogCategory
 
 
 class Category(Base):

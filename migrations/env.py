@@ -1,23 +1,18 @@
 from logging.config import fileConfig
-from sqlalchemy import engine_from_config
+from sqlalchemy import MetaData, engine_from_config
 from sqlalchemy import pool
-import os
 from alembic import context
-from dotenv import load_dotenv
+from api.config.env_settings import settings
 from api.services.database_service import Base
-from sqlalchemy import MetaData
 from api.domain.merchant.models import *
 from api.domain.catalog.models import *
+from api.domain.order.models import *
 from api.domain.ifood.models import *
 from api.domain.logistic.models import *
 
 
-load_dotenv()
-
 config = context.config
-DATABASE_URL = f"{os.getenv('DATABASE_CONECTION_URL')}"
-config.set_main_option("sqlalchemy.url", DATABASE_URL)
-target_metadata:MetaData = Base.metadata
+config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)

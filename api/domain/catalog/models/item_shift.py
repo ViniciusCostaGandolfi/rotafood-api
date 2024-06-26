@@ -1,9 +1,9 @@
 from datetime import datetime
 from typing import TYPE_CHECKING, List
 from uuid import uuid4
-from sqlalchemy.dialects.postgresql import UUID, ARRAY
-from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, Numeric, String
-from sqlalchemy.orm import relationship, Mapped
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.types import Integer, String, Numeric, Boolean, Text, DateTime
+from sqlalchemy.schema import Column, ForeignKey
 from api.services.database_service import Base
 
 if TYPE_CHECKING:

@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 
 from api.services.database_service import Base
-from api.domain.orders.models.order_payment_type import OrderPaymentType
+from api.domain.order.models.order_payment_type import OrderPaymentType
 
 
 class OrderPayment(Base):
@@ -15,5 +15,5 @@ class OrderPayment(Base):
     currency = Column(String)
     type = Column(String)
     value = Column(Numeric(10, 2))
-    order_id = Column(UUID(as_uuid=True), ForeignKey('order_details.id'))
+    order_id = Column(UUID(as_uuid=True), ForeignKey('orders.id'))
     order = relationship("OrderDetails", back_populates="payments")

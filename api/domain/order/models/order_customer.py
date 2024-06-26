@@ -14,5 +14,5 @@ class OrderCustomer(Base):
     segmentation = Column(String)
     orders_count_on_merchant = Column(Integer)
     
-    order_id = Column(UUID(as_uuid=True), ForeignKey('order.id'))
+    order_id = Column(UUID(as_uuid=True), ForeignKey('orders.id'))
     order = relationship("Order", back_populates="customer")

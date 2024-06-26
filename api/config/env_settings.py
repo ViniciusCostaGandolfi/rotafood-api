@@ -1,8 +1,8 @@
+import os
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from dotenv import load_dotenv
 
 load_dotenv()
-
 
 class Settings(BaseSettings):
     TOKEN_SECRET_KEY: str = ''

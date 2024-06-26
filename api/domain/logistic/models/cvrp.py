@@ -4,14 +4,15 @@ from uuid import uuid4
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, DECIMAL, Float
 from sqlalchemy.dialects.postgresql import UUID
 from api.services.database_service import Base
-from sqlalchemy.orm import relationship, Mapped
+from sqlalchemy.orm import relationship
 from api.domain.logistic.models.route_order import RouteOrder
 
 
-class CvrpIn(Base):
-    __tablename__ = 'cvrp_ins'
+class Cvrp(Base):
+    __tablename__ = 'cvrps'
     
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     
-    create_at = Column(DateTime(), default=datetime.now(), nullable=False)
-    
+    secconds_to_solve = Column(DECIMAL(precision=10, scale=3))
+    total_discente_meters = Column(DECIMAL(precision=10, scale=3))
+    routes = relationship('Route', uselist=True)

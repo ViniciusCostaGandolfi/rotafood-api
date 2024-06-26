@@ -1,5 +1,6 @@
-from sqlalchemy import MetaData, create_engine
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.schema import MetaData
+from sqlalchemy.engine import create_engine
+from sqlalchemy.orm.decl_api import declarative_base
 from sqlalchemy.orm import sessionmaker
 from api.config.env_settings import settings
 

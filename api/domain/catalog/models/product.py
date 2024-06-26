@@ -1,16 +1,15 @@
-from typing import TYPE_CHECKING, List
 from uuid import uuid4
-from sqlalchemy.dialects.postgresql import UUID, ARRAY
 from sqlalchemy import Column, DateTime, ForeignKey, Numeric, String
-from sqlalchemy.orm import relationship, Mapped
+from sqlalchemy.dialects.postgresql import UUID, ARRAY
+from sqlalchemy.orm import relationship
 from api.services.database_service import Base
 from datetime import datetime
 
-if TYPE_CHECKING:
-    from api.domain.merchant.models.merchant import Merchant
-
 class Product(Base):
     __tablename__ = 'products'
+
+    name = Column(String(30), nullable=False)
+
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     name = Column(String(64), nullable=False)
@@ -21,10 +20,10 @@ class Product(Base):
     dietary_restrictions = Column(ARRAY(String(32)))
     
     weight_unit = Column(String(8), nullable=False)
-    weight_unit = Column(Numeric(10, 2), nullable=False)
+    weight = Column(Numeric(10, 2), nullable=False)
     
     volume_unit = Column(String(8), nullable=False)
-    volume_unit = Column(Numeric(10, 2), nullable=False)
+    volume = Column(Numeric(10, 2), nullable=False)
     
     created_at = Column(DateTime, nullable=False, default=datetime.now())
         

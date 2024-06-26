@@ -12,5 +12,5 @@ class OrderIndoor(Base):
     mode = Column(String(32))
     delivery_date_time = Column(DateTime)
 
-    order_id = Column(UUID(as_uuid=True), ForeignKey('order.id'))
+    order_id = Column(UUID(as_uuid=True), ForeignKey('orders.id'))
     order = relationship("Order", back_populates="indoor")

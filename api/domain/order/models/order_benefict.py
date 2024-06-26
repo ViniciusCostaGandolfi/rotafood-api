@@ -12,5 +12,5 @@ class OrderBenefit(Base):
     description = Column(String(32))
     value = Column(Numeric(10, 2))
     target = Column(String(32))
-    order_id = Column(UUID(as_uuid=True), ForeignKey('order_details.id'))
+    order_id = Column(UUID(as_uuid=True), ForeignKey('orders.id'))
     order = relationship("OrderDetails", back_populates="benefits")

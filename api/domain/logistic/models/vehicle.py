@@ -15,6 +15,6 @@ class Vehicle(Base):
     max_items_quantity = Column(Integer(), nullable=True)
     max_distance_meters = Column(DECIMAL(precision=10, scale=3), nullable=True)
     
-    cvrp_in_id = Column(ForeignKey('cvrp_ins.id'))
+    cvrp_in_id = Column(ForeignKey('cvrps.id'))
     route_id = Column(ForeignKey('routes.id'))
 

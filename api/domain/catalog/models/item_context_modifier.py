@@ -1,6 +1,8 @@
 from uuid import uuid4
+from sqlalchemy import String
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy import Column, ForeignKey, String
+from sqlalchemy.schema import Column, ForeignKey
+from sqlalchemy.orm import relationship
 from sqlalchemy.orm import relationship
 from api.services.database_service import Base
 
