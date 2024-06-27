@@ -35,7 +35,7 @@ async def create_merchant(
     
     
     merchant = Merchant(
-        **merchant_create_dto.merchant.model_dump(exclude=set('address')),
+        **merchant_create_dto.merchant.model_dump(exclude=set(['address'])),
             address_id=address.id
         )
     db.add(merchant) 
@@ -54,13 +54,15 @@ async def create_merchant(
     db.add(merchant_user)
     db.commit()
     db.refresh(merchant_user)
+
+    print(MerchantUserDto.model_validate(merchant_user))
     
-    token = create_access_token(merchant_user)
+    token = create_access_token(MerchantUserDto.model_validate(merchant_user))
     
     return TokenDto(token=token)
 
 
-@auth_controller.post("/login/")
+@auth_controller.post("/login")
 async def login_merchant_user(
         login_dto:LoginDto,
         db: Session = Depends(get_db)
@@ -76,7 +78,7 @@ async def login_merchant_user(
     
 
 
-@auth_controller.post("/merchant_users/{token}/")
+@auth_controller.post("/merchant_users/{token}")
 async def create_merchant_user_by_email_token( 
                 user_create_dto: MerchantUserCreateDto,
                 payload: MerchantUserEmailTokenDto = Depends(verify_merchant_user_email_token), 
@@ -101,7 +103,7 @@ async def create_merchant_user_by_email_token(
     return TokenDto(token=create_access_token(MerchantUserDto.model_validate(user)))
         
     
-@auth_controller.post("/refresh_token/")
+@auth_controller.post("/refresh_token")
 async def refresh_token( 
                 current_user = Depends(get_current_user), 
                 ):

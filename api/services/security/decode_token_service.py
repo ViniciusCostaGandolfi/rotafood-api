@@ -23,7 +23,7 @@ def create_access_token(merchant_user: MerchantUserDto, expires_delta: Optional[
         TokenPayloadDto(
             merchant_user=merchant_user, 
             exp=expire.timestamp()
-            ).model_dump(), SECRET_KEY, algorithm=ALGORITHM)
+            ).model_dump(mode='json'), SECRET_KEY, algorithm=ALGORITHM)
 
 def create_merchant_user_email_token(
     admin: MerchantUserDto, 

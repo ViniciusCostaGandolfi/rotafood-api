@@ -1,10 +1,8 @@
-from datetime import datetime
 from uuid import uuid4
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, DECIMAL, Float
+from sqlalchemy import Column, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from api.services.database_service import Base
 from sqlalchemy.orm import relationship
-from api.domain.logistic.models.address import Address
 
 
 class RouteOrder(Base):
@@ -17,4 +15,4 @@ class RouteOrder(Base):
     route = relationship('Route', uselist=False)
     
     order_id = Column(ForeignKey('orders.id'))
-    order = relationship('Order', uselist=False)
+    # order = relationship('Order', uselist=False)

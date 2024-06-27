@@ -1,6 +1,6 @@
 from typing import List, Optional
 from typing import Generic, TypeVar
-from pydantic import BaseModel, ConfigDict
+from pydantic import UUID4, BaseModel, ConfigDict
 
 
 def to_camel(string: str) -> str:
@@ -12,6 +12,7 @@ class CustomModel(BaseModel):
         from_attributes=True, 
         alias_generator=to_camel, 
         populate_by_name=True,
-        use_enum_values=True)
+        use_enum_values=True,
+        )
     
     

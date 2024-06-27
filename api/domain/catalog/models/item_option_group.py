@@ -11,8 +11,8 @@ class ItemOptionGroup(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     
     option_group_id = Column(UUID(as_uuid=True), ForeignKey('option_groups.id'))
-    option_group = relationship('OptionGroup', back_populates='items')
+    option_group = relationship('OptionGroup')
     item_id = Column(UUID(as_uuid=True), ForeignKey('items.id'))
-    item = relationship('Item', back_populates='option_groups')
+    item = relationship('Item')
 
    

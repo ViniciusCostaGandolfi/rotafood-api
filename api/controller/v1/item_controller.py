@@ -46,7 +46,7 @@ async def create_item(
         raise HTTPException(status_code=404, detail="Categoria não encontrada")
 
     item = Item(
-        **item_data.dict(exclude={'price', 'shifts', 'context_modifiers', 'option_groups'}),  # Exclui campos aninhados
+        **item_data.model_dump(exclude=set(['price', 'shifts', 'context_modifiers', 'option_groups'])),
         merchant_id=merchant_user.merchant.id
     )
     db.add(item)

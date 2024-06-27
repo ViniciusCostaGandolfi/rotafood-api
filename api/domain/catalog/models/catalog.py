@@ -13,5 +13,5 @@ class Catalog(Base):
     modified_at = Column(DateTime, nullable=False, default=datetime.now())
     catalog_context_modifier = Column(String(32), nullable=False)
     merchant_id = Column(UUID(as_uuid=True), ForeignKey('merchants.id'))
-    merchant = relationship('Merchant', back_populates='catalogs')
-    categories = relationship('CatalogCategory', back_populates='catalog')
+    merchant = relationship('Merchant')
+    categories = relationship('CatalogCategory', back_populates='catalog') 

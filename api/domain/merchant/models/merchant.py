@@ -15,7 +15,7 @@ class Merchant(Base):
     description = Column(String(256), nullable=False)
     document_type = Column(String(4), nullable=False)
     document = Column(String(16), nullable=False)
-    merchant_type = Column(String(12), nullable=False)
+
     created_at = Column(DateTime, nullable=False, default=datetime.now())
     
     address_id = Column(UUID(as_uuid=True), ForeignKey('addresses.id'))

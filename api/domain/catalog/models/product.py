@@ -28,5 +28,5 @@ class Product(Base):
     created_at = Column(DateTime, nullable=False, default=datetime.now())
         
     merchant_id = Column(UUID(as_uuid=True), ForeignKey('merchants.id'))
-    merchant = relationship('Merchant', back_populates='products', uselist=False)
+    merchant = relationship('Merchant', uselist=False)
     

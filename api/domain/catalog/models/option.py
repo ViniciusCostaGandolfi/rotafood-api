@@ -12,5 +12,5 @@ class Option(Base):
     price = Column(Numeric(10, 2))
     external_code = Column(String)
     option_group_id = Column(UUID(as_uuid=True), ForeignKey('option_groups.id'))
-    product = relationship("Product", uselist=False, back_populates="option")
+    product = relationship("Product", uselist=False)
     product_id = Column(UUID(as_uuid=True), ForeignKey('products.id'))

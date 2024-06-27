@@ -17,7 +17,7 @@ class ItemContextModifier(Base):
     item_id = Column(UUID(as_uuid=True), ForeignKey('items.id'))
     
     price_id = Column(UUID(as_uuid=True), ForeignKey('prices.id'))
-    price = relationship('Price', back_populates='items', uselist=False)
+    price = relationship('Price', uselist=False)
     
     catalog_context = Column(String(64), nullable=False)
     

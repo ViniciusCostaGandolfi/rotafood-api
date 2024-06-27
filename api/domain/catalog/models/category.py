@@ -17,8 +17,8 @@ class Category(Base):
     index = Column(Integer, nullable=False)
     template = Column(String(16), nullable=False)
     merchant_id = Column(UUID(as_uuid=True), ForeignKey('merchants.id'))
-    merchant = relationship('Merchant', back_populates='items', uselist=False)
+    merchant = relationship('Merchant', uselist=False)
     
-    catalogs = relationship('CatalogCategory', back_populates='categories', uselist=True)
+    catalogs = relationship('CatalogCategory', back_populates='category', uselist=True)
     items = relationship('Item', back_populates='category', uselist=True)
     

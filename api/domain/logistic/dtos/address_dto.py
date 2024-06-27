@@ -1,12 +1,14 @@
 from typing import Optional
 
+from pydantic import UUID4
+
 from api.config.custom_model import CustomModel
 
 
 
 
 class AddressDto(CustomModel):
-    id: Optional[str] = None
+    id: Optional[UUID4] = None
     street_name: str
     formatted_address: str
     street_number: str
