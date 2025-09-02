@@ -1,0 +1,42 @@
+{"properties": [
+  {
+    "name": "api.security.token.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'api.security.token.secret'"
+  },
+  {
+    "name": "minio.access.name",
+    "type": "java.lang.String",
+    "description": "A description for 'minio.access.name'"
+  },
+  {
+    "name": "minio.url",
+    "type": "java.lang.String",
+    "description": "A description for 'minio.url'"
+  },
+  {
+    "name": "minio.access.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'minio.access.secret'"
+  },
+  {
+    "name": "minio.bucket.name",
+    "type": "java.lang.String",
+    "description": "A description for 'minio.bucket.name'"
+  },
+  {
+    "name": "api.security.allowed.origin",
+    "type": "java.lang.String",
+    "description": "A description for 'api.security.allowed.origin'"
+  },
+  {
+    "name": "gcp.bucket.name",
+    "type": "java.lang.String",
+    "description": "A description for 'gcp.bucket.name'"
+  },
+  {
+    "name": "gcp.bucket.url",
+    "type": "java.lang.String",
+    "description": "A description for 'gcp.bucket.url'"
+  }
+]}

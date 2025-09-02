@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rotafood Disponível</title>
+    <meta charset="UTF-8" />
+</head>
+<body style="font-family: Arial, sans-serif;">
+    <h2>Olá, <span th:text="${username}">Usuário</span>!</h2>
+    <p>A sua rota do Rotafood está disponível. Para acessar, clique no botão abaixo:</p>
+
+    <a th:href="${rotafoodLink}"
+       style="background-color: #2F8DE1; color: white; padding: 10px 20px;
+              border-radius: 5px; text-decoration: none;">
+        Acessar Rotafood
+    </a>
+
+    <p style="margin-top: 20px;">
+        Se não estiver conseguindo clicar, copie e cole no navegador:
+        <br />
+        <span th:text="${rotafoodLink}">https://rotafood-web.com</span>
+    </p>
+</body>
+</html>

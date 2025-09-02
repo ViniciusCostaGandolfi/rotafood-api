@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  # rotafood-api:
+  #   container_name: rotafood-api
+  #   build:
+  #     context: ./
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./rotafood-api:/usr/src/app
+  #   env_file:
+  #     - ./.env
+
+  # postgres:
+  #   image: postgres:17
+  #   container_name: postgres
+  #   ports:
+  #     - "5433:5432"
+  #   environment:
+  #     POSTGRES_DB: rotafood
+  #     POSTGRES_USER: rotafood
+  #     POSTGRES_PASSWORD: rotafood
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   restart: always
+
+
+  rotafood-ms-logistic:
+    container_name: rotafood-ms-logistic
+    build:
+      context: ../rotafood-ms-logistic
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./rotafood-ms-logistic:/usr/src/app
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    restart: always
+
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    restart: always
+  redis:
+    image: redis:7.2
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+
+  redis-insight:
+    image: redis/redisinsight:latest
+    container_name: redis-insight
+    restart: always
+    ports:
+      - "5540:5540"
+    volumes:
+      - redis_insight:/data
+
+volumes:
+  # postgres_data:
+  rabbitmq_data:
+  minio_data:
+  redis_insight:
+

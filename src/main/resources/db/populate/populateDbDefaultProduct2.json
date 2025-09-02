@@ -1,0 +1,1003 @@
+[
+    {
+        "id": "54209fe0-b3f1-4645-977c-94ae3d2cc07e",
+        "name": "Fava Branca Bahia",
+        "description": "Compra por peso",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210200415_pnd9z64gyj.jpg"
+        },
+        "productEan": "SM00200350798"
+    },
+    {
+        "id": "1cbd6c77-934b-4c79-b90b-7542f6b947ad",
+        "name": "Cerveja Beer Esporte Clube Bahia Brahma 269ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202211240910_a6s6r154lw7.jpg"
+        },
+        "productEan": "7891149104291"
+    },
+    {
+        "id": "0f90c1b7-e4d8-4e9f-9d68-cf1fca1a2756",
+        "name": "Farinha da Bahia Branca",
+        "description": "Compra por peso",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210200415_ei285ttsf28.jpg"
+        },
+        "productEan": "SM00200350802"
+    },
+    {
+        "id": "9efe7e7d-dbc6-43ae-9ead-1a61f47239b3",
+        "name": "Cola Branca Maxi 110g - Frama",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202408300328_trkxftpthe.jpeg"
+        },
+        "productEan": "7897562235444"
+    },
+    {
+        "id": "5682b134-2a6f-4e22-a453-53ac198a4b49",
+        "name": "Cerveja Brahma",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192154_5zll406nhvw.jpg"
+        },
+        "productEan": "SM00200051929"
+    },
+    {
+        "id": "5bc907d4-4b68-4dfc-8f1f-934824486690",
+        "name": "Brahma 473ml",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202410251736_43a9xgzunrk.jpeg"
+        },
+        "productEan": "400001111253"
+    },
+    {
+        "id": "f0af95b8-7d51-4c94-ba50-aa79f57dbf80",
+        "name": "Cebola Branca com Rama",
+        "description": "Compra por peso",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190406_5i1u5qh8os.jpg"
+        },
+        "productEan": "SM00200203790"
+    },
+    {
+        "id": "3e24c817-9a71-4794-a25c-6b4be616094c",
+        "name": "Rama Branca Lugano 35g",
+        "description": "Unidade 35g",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190455_zm59stwzqx9.jpg"
+        },
+        "productEan": "7896840320551"
+    },
+    {
+        "id": "37fdd6b8-8075-4021-93bc-1d24a30e0c18",
+        "name": "Cocada Branca Delícia da Bahia 35g",
+        "description": "Embalagem 35g",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202311271003_c7z9lct4ayq.jpg"
+        },
+        "productEan": "7898922791150"
+    },
+    {
+        "id": "bf0081f4-4291-4687-b2c7-83f5d9fd5883",
+        "name": "Farinha de Mandioca Bahia Branca 1kg",
+        "description": "Unidade 1kg",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192202_tyyw9civkiq.jpg"
+        },
+        "productEan": "7898031690078"
+    },
+    {
+        "id": "3ed2163b-78a7-47e1-ac2d-0a2b3f99a62d",
+        "name": "Cola Branca Maxi Premium Frama 90g",
+        "description": "Embalagem 90g",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210200152_b1lvxgl0zuj.jpg"
+        },
+        "productEan": "7897562237844"
+    },
+    {
+        "id": "dcf485fe-b000-493a-a90f-cbbf49a9c574",
+        "name": "Caixa Trama Branca 15414 Plasútil 14,5l",
+        "description": "Unidade 1un",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202311101540_esu2he8iny.jpg"
+        },
+        "productEan": "7899808857793"
+    },
+    {
+        "id": "a10c1941-28a8-4095-9d6a-58268166d8cb",
+        "name": "Cerveja Brahma 1000ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190438_k99n6iiicom.jpg"
+        },
+        "productEan": "7890000151030"
+    },
+    {
+        "id": "31ac5c15-e104-464d-ab23-c42a681a1486",
+        "name": "Cerveja Brahma 1l",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190132_sacr4sb2dos.jpg"
+        },
+        "productEan": "SM00200140066"
+    },
+    {
+        "id": "ad059c02-9d94-40c3-a905-d1d3f29bb64b",
+        "name": "Brahma Zero 350ml",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202504242302_bvg3juq0kw.jpeg"
+        },
+        "productEan": "42148562"
+    },
+    {
+        "id": "a825ea55-b474-474d-8e08-ba1b21ca5f2f",
+        "name": "Brahma Chopp 350ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202504241825_tei8qv79xu.jpeg"
+        },
+        "productEan": "7891149104482"
+    },
+    {
+        "id": "f2649589-e69a-46e6-ac17-f857f18e2d82",
+        "name": "Brahma Malzbier 350ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190016_9om4ik4khwn.jpg"
+        },
+        "productEan": "7896317000122"
+    },
+    {
+        "id": "25905ecc-4925-464c-86ff-0ea010e98711",
+        "name": "Porta Garrafa Brahma",
+        "description": "Unidade 1un",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210200457_hy647shgu9f.jpg"
+        },
+        "productEan": "7898931083260"
+    },
+    {
+        "id": "1dc7ad3a-741e-4fca-96e7-92993ce707db",
+        "name": "Cerveja Brahma 350ml",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202503282302_z4f9m68t71r.jpeg"
+        },
+        "productEan": "7891149105342"
+    },
+    {
+        "id": "48d4f3fa-1479-401c-ba4d-f2e6419e7fd3",
+        "name": "Brahma Chopp 269ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202409261706_q3acohjy9sl.jpeg"
+        },
+        "productEan": "3000000798348"
+    },
+    {
+        "id": "1751ee01-900e-4bd4-8ef7-40981c5eee25",
+        "name": "Cerveja Brahma Latao",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202409261705_iti5huhkqmf.jpeg"
+        },
+        "productEan": "18911497"
+    },
+    {
+        "id": "621d5df9-c8cd-465d-87b8-b79445352978",
+        "name": "Skol 269ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202410291843_86b3d97cvsp.jpeg"
+        },
+        "productEan": "7892021040713"
+    },
+    {
+        "id": "c4020d4b-eef9-4432-a2c0-4ea7cdfadef7",
+        "name": "Skol 350ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192135_k5duafwp1gm.jpg"
+        },
+        "productEan": "7891149101689"
+    },
+    {
+        "id": "06e3616d-d09e-4d4b-993e-b92b8888901e",
+        "name": "Cerv Skol Lt",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210200238_nci79uvvy5.jpg"
+        },
+        "productEan": "99999147439"
+    },
+    {
+        "id": "9fcf2aec-4e7f-478f-a281-dbab98bbb6e3",
+        "name": "Cerveja Skol 473ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192337_x0myqc6421.jpg"
+        },
+        "productEan": "7891149101986"
+    },
+    {
+        "id": "e61b4814-6a10-40ee-a288-e5313687c648",
+        "name": "Cerveja Skol 300m.L",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190132_6w3zcn6bwjv.jpg"
+        },
+        "productEan": "SM00200140073"
+    },
+    {
+        "id": "d01cc291-3553-4185-9ddb-c8d47c377fa6",
+        "name": "Cerveja Skol 300ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192256_8o3wc6qw9gc.jpg"
+        },
+        "productEan": "3000050204417"
+    },
+    {
+        "id": "304d1432-7e66-4281-ac18-ada05785b948",
+        "name": "Skol Lemon 350ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190424_if103h4vb9d.jpg"
+        },
+        "productEan": "7891149102204"
+    },
+    {
+        "id": "a7eda870-f3c4-4b73-910c-ab0be36d2b10",
+        "name": "Cerveja Skol 1l",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190132_eekbuwp5l6n.jpg"
+        },
+        "productEan": "SM00200140070"
+    },
+    {
+        "id": "6369390f-b54d-4e0d-b4d2-5fe5437a0030",
+        "name": "Cerveja Skol 355ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210182246_iivikjpjl.jpg"
+        },
+        "productEan": "7891149200306"
+    },
+    {
+        "id": "dcfa94db-cdce-4a16-83f3-1335f38c1c15",
+        "name": "Cerveja Skol Lata 350ml",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202408201552_dp97v2ad3fv.jpeg"
+        },
+        "productEan": "10015025"
+    },
+    {
+        "id": "ce572808-effb-468b-b2ed-f28ce256a960",
+        "name": "Cerveja Skol 300ml Retornável",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210182211_33xu8uuqf5o.jpg"
+        },
+        "productEan": "7891149104468"
+    },
+    {
+        "id": "8060ac8e-93ee-4372-91dd-37c6e1a4bbd9",
+        "name": "Cerveja Skol Hops 269ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180535_7nc55l5l1ux.jpg"
+        },
+        "productEan": "7891149108015"
+    },
+    {
+        "id": "fdc898e7-a139-4902-a501-84f10885da1e",
+        "name": "Cerveja Skol Lata 350ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210182325_cgm96ax8m0o.jpg"
+        },
+        "productEan": "7891149105366"
+    },
+    {
+        "id": "05927cf3-e058-408f-afd9-1562f77bd4f8",
+        "name": "Cerveja Skol 350ml 24un",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210202202_oj03pcxb8f.jpg"
+        },
+        "productEan": "7891149102457"
+    },
+    {
+        "id": "15cbb3f0-12a0-4ec5-9663-03b65564f7d2",
+        "name": "Skol 300ml Apenas líquido",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202504242239_kwwt2ev2if.jpeg"
+        },
+        "productEan": "SM00201053331"
+    },
+    {
+        "id": "c8568fe3-8519-45fe-8ce0-63ba07a35898",
+        "name": "Cerveja Litrinho Skol 300ml",
+        "description": "Produto para maiores de 18 anos",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210202306_91s9f6xbvag.jpg"
+        },
+        "productEan": "789114910330"
+    },
+    {
+        "id": "7a25d54e-b6d8-48b3-8e26-da1b0f2a296c",
+        "name": "Refrig Fanta Guarana 2l",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202408092313_6q9rhtcqk53.jpeg"
+        },
+        "productEan": "17894900093053"
+    },
+    {
+        "id": "708997ff-300c-4499-8020-fe1d29d8f9d3",
+        "name": "Kit Coca/Fanta Guarana",
+        "description": "Embalagem 1un",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202504220945_ye6d2ffarj.png"
+        },
+        "productEan": "17894900027331"
+    },
+    {
+        "id": "c4af001f-22f0-46bf-acb1-22179299fc8b",
+        "name": "Fanta Guarana Lata 6x350ml",
+        "description": "Lata 350ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192155_o0ondxs2m4.jpg"
+        },
+        "productEan": "409800003318"
+    },
+    {
+        "id": "b003bb33-5992-48a8-afc0-742bcafc09ed",
+        "name": "Fanta Guarana 350 Ml",
+        "description": "Lata 310ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202504070956_bt9ctqb18r.png"
+        },
+        "productEan": "7908804500371"
+    },
+    {
+        "id": "2a3ed96d-808f-4d14-a878-0d20d976d65e",
+        "name": "Guarana Santa Joana 250ml",
+        "description": "Embalagem 250ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210202229_i0b4tsptkbq.jpg"
+        },
+        "productEan": "7898944894167"
+    },
+    {
+        "id": "960e4d63-133d-4a5c-929d-a4245384c3f6",
+        "name": "Vela Guanabara Santa Barbara",
+        "description": "Unidade 270g",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210181033_09w1kifw74y6.jpg"
+        },
+        "productEan": "7896017463074"
+    },
+    {
+        "id": "3d0ae683-abf6-4a12-b764-b5ef46e32c3e",
+        "name": "Vela Guanabara Santa Luzia 270g",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202409101613_ldr9x4ddcwr.jpeg"
+        },
+        "productEan": "7896017463050"
+    },
+    {
+        "id": "f46b111a-0a2f-4023-b9c9-6f942778a11b",
+        "name": "Vela Guanabara 350g Santa Edwiges",
+        "description": "Unidade 1un",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202407251518_j5ypd8eso0s.jpeg"
+        },
+        "productEan": "7896017416506"
+    },
+    {
+        "id": "ffaec639-fa95-4209-8b21-60ba44449ea1",
+        "name": "Vela Guanabara N06 Santa Barbara",
+        "description": "Unidade 1un",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210181009_7y9ocz3acwc.jpg"
+        },
+        "productEan": "7896017412805"
+    },
+    {
+        "id": "77659129-1cba-4ed8-a70a-3c7da872e98e",
+        "name": "Refresco Guara Serra Guarana + Áçaí 290ml",
+        "description": "Embalagem 290ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192224_mxjt013gzb.jpg"
+        },
+        "productEan": "7898964881017"
+    },
+    {
+        "id": "6dab64a7-ac68-4cb2-83aa-afee17ae9931",
+        "name": "Vela Guanabara Santa Terezinha Embalagem 270g",
+        "description": "Embalagem 270g",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180524_19jdqzta618.jpg"
+        },
+        "productEan": "7896017419002"
+    },
+    {
+        "id": "e6ac0368-d245-418b-b43e-22c97cd85cee",
+        "name": "Guara-Mat(Guarana E Matcha) 600mg Suprivida",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202410281554_m3ovracb068.jpeg"
+        },
+        "productEan": "7898664817699"
+    },
+    {
+        "id": "f225ede3-8031-41da-a9ec-77a1602bef03",
+        "name": "Bacon Santa Clara Manta",
+        "description": "Compra por peso",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180249_tmojn7g3i88.jpg"
+        },
+        "productEan": "SM00200009805"
+    },
+    {
+        "id": "134241cc-6549-4696-aa89-5e633e660e9b",
+        "name": "Vela Guanabara Santa Barbara Amarela Nº2 8un",
+        "description": "Embalagem 8un",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180937_21v611c94lg.jpg"
+        },
+        "productEan": "7896017412256"
+    },
+    {
+        "id": "53a4b080-9de7-4d95-acba-0c5ce6b99513",
+        "name": "Bacon Manta Santa Rosa Fatiado",
+        "description": "Compra por peso",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210202139_zqc52pvrnx.jpg"
+        },
+        "productEan": "SM00200269319"
+    },
+    {
+        "id": "0e8607de-cd4d-4acb-9004-7f5830dc3dcc",
+        "name": "Vela Votiva Branca Santa Catarina Nº2 Guanabara 270g",
+        "description": "Embalagem 1un",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190052_p6952b8bfz7.jpg"
+        },
+        "productEan": "7896017419149"
+    },
+    {
+        "id": "0d4eb279-6f28-4482-be14-8a0e552afc89",
+        "name": "Velas Guanabara Santa Barbara Nº2 Vermelha Embalagem 8un",
+        "description": "Embalagem 8un",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180549_sbr561ykbg.jpg"
+        },
+        "productEan": "7896017412317"
+    },
+    {
+        "id": "e59a01d0-b6dc-4136-b87b-30a0ad82b397",
+        "name": "Fanta Uva 350ml",
+        "description": "Lata 350ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180020_f43jm7splpp.jpg"
+        },
+        "productEan": "7894900058376"
+    },
+    {
+        "id": "0bf45c2f-bc54-4b1f-b758-b9cec1ce0b4a",
+        "name": "Fanta Uva 600ml",
+        "description": "Garrafa 600ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190413_pbry7g9cbi.jpg"
+        },
+        "productEan": "4789490005363"
+    },
+    {
+        "id": "b3165030-3f8b-410b-8200-d186bb557b87",
+        "name": "Fanta Uva 350ml",
+        "description": "Lata 350ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202310111849_ujvo2pqgw3p.jpg"
+        },
+        "productEan": "7894900050073"
+    },
+    {
+        "id": "da40ba31-1938-42c7-a774-4313cb86ea7e",
+        "name": "Fanta Uva 500ml",
+        "description": "Garrafa 500ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210182213_wullltwwdl.jpg"
+        },
+        "productEan": "7894900053562"
+    },
+    {
+        "id": "c24b90e8-825d-465b-b52e-e5b33bf0a542",
+        "name": "Fanta Uva 200ml",
+        "description": "Garrafa 200ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190357_0yax64ygyiu9.jpg"
+        },
+        "productEan": "7894900052466"
+    },
+    {
+        "id": "a4cbc677-cfd4-4358-8ed2-fe3dc079ef07",
+        "name": "Fanta Uva 600ml",
+        "description": "Garrafa 600ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190242_habqfnsfqcb.jpg"
+        },
+        "productEan": "789226028"
+    },
+    {
+        "id": "702bcfb7-ca98-4889-bd4e-483cf5502221",
+        "name": "Fanta Uva 500ml",
+        "description": "Garrafa 500ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192304_0qwo8es58dd.jpg"
+        },
+        "productEan": "7894900059892"
+    },
+    {
+        "id": "f3920b48-a314-4fa7-b0bc-472cc1d8b479",
+        "name": "Fanta Uva 350ml",
+        "description": "Lata 350ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180202_t0y669etrjs.jpg"
+        },
+        "productEan": "7894900140019"
+    },
+    {
+        "id": "c0357d56-257b-44b0-85be-da90ea55f146",
+        "name": "Fanta Uva 1,5l",
+        "description": "Garrafa 1,5l",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190058_v5z8hxe5oeb.jpg"
+        },
+        "productEan": "40446721"
+    },
+    {
+        "id": "95bd1352-b31a-43be-bd74-a037a4a39792",
+        "name": "Fanta Uva 220ml",
+        "description": "Lata 220ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180656_jvqpprhiwbc.jpg"
+        },
+        "productEan": "7894960050396"
+    },
+    {
+        "id": "5718ede8-40c5-464b-9e2a-56f8be4b521f",
+        "name": "Fanta Uva 2l",
+        "description": "Garrafa 2l",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210182322_001h617rxy10e.jpg"
+        },
+        "productEan": "7894900051568"
+    },
+    {
+        "id": "def38d85-80ed-4469-a5b5-b774162ec05c",
+        "name": "Fanta Uva 350ml",
+        "description": "Lata 350ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180149_b3gpdfbd77e.jpg"
+        },
+        "productEan": "7894900160048"
+    },
+    {
+        "id": "6fb479a0-dde8-4262-adfa-8874f21fbde4",
+        "name": "Fanta Uva 2l",
+        "description": "Garrafa 2l",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210200009_pughp0pxjwn.jpg"
+        },
+        "productEan": "7894900051537"
+    },
+    {
+        "id": "a46e8fc0-a185-4f14-81c7-001d39d977dd",
+        "name": "Fanta Uva 2l",
+        "description": "Garrafa 2l",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180557_6ro4oufyz6v.jpg"
+        },
+        "productEan": "7894900051315"
+    },
+    {
+        "id": "4494e3f5-0d43-4a7c-a13e-6985a9180abf",
+        "name": "Fanta Uva 600ml",
+        "description": "Garrafa 600ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190110_7qiwu6ky7fd.jpg"
+        },
+        "productEan": "7894900059915"
+    },
+    {
+        "id": "75ac7142-4891-4cfd-ba2c-3e83266e0481",
+        "name": "Fanta Uva 600ml",
+        "description": "Garrafa 600ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190222_u7hki1nand9.jpg"
+        },
+        "productEan": "7894900059908"
+    },
+    {
+        "id": "5cf9dc0e-7769-4e97-b112-2470ca139a05",
+        "name": "Fanta Uva 200ml",
+        "description": "Garrafa 200ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192133_vtn2mgm34xo.jpg"
+        },
+        "productEan": "7894900052565"
+    },
+    {
+        "id": "ba72047f-f104-4a6e-a669-1d381698493c",
+        "name": "Fanta Uva 310ml",
+        "description": "Lata 310ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180330_dcgeyubooj6.jpg"
+        },
+        "productEan": "7894900051155"
+    },
+    {
+        "id": "4290a2bb-9abf-47fc-b599-454b0b2dc495",
+        "name": "Fanta Uva 310ml",
+        "description": "Lata 310ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192206_vs0n27z85ri.jpg"
+        },
+        "productEan": "7894900050288"
+    },
+    {
+        "id": "c48e7d1c-9ba6-47eb-b338-3b4f7dd24330",
+        "name": "Fanta Uva 2l",
+        "description": "Garrafa 2l",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210202317_3kt9rdlzwvr.jpg"
+        },
+        "productEan": "7894900056020"
+    },
+    {
+        "id": "9d677ce9-d024-4bc8-8e78-f3eba4e6591b",
+        "name": "Fanta Uva 350ml",
+        "description": "Lata 350ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180938_x4hnvyopiri.jpg"
+        },
+        "productEan": "7894900050240"
+    },
+    {
+        "id": "603b8dd3-902a-470f-8951-806464c7819b",
+        "name": "Fanta Uva 220ml",
+        "description": "Lata 220ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180558_6l8qupzxmpt.jpg"
+        },
+        "productEan": "17894900050391"
+    },
+    {
+        "id": "53d47dc1-f4b2-4e42-8ee4-a87b3c24243e",
+        "name": "Fanta Uva 1,51l",
+        "description": "Garrafa 1,51l",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202307241823_3zz4as3xpq5.jpg"
+        },
+        "productEan": "7894900052350"
+    },
+    {
+        "id": "90abc1a6-bc47-47da-a6ac-17e53ee10e0a",
+        "name": "Fanta Uva 220ml",
+        "description": "Lata 220ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180309_zd8j15nx0wl.jpg"
+        },
+        "productEan": "17894900050394"
+    },
+    {
+        "id": "09be45b9-3528-4408-8701-590c8b5f9a36",
+        "name": "Fanta Uva 310ml",
+        "description": "Lata 310ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190227_5vc3wqecrmv.jpg"
+        },
+        "productEan": "2900001989343"
+    },
+    {
+        "id": "fe7e6229-6923-463b-b108-282953bd78ba",
+        "name": "Fanta Uva 600ml",
+        "description": "Garrafa 600ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192220_bfp0w184ir7.jpg"
+        },
+        "productEan": "7894900051650"
+    },
+    {
+        "id": "b57f61b7-2a18-4a45-bcb5-9dce23570594",
+        "name": "Fanta Uva 250ml",
+        "description": "Garrafa 250ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210180109_ubwinbrclpr.jpg"
+        },
+        "productEan": "78909052"
+    },
+    {
+        "id": "5e21c1e3-2951-4795-ba15-d7aed4f78be4",
+        "name": "Fanta Uva 220ml",
+        "description": "Lata 220ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210181045_s607v16u1yg.jpg"
+        },
+        "productEan": "78951822"
+    },
+    {
+        "id": "81f4c5c7-6410-467b-9b80-9cef54378d12",
+        "name": "Fanta Uva 350ml",
+        "description": "Lata 350ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190040_gch9f9anlbj.jpg"
+        },
+        "productEan": "3087184880922"
+    },
+    {
+        "id": "7ce55dd0-a846-483d-9cee-574de30eb7de",
+        "name": "Suco de Pêssego Delvalle 290ml",
+        "description": "Lata 290ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210200248_apd4envbvzo.jpg"
+        },
+        "productEan": "17894900660316"
+    },
+    {
+        "id": "70249100-d2d9-4139-bd0c-193611dd8f5b",
+        "name": "Suco D.Valle Zero 1l",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202408041751_ic9jkspnhw.jpeg"
+        },
+        "productEan": "7898164665233"
+    },
+    {
+        "id": "e4ec0ca4-5038-417f-8872-300414605256",
+        "name": "Delvalle Manga 290ml",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202409251336_sy1cohr3jd8.jpeg"
+        },
+        "productEan": "7894900663631"
+    },
+    {
+        "id": "27f77613-25da-47e9-a783-48a8967cd1cf",
+        "name": "Delvalle Fresh Limao 1.5 L",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202504221040_o6nwclwm6ap.png"
+        },
+        "productEan": "17894900558620"
+    },
+    {
+        "id": "4b47fbe3-f8ab-45e5-ac05-69b94e94d5eb",
+        "name": "Suco Pronto Suqo Garrafa",
+        "description": "Garrafa 200ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192226_bdo8mrdbyqi.jpg"
+        },
+        "productEan": "7898258370821"
+    },
+    {
+        "id": "761caba1-446c-43fb-a82f-1e187028ddd2",
+        "name": "Lentilha Dovalle 500g",
+        "description": "Embalagem 500g",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210181001_y6e3k8u8lq.jpg"
+        },
+        "productEan": "27898586770069"
+    },
+    {
+        "id": "66085dd7-65ae-475e-93ac-82561ae79f95",
+        "name": "Salsicha Belvale Kg",
+        "description": "Compra por peso",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192235_ob5xbgl9stc.jpg"
+        },
+        "productEan": "SM00200066083"
+    },
+    {
+        "id": "4e4907e9-a030-4438-bb1b-393ff2100ced",
+        "name": "Resverol Dovalle 30cpr",
+        "description": "",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202404151119_quaht9edj78.png"
+        },
+        "productEan": "7896360002869"
+    },
+    {
+        "id": "3dd3ddfb-7829-4d0a-8921-053f72ce9867",
+        "name": "Suco Sabor Caju Sumo 300ml",
+        "description": "Embalagem 300ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202303211810_uumvp4md0tb.jpg"
+        },
+        "productEan": "7898923082820"
+    },
+    {
+        "id": "bdcc46c3-92ad-40f6-9604-838a401c951d",
+        "name": "Suco de Maracujá Sumo 1l",
+        "description": "Embalagem 1l",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210200023_m4uzkmc4b7.jpg"
+        },
+        "productEan": "7898923082271"
+    },
+    {
+        "id": "2ae42968-e9eb-48fa-a47b-c151fd5abdd2",
+        "name": "Suco Pronto Suqo Cajá 200ml",
+        "description": "Garrafa 200ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210192227_k8sm2zmd4c7.jpg"
+        },
+        "productEan": "7898258370777"
+    },
+    {
+        "id": "e44d7acd-eb95-403b-bd68-33f0597b1da0",
+        "name": "Suco de Tangerina Sumo 300ml",
+        "description": "Embalagem 300ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202308081013_11kh7rd3m54l.jpg"
+        },
+        "productEan": "7898923082851"
+    },
+    {
+        "id": "22a2b3aa-85f6-4201-85a6-651a9875f9eb",
+        "name": "Linguiça Suína Dovalle",
+        "description": "Compra por peso",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210281340_g7rgfxtyi5v.jpg"
+        },
+        "productEan": "SM00200356255"
+    },
+    {
+        "id": "20dd5a34-4f1f-4ce7-a14e-fc7b323c1c10",
+        "name": "Rubralong Dovalle 120ml",
+        "description": "Caixa 120ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210202119_8fk5l2zanki.jpg"
+        },
+        "productEan": "7896360000971"
+    },
+    {
+        "id": "a8b8c95c-b5fc-484a-aa86-53d3fc24c75f",
+        "name": "Suco de Acerola Sumo 1l",
+        "description": "Garrafa 1l",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202504231508_orbtbxrrg49.jpeg"
+        },
+        "productEan": "7898923082202"
+    },
+    {
+        "id": "d8cb8ea5-d334-438e-822b-984dcf9bbf07",
+        "name": "Suco de Goiaba Sumo 300ml",
+        "description": "Garrafa 300ml",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202308081043_km0w3enixq.jpg"
+        },
+        "productEan": "7898923082837"
+    },
+    {
+        "id": "087033ae-43f7-499c-ae43-266ebe3e0428",
+        "name": "Coco Seco Saco",
+        "description": "Saco 1un",
+        "imageResource": {
+            "baseUrl": "https://static-images.ifood.com.br/pratos/",
+            "path": "820af392-002c-47b1-bfae-d7ef31743c7f/202210190059_cj9m7vyxd6q.jpg"
+        },
+        "productEan": "SM00200131539"
+    }
+
+]

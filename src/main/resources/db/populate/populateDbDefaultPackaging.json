@@ -1,0 +1,317 @@
+[
+    {
+        "id": "118066da-662b-40c7-a207-5c0e8562dcc1",
+        "name": "Caixa Pizza Branca 30cm",
+        "description": "Unidade 1un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202210192232_iyg27soqmwm.jpg",
+        "ean": "7898373210026",
+        "volumeMl": 3600,
+        "lenghtCm": 30.0,
+        "widthCm": 30.0,
+        "thicknessCm": 4.0
+
+    },
+    {
+        "id": "1fefffd3-3350-4eea-8350-a5421f34bf51",
+        "name": "Caixa Pizza Branca 40cm",
+        "description": "Unidade 1un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202210192232_dxzkzkwhitc.jpg",
+        "ean": "7898373210040",
+        "volumeMl": 6400.0,
+        "lenghtCm": 40.0,
+        "widthCm": 40.0,
+        "thicknessCm": 4.0
+
+    },
+    {
+        "id": "2eb9695d-74d5-44d6-b823-f7ae945fb835",
+        "name": "Caixa Pizza Branca 35cm",
+        "description": "Caixa 1un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202210192232_ng06jtcjy3a.jpg",
+        "ean": "7898373210033",
+        "volumeMl": 4900.0,
+        "lenghtCm": 35.0,
+        "widthCm": 35.0,
+        "thicknessCm": 4.0
+
+    },
+    {
+        "id": "397005d1-8ddb-4333-b8ef-da6c52799548",
+        "name": "Caixa Pizza Branca 45cm",
+        "description": "Unidade 1un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202302070926_sd0pqqifq6.jpg",
+        "ean": "7898373210149",
+        "volumeMl": 8100.0,
+        "lenghtCm": 45.0,
+        "widthCm": 45.0,
+        "thicknessCm": 4.0
+
+    },
+    {
+        "id": "97f87295-2ac4-46bf-abe0-2203194d9055",
+        "name": "Caixa Pizza Branca 25cm",
+        "description": "Unidade 1un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202210192232_e71py7oes4.jpg",
+        "ean": "7898373210019",
+        "volumeMl": 2500.0,
+        "lenghtCm": 25.0,
+        "widthCm": 25.0,
+        "thicknessCm": 4.0
+
+    },
+    {
+        "id": "942b58fd-94a5-4bcc-99c8-6808f8e5e4c4",
+        "name": "Marmitex Isopor 1000ml",
+        "description": "Unidade 50un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202210200220_56segiittu.jpg",
+        "ean": "7896030901867",
+        "volumeMl": 1000.0,
+        "lenghtCm": 0.0,
+        "widthCm": 0.0,
+        "thicknessCm": 0.0
+
+    },
+    {
+        "id": "40d2dc69-b7a4-49ea-a85f-650a8df4a3e4",
+        "name": "Marmitex Isopor 750ml",
+        "description": "",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202403261205_f7or6lr7yqu.png",
+        "ean": "7896030802607",
+        "volumeMl": 750.0,
+        "lenghtCm": 0.0,
+        "widthCm": 0.0,
+        "thicknessCm": 0.0
+
+    },
+    {
+        "id": "6efe1b8c-61be-4512-a26e-ca10a9fed125",
+        "name": "Marmitex Isopor 500ml",
+        "description": "",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202411051840_uhhcrft6uki.jpeg",
+        "ean": "17898604231445",
+        "volumeMl": 500.0,
+        "lenghtCm": 0.0,
+        "widthCm": 0.0,
+        "thicknessCm": 0.0
+
+    },
+
+    {
+        "id": "a301af99-3aad-41a4-a9c1-01cab2f47df7",
+        "name": "Marmitex De Alumínio Retangular 250ml",
+        "description": "",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202407282105_7ncnywqrobq.jpeg",
+        "ean": "7897384700700",
+        "volumeMl": 250.0,
+        "lenghtCm": 0.0,
+        "widthCm": 0.0,
+        "thicknessCm": 0.0
+
+    },
+    {
+        "id": "1dd96321-bdab-462d-9b0f-7ed8cc217c48",
+        "name": "Marmitex De Alumínio Retangular 500ml",
+        "description": "",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202407271848_ufe1vz6s88d.jpeg",
+        "ean": "7897384700151",
+        "volumeMl": 500.0,
+        "lenghtCm": 0.0,
+        "widthCm": 0.0,
+        "thicknessCm": 0.0
+
+    },
+    {
+        "id": "1dd96321-bdab-462d-9b0f-7ed8cc217c48",
+        "name": "Marmitex De Alumínio Retangular 750ml",
+        "description": "",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202407271848_ufe1vz6s88d.jpeg",
+        "ean": "7897384700151",
+        "volumeMl": 750.0,
+        "lenghtCm": 0.0,
+        "widthCm": 0.0,
+        "thicknessCm": 0.0
+
+    },
+    {
+        "id": "2722da54-e085-46fe-9ff1-ff1e58f98d5c",
+        "name": "Marmitex De Alumínio Retangular 1000ml",
+        "description": "",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202407271900_36zazxn6vfh.jpeg",
+        "ean": "7897384700106",
+        "volumeMl": 1000.0,
+        "lenghtCm": 0.0,
+        "widthCm": 0.0,
+        "thicknessCm": 0.0
+
+    },
+    {
+        "id": "b303781c-0e4b-4885-9c92-a6e846a4a0e9",
+        "name": "Copo Plástico 200ml",
+        "description": "Unidade 1un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202310271056_gefwewphpjr.jpg",
+        "ean": "7898972524067",
+        "volumeMl": 200.0,
+        "lenghtCm": 0.0,
+        "widthCm": 0.0,
+        "thicknessCm": 0.0
+
+    },
+    {
+        "id": "db254f52-fa11-41ca-b8f0-b063064e4c0e",
+        "name": "Copo Plástico 300ml",
+        "description": "",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202406031018_oyesrpb6awm.png",
+        "ean": "7898918331124",
+        "volumeMl": 300.0,
+        "lenghtCm": 0.0,
+        "widthCm": 0.0,
+        "thicknessCm": 0.0
+
+    },
+    {
+        "id": "1aa8b8c4-5a29-497e-b67e-8d5be1ea9b8c",
+        "name": "Copo Plastico 400ml",
+        "description": "",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202410251444_3eir0pcv506.jpeg",
+        "ean": "7899085463595",
+        "volumeMl": 400.0,
+        "lenghtCm": 0.0,
+        "widthCm": 0.0,
+        "thicknessCm": 0.0
+
+    },
+    {
+        "id": "1aa8b8c4-5a29-497e-b67e-8d5be1ea9b8c",
+        "name": "Copo Plastico 500ml",
+        "description": "",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202410251444_3eir0pcv506.jpeg",
+        "ean": "7899085463595",
+        "volumeMl": 500.0,
+        "lenghtCm": 0.0,
+        "widthCm": 0.0,
+        "thicknessCm": 0.0
+
+    },
+    {
+        "id": "8f5fbb63-b554-437f-9cd6-c4674c59104a",
+        "name": "Copo Plastico 750ml",
+        "description": "",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202409021243_z6qsx6oipk.jpeg",
+        "ean": "7908463011065",
+        "volumeMl": 750.0,
+        "lenghtCm": 0.0,
+        "widthCm": 0.0,
+        "thicknessCm": 0.0
+
+    },
+    {
+        "id": "32c499e7-6c6b-4449-8a61-74b1ae681170",
+        "name": "Saco Kraft Papelão 34x24x15cm",
+        "description": "Embalagem 10un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202210200025_ohk5gth21n.jpg",
+        "ean": "7898619865546",
+        "volumeMl": 12240.0,
+        "lenghtCm": 34.0,
+        "widthCm": 24.0,
+        "thicknessCm": 15.0
+    },
+    {
+        "id": "55498526-417d-4fbb-bc8d-89348c7fadb1",
+        "name": "Saco Kraft Papelão 28x24x12cm",
+        "description": "Unidade 1un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202311161036_uyzixpqpkk.jpg",
+        "ean": "7899008084050",
+        "volumeMl": 8200.0,
+        "lenghtCm": 28.0,
+        "widthCm": 24.0,
+        "thicknessCm": 12.0
+    },
+    {
+        "id": "20612519-89b4-4b50-b5af-122215536eb4",
+        "name": "Saco Kraft Papelão 23x17x9cm",
+        "description": "Embalagem 50un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202306061751_3h6q14an5j.jpg",
+        "ean": "7909107077539",
+        "volumeMl": 3622.0,
+        "lenghtCm": 23.0,
+        "widthCm": 17.0,
+        "thicknessCm": 9.0
+    },
+    {
+        "id": "d83e82b5-2c35-42d7-8e7a-4e383ab180da",
+        "name": "Saco Kraft Papelão 28x32x17cm",
+        "description": "Embalagem 200un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202302100824_6njhjjfekmh.jpg",
+        "ean": "7898577963612",
+        "volumeMl": 15232.0,
+        "lenghtCm": 28.0,
+        "widthCm": 32.0,
+        "thicknessCm": 17.0
+    },
+    {
+        "id": "c141754f-409e-4426-b0b3-ed82021acf01",
+        "name": "Saco Kraft Papelão 34x31x19cm",
+        "description": "Embalagem 10un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202311221650_khe0qkptis.jpg",
+        "ean": "7899008084036",
+        "volumeMl": 20026.0,
+        "lenghtCm": 34.0,
+        "widthCm": 31.0,
+        "thicknessCm": 19.0
+    },
+    {
+        "id": "2c048a26-3dd0-4d89-a487-edf1516caf66",
+        "name": "Saco Kraft Papelão 22x28x14cm",
+        "description": "",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202412092032_qudes8n9wk.jpeg",
+        "ean": "7908267803330",
+        "volumeMl": 8624.0,
+        "lenghtCm": 22.0,
+        "widthCm": 28.0,
+        "thicknessCm": 14.0
+    },
+    {
+        "id": "32c499e7-6c6b-4449-8a61-74b1ae681170",
+        "name": "Embalagem para Sushi 24x24x5cm",
+        "description": "Embalagem 50un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202308311413_737q5u7fp98.jpg",
+        "ean": "7898595340044",
+        "volumeMl": 2646.0,
+        "lenghtCm": 24.0,
+        "widthCm": 24.0,
+        "thicknessCm": 5.0
+    },
+    {
+        "id": "2374ad97-0e6e-4c49-b5b8-350243da2c3b",
+        "name": "Embalagem para Sushi 24x16x45cm",
+        "description": "",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202410081320_uqyxdmw72hs.jpeg",
+        "ean": "7898595340037",
+        "volumeMl": 2000.0,
+        "lenghtCm": 24.0,
+        "widthCm": 16.0,
+        "thicknessCm": 5.0
+    },
+    {
+        "id": "fbda0255-9881-4dc1-a663-e41aa31fa4bf",
+        "name": "Embalagem para Sushi 28x28x4.5cm",
+        "description": "Embalagem 100un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202308311413_zb6blmf0qm.jpg",
+        "ean": "7898595340051",
+        "volumeMl": 3528.0,
+        "lenghtCm": 28.0,
+        "widthCm": 28.0,
+        "thicknessCm": 4.5
+    },
+    {
+        "id": "15205023-a24c-409a-93e7-5d466b14c3a7",
+        "name": "Embalagem para Sushi 22x28x14cm",
+        "description": "Unidade 1un",
+        "imagePath": "https://static-images.ifood.com.br/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202411272239_0fjs64cq33li.jpeg",
+        "ean": "7898595340389",
+        "volumeMl": 8624.0,
+        "lenghtCm": 22.0,
+        "widthCm": 28.0,
+        "thicknessCm": 14.0
+    }
+]
